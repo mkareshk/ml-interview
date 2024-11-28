@@ -1,0 +1,81 @@
+# Active Learning
+---
+**Question:** Discuss the implications of using uncertainty sampling in active learning for imbalanced datasets.
+
+**Answer:**
+Uncertainty sampling in active learning involves selecting data points for labeling where the model is least confident. In imbalanced datasets, this approach may lead to over-sampling of the minority class, as the model is often less confident about these instances. While this can help improve the model's performance on the minority class, it may also result in neglecting the majority class, potentially leading to a skewed decision boundary.
+
+Mathematically, uncertainty can be quantified using measures like entropy $H(x) = -\sum_{i} p(y_i|x) \log p(y_i|x)$, where $p(y_i|x)$ is the predicted probability of class $y_i$ for instance $x$. In imbalanced datasets, $p(y_i|x)$ for minority classes is often lower, increasing $H(x)$ and thus the likelihood of selection.
+
+The main implication is the need for careful balance and potentially incorporating strategies like cost-sensitive learning or class balancing to ensure overall model performance does not degrade.
+
+---
+
+**Question:** How does the exploration-exploitation trade-off impact dataset selection strategies in active learning?
+
+**Answer:**
+In active learning, the exploration-exploitation trade-off is crucial for dataset selection strategies. Exploration involves selecting data points that provide new information about the underlying data distribution, often by choosing samples where the model is uncertain. Exploitation, on the other hand, focuses on selecting samples that the model is confident about to refine its predictions.
+
+Mathematically, if $p(y|x, \theta)$ represents the model's prediction, exploration might target samples where the entropy $H(y|x, \theta) = -\sum p(y|x, \theta) \log p(y|x, \theta)$ is high, indicating uncertainty. Exploitation might focus on minimizing the expected loss $\mathbb{E}[L(y, \hat{y})]$.
+
+Balancing these aspects ensures that the model learns efficiently by sampling informative data points while refining its current knowledge. Too much exploration can lead to inefficiency, while too much exploitation may cause the model to miss critical insights from unexplored data regions.
+
+---
+
+**Question:** How does pool-based active learning differ from stream-based active learning in terms of computational efficiency?
+
+**Answer:**
+Pool-based active learning involves selecting samples from a large, static pool of unlabeled data to query for labeling. This approach allows for more computationally efficient selection strategies, as the entire pool can be evaluated before making a decision. Techniques like uncertainty sampling or query-by-committee can be applied to the entire dataset to find the most informative samples. 
+
+In contrast, stream-based active learning processes data in a sequential manner, deciding whether to query each incoming sample for labeling as it arrives. This can be less computationally intensive per sample, as it does not require evaluating the entire dataset at once. However, it may be less efficient overall if the stream contains many uninformative samples, as each must be considered individually. 
+
+Mathematically, pool-based methods can optimize over a set $\mathcal{U}$, while stream-based methods make decisions based on a single sample $x_t$ at each time $t$. Thus, pool-based methods can leverage batch processing, whereas stream-based methods are inherently online.
+
+---
+
+**Question:** How does uncertainty sampling influence the convergence rate of model learning in active learning frameworks?
+
+**Answer:**
+In active learning, uncertainty sampling selects data points for labeling where the model is least confident. This strategy can significantly influence the convergence rate of model learning. By focusing on uncertain data points, the model can achieve faster convergence with fewer labeled examples, as it prioritizes learning from the most informative samples. 
+
+Mathematically, if $\theta_t$ represents the model parameters at iteration $t$, the update rule can be influenced by the selected samples $x_i$ with high uncertainty, effectively modifying the gradient $\nabla \mathcal{L}(\theta_t, x_i)$ used in optimization. 
+
+This targeted approach reduces the number of iterations needed to reach a desired accuracy level, compared to random sampling. However, the convergence rate depends on the model's ability to generalize from these uncertain points and the representativeness of the selected samples. Thus, while uncertainty sampling often accelerates learning, its efficiency is context-dependent and may vary based on the problem structure and data distribution.
+
+---
+
+**Question:** What are the theoretical implications of using query-by-committee in active learning with non-convex hypothesis spaces?
+
+**Answer:**
+Query-by-committee (QBC) in active learning involves maintaining a committee of models that vote on the most informative data points to label next. In non-convex hypothesis spaces, the theoretical implications include increased model diversity and exploration of the hypothesis space. Non-convex spaces, characterized by multiple local minima, benefit from QBC as it encourages sampling in regions of high disagreement among committee members, potentially escaping local minima traps.
+
+Mathematically, if $\mathcal{H}$ is a non-convex hypothesis space, QBC seeks to minimize the expected generalization error $E_{x,y}[(h(x) - y)^2]$ by selecting points $x$ that maximize the disagreement $D(h_1, h_2, ..., h_n)$ among hypotheses $h_i \in \mathcal{H}$. This disagreement can be quantified using measures like variance or entropy.
+
+QBC's theoretical advantage is in its ability to efficiently explore complex spaces, potentially improving learning rates and model robustness by focusing on informative samples that reduce uncertainty across the hypothesis space.
+
+---
+
+**Question:** How does the choice of uncertainty sampling method affect the convergence rate in pool-based active learning?
+
+**Answer:**
+In pool-based active learning, the choice of uncertainty sampling method significantly influences the convergence rate, which is the speed at which the learning algorithm reaches a desired level of accuracy. Uncertainty sampling selects the most uncertain samples for labeling, aiming to maximize information gain. Methods like least confident, margin sampling, and entropy sampling have different criteria for uncertainty. 
+
+For instance, least confident sampling selects samples for which the model's predicted probability for the most likely class is lowest, while margin sampling chooses samples with the smallest difference between the top two predicted probabilities. Entropy sampling considers the overall uncertainty distribution across all classes. 
+
+The convergence rate depends on how well the chosen method aligns with the data distribution and model capacity. A method that effectively reduces model uncertainty can lead to faster convergence. However, inappropriate sampling may result in slow convergence or suboptimal performance due to redundant or non-informative samples being selected.
+
+---
+
+**Question:** Analyze the trade-offs between exploration and exploitation in active learning with deep neural networks.
+
+**Answer:**
+In active learning with deep neural networks, the exploration-exploitation trade-off is crucial. Exploration involves selecting diverse and uncertain samples to improve the model's generalization, while exploitation focuses on refining the model's accuracy on known data. 
+
+Mathematically, let $U(x)$ represent the uncertainty of a sample $x$. Exploration seeks to maximize $U(x)$, selecting samples where the model is least certain. Conversely, exploitation minimizes the model's loss $L(x, y)$ on labeled data $(x, y)$, focusing on areas where the model already performs well.
+
+The trade-off is balancing these objectives: too much exploration may waste resources on irrelevant data, while excessive exploitation risks overfitting. Techniques like Bayesian active learning balance this by using acquisition functions, e.g., Expected Improvement or Thompson Sampling, which weigh uncertainty against potential gains.
+
+For instance, in image classification, exploration might involve labeling ambiguous images, while exploitation refines predictions on clear cases, ensuring robust model performance.
+
+---
+

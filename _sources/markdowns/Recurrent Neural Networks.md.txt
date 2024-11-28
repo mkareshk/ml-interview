@@ -1,0 +1,43 @@
+# Recurrent Neural Networks
+---
+**Question:** How do RNNs handle variable-length sequences compared to feedforward neural networks?
+
+**Answer:**
+Recurrent Neural Networks (RNNs) are designed to handle variable-length sequences by maintaining a hidden state that is updated at each time step. This allows them to process sequences of arbitrary length, as the hidden state acts as a memory that captures information from previous inputs. The RNN updates its hidden state $h_t$ at time $t$ using the current input $x_t$ and the previous hidden state $h_{t-1}$, typically via the equation $h_t = f(W_h h_{t-1} + W_x x_t + b)$, where $f$ is a non-linear activation function, and $W_h$, $W_x$, and $b$ are learnable parameters. In contrast, feedforward neural networks expect fixed-size input vectors, making them unsuitable for variable-length sequences without preprocessing steps like padding or truncation. RNNs' ability to handle sequences natively makes them suitable for tasks like language modeling and time series prediction, where input lengths can vary.
+
+---
+
+**Question:** What are the theoretical limitations of RNNs in capturing long-term dependencies, and how do advanced architectures address them?
+
+**Answer:**
+Recurrent Neural Networks (RNNs) struggle with long-term dependencies due to the vanishing gradient problem. During backpropagation, gradients of the loss function with respect to earlier layers can become exceedingly small, making it difficult to update weights effectively. This issue is exacerbated by the repeated multiplication of gradients through time steps, leading to exponential decay.
+
+Mathematically, if $h_t = f(W_h h_{t-1} + W_x x_t)$ is the hidden state update, gradients $
+abla_{W_h} L$ can diminish as $\|W_h\| < 1$ over many time steps.
+
+Long Short-Term Memory (LSTM) and Gated Recurrent Unit (GRU) architectures address these limitations by incorporating gating mechanisms. LSTMs introduce forget, input, and output gates, allowing them to regulate information flow and maintain gradients. GRUs simplify this with update and reset gates. These mechanisms help preserve information over longer sequences, mitigating vanishing gradient effects and enabling learning of long-term dependencies.
+
+---
+
+**Question:** Analyze the impact of sequence length on the computational complexity of training RNNs.
+
+**Answer:**
+Recurrent Neural Networks (RNNs) process sequences of data, where the sequence length can significantly impact computational complexity. For a sequence of length $T$, the RNN must perform $T$ forward passes and backpropagate through $T$ time steps. This results in a time complexity of $O(T)$ per training step.
+
+Moreover, the backpropagation through time (BPTT) algorithm, used to train RNNs, requires storing intermediate states for each time step, increasing memory usage linearly with $T$. The longer the sequence, the more memory is required, which can lead to increased computational costs and potential issues like vanishing or exploding gradients.
+
+For example, training on sequences of length $1000$ is computationally more expensive than sequences of length $100$, both in terms of time and memory. Thus, sequence length directly affects the efficiency and feasibility of training RNNs, necessitating techniques like truncated BPTT to manage long sequences.
+
+---
+
+**Question:** How does the vanishing gradient problem affect the training of RNNs in long sequence dependencies?
+
+**Answer:**
+The vanishing gradient problem significantly hampers the training of Recurrent Neural Networks (RNNs) when dealing with long sequence dependencies. This problem arises during backpropagation through time (BPTT), where gradients of the loss function with respect to earlier layers become exceedingly small. As a result, the weights of early layers receive minimal updates, impeding learning.
+
+Mathematically, consider the gradient $\frac{\partial L}{\partial W}$, where $L$ is the loss and $W$ is a weight matrix. During BPTT, this gradient is a product of terms like $\frac{\partial h_t}{\partial h_{t-1}}$, where $h_t$ is the hidden state. If the Jacobian $\frac{\partial h_t}{\partial h_{t-1}}$ has eigenvalues less than 1, repeated multiplication causes the gradient to vanish exponentially.
+
+This issue prevents RNNs from learning dependencies across long sequences, as earlier time steps have negligible influence on the loss function. Techniques like Long Short-Term Memory (LSTM) networks mitigate this by maintaining constant error flow through memory cells.
+
+---
+

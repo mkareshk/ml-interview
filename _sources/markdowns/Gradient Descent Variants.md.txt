@@ -1,0 +1,90 @@
+# Gradient Descent Variants
+---
+**Question:** How does the choice of learning rate schedule impact the effectiveness of stochastic gradient descent in large-scale models?
+
+**Answer:**
+The learning rate schedule significantly influences the convergence and performance of stochastic gradient descent (SGD) in large-scale models. A constant learning rate might lead to suboptimal convergence, either overshooting the minimum or converging too slowly. A well-designed schedule, such as exponential decay or step decay, gradually reduces the learning rate, allowing for initial rapid learning and fine-tuning as convergence nears. Mathematically, the learning rate at iteration $t$, $\eta_t$, might be defined as $\eta_t = \eta_0 / (1 + \lambda t)$ for a decay schedule, where $\eta_0$ is the initial learning rate and $\lambda$ is the decay rate. This helps in escaping saddle points and local minima, which are common in high-dimensional spaces. For instance, cyclical learning rates, which periodically vary the learning rate, have been shown to improve convergence speed and generalization. Thus, the choice of learning rate schedule is crucial for balancing exploration and exploitation in the optimization landscape.
+
+---
+
+**Question:** Discuss the trade-offs of using Nesterov Accelerated Gradient over standard momentum in sparse datasets.
+
+**Answer:**
+Nesterov Accelerated Gradient (NAG) improves upon standard momentum by anticipating the future position of the parameters, leading to a more informed gradient update. In sparse datasets, this can be advantageous as NAG's lookahead mechanism can better handle the infrequent updates typical in sparse settings, potentially leading to faster convergence.
+
+The update rule for NAG is:
+
+$$ v_{t+1} = \mu v_t + \eta \nabla f(\theta_t - \mu v_t) $$
+$$ \theta_{t+1} = \theta_t - v_{t+1} $$
+
+where $\mu$ is the momentum coefficient and $\eta$ is the learning rate. The key difference is the gradient evaluation at $\theta_t - \mu v_t$, which anticipates the future position.
+
+However, in very sparse datasets, the computational overhead of NAG's lookahead can outweigh its benefits, as the gradients may still be zero or very small. Standard momentum, with its simpler update rule, may be more efficient in such cases, despite potentially slower convergence.
+
+---
+
+**Question:** What are the theoretical implications of using RMSprop with momentum compared to vanilla RMSprop?
+
+**Answer:**
+RMSprop is an adaptive learning rate optimization algorithm that scales the learning rate by dividing by a moving average of squared gradients. It is defined as:
+
+$$G_{t} = \beta G_{t-1} + (1-\beta)g_{t}^{2}$$
+$$\theta_{t+1} = \theta_{t} - \frac{\eta}{\sqrt{G_{t} + \epsilon}} g_{t}$$
+
+where $\beta$ is the decay rate, $g_t$ is the gradient at time $t$, and $\eta$ is the learning rate.
+
+Adding momentum introduces an additional term to the update rule:
+
+$$v_{t} = \gamma v_{t-1} + \frac{\eta}{\sqrt{G_{t} + \epsilon}} g_{t}$$
+$$\theta_{t+1} = \theta_{t} - v_{t}$$
+
+where $\gamma$ is the momentum coefficient. Theoretical implications include improved convergence speed and stability by incorporating past gradients, reducing oscillations in the optimization path. Momentum helps navigate ravines, leading to faster convergence in deep, narrow valleys common in neural networks.
+
+---
+
+**Question:** What are the computational challenges of implementing Adam optimizer on large-scale sparse datasets?
+
+**Answer:**
+Adam optimizer's computational challenges on large-scale sparse datasets primarily stem from its memory and computational requirements. Adam maintains two moving averages for each parameter: the first moment (mean) $m_t$ and the second moment (uncentered variance) $v_t$. For sparse datasets, where most features are zero, this becomes problematic because Adam updates all parameters, including those corresponding to zero-valued features, leading to high memory usage.
+
+Moreover, the element-wise operations are computationally expensive when applied to large parameter vectors, even if they are mostly zero. This inefficiency can be mitigated by implementing sparse updates, where only non-zero parameters are updated, but this requires careful handling to ensure correct momentum and variance calculations. Additionally, the hyperparameters like learning rate and decay rates need to be tuned specifically for sparse data to prevent oscillations or slow convergence, adding further complexity to the implementation.
+
+---
+
+**Question:** Analyze the impact of learning rate warm-up on the convergence dynamics of adaptive gradient methods.
+
+**Answer:**
+Learning rate warm-up is a technique where the learning rate starts small and gradually increases to a target value over a specified number of iterations. This is particularly beneficial for adaptive gradient methods like Adam, RMSProp, or Adagrad, which adjust the learning rate for each parameter individually based on past gradients.
+
+The warm-up phase helps stabilize the initial training dynamics, reducing the risk of large updates that can destabilize training, especially in the early stages when the model parameters are far from optimal. This is crucial in adaptive methods where the effective learning rate can be high due to small gradient magnitudes.
+
+Mathematically, if $\eta_t$ is the learning rate at iteration $t$, a warm-up schedule might be $\eta_t = \eta_0 \cdot \frac{t}{T}$ for $t \leq T$, where $T$ is the warm-up period. This gradual increase helps in achieving better convergence by preventing the optimizer from making overly aggressive updates initially, which can lead to poor convergence or divergence.
+
+---
+
+**Question:** How does the choice of beta parameters in Adam affect the convergence stability in high-dimensional spaces?
+
+**Answer:**
+Adam optimizer uses two hyperparameters, $\beta_1$ and $\beta_2$, which control the exponential decay rates for the moment estimates of the gradient and its square, respectively. In high-dimensional spaces, the choice of these parameters significantly affects convergence stability. 
+
+$\beta_1$ typically defaults to 0.9, controlling the momentum term. A smaller $\beta_1$ can lead to faster convergence but may cause instability due to less smoothing of the gradient updates. Conversely, a larger $\beta_1$ provides more stability but may slow convergence.
+
+$\beta_2$, often set to 0.999, affects the scaling of the learning rate by the square of past gradients. A smaller $\beta_2$ can make the algorithm more sensitive to noise, while a larger $\beta_2$ ensures stability by reducing the learning rate variance.
+
+In high-dimensional settings, careful tuning of $\beta_1$ and $\beta_2$ is crucial to balance convergence speed and stability, as inappropriate values can lead to oscillations or slow convergence.
+
+---
+
+**Question:** How does the convergence rate of AdaGrad differ from RMSProp in non-convex optimization landscapes?
+
+**Answer:**
+AdaGrad and RMSProp are both adaptive learning rate algorithms, but they handle the accumulation of past gradients differently, affecting their convergence rates in non-convex landscapes. 
+
+AdaGrad accumulates the squares of past gradients, resulting in an element-wise learning rate of $\eta_{t,i} = \frac{\eta}{\sqrt{G_{t,ii} + \epsilon}}$, where $G_{t,ii}$ is the sum of squares of past gradients for dimension $i$. This accumulation can cause the learning rate to decrease too quickly, potentially hindering convergence in non-convex settings.
+
+RMSProp modifies AdaGrad by introducing an exponentially decaying average of past squared gradients: $E[g^2]_t = \gamma E[g^2]_{t-1} + (1-\gamma)g_t^2$. This prevents the learning rate from diminishing too fast, allowing better exploration of non-convex landscapes. 
+
+Thus, RMSProp often converges faster than AdaGrad in non-convex scenarios due to its ability to maintain a more balanced learning rate.
+
+---
+

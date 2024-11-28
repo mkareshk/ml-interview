@@ -1,0 +1,233 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reinforcement Learning &mdash; Machine Learning Interview Questions 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/theme_overrides.css" />
+
+  
+    <link rel="canonical" href="https://mkareshk.github.io/ml-interview/markdowns/Reinforcement%20Learning.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Self-Supervised Learning" href="Self-Supervised%20Learning.html" />
+    <link rel="prev" title="Recurrent Neural Networks" href="Recurrent%20Neural%20Networks.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Machine Learning Interview Questions
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Active%20Learning.html">Active Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Anomaly%20Detection.html">Anomaly Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Attention%20Mechanisms.html">Attention Mechanisms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Bayesian%20Inference.html">Bayesian Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Bayesian%20Neural%20Networks.html">Bayesian Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Clustering%20Algorithms.html">Clustering Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Convolutional%20Neural%20Networks.html">Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cross-Validation%20Techniques.html">Cross-Validation Techniques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Decision%20Trees.html">Decision Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Dimensionality%20Reduction.html">Dimensionality Reduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Ensemble%20Methods.html">Ensemble Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Ethics%20in%20Machine%20Learning.html">Ethics in Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Feature%20Engineering.html">Feature Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Federated%20Learning.html">Federated Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Generative%20Adversarial%20Networks.html">Generative Adversarial Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Gradient%20Descent%20Variants.html">Gradient Descent Variants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Graphical%20Models.html">Graphical Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hyperparameter%20Tuning.html">Hyperparameter Tuning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Interpretability%20and%20Explainability.html">Interpretability and Explainability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="K-Nearest%20Neighbors.html">K-Nearest Neighbors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Linear%20Regression.html">Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Logistic%20Regression.html">Logistic Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Markov%20Decision%20Processes.html">Markov Decision Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Meta-Learning.html">Meta-Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Model%20Evaluation%20Metrics.html">Model Evaluation Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Naive%20Bayes.html">Naive Bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Natural%20Language%20Processing.html">Natural Language Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Neural%20Networks.html">Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Optimization%20Algorithms.html">Optimization Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Quantum%20Machine%20Learning.html">Quantum Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Random%20Forests.html">Random Forests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Recurrent%20Neural%20Networks.html">Recurrent Neural Networks</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Self-Supervised%20Learning.html">Self-Supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Semi-Supervised%20Learning.html">Semi-Supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Supervised%20Learning.html">Supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Support%20Vector%20Machines.html">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Time%20Series%20Analysis.html">Time Series Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Transfer%20Learning.html">Transfer Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unsupervised%20Learning.html">Unsupervised Learning</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Machine Learning Interview Questions</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Reinforcement Learning</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/markdowns/Reinforcement Learning.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="reinforcement-learning">
+<h1>Reinforcement Learning<a class="headerlink" href="#reinforcement-learning" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<p><strong>Question:</strong> Discuss the role of temporal credit assignment in policy gradient methods and its challenges.</p>
+<p><strong>Answer:</strong>
+Temporal credit assignment in policy gradient methods involves determining how actions taken at different time steps contribute to the final reward. This is crucial in reinforcement learning (RL) where decisions affect future outcomes. Policy gradient methods optimize the policy by estimating gradients of expected rewards with respect to policy parameters.</p>
+<p>The challenge arises because rewards are often delayed, making it difficult to attribute them to specific actions. The policy gradient theorem provides a solution by using the gradient of the expected return:</p>
+<div class="math notranslate nohighlight">
+\[\nabla_\theta J(\theta) = \mathbb{E}_{\tau \sim \pi_\theta}[\sum_{t=0}^{T} \nabla_\theta \log \pi_\theta(a_t|s_t) R(\tau)],\]</div>
+<p>where <span class="math notranslate nohighlight">\(\tau\)</span> is a trajectory, <span class="math notranslate nohighlight">\(\pi_\theta\)</span> is the policy, and <span class="math notranslate nohighlight">\(R(\tau)\)</span> is the return. Estimating this gradient accurately is challenging due to high variance, often mitigated by techniques like baselines and variance reduction methods. Temporal credit assignment remains a core difficulty in training effective RL policies.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> Discuss the challenges and solutions in applying hierarchical reinforcement learning to tasks with sparse rewards.</p>
+<p><strong>Answer:</strong>
+Hierarchical Reinforcement Learning (HRL) decomposes tasks into subtasks, each with its own policy, to handle complex environments. Sparse rewards pose a significant challenge as they provide limited feedback, making it difficult for agents to learn effective policies. In HRL, the challenge is exacerbated because higher-level policies depend on the successful completion of lower-level tasks, which may not receive frequent rewards.</p>
+<p>Solutions include:</p>
+<ol class="arabic simple">
+<li><p><strong>Intrinsic Motivation</strong>: Introduce intrinsic rewards to encourage exploration, such as novelty-based rewards or rewards for reaching subgoals.</p></li>
+<li><p><strong>Subgoal Discovery</strong>: Automatically identify meaningful subgoals that can provide intermediate rewards, aiding in learning.</p></li>
+<li><p><strong>Reward Shaping</strong>: Design auxiliary rewards to guide the agent towards achieving the main goal.</p></li>
+</ol>
+<p>Mathematically, if <span class="math notranslate nohighlight">\(R_t\)</span> is the sparse reward, intrinsic rewards <span class="math notranslate nohighlight">\(I_t\)</span> can be added such that the total reward <span class="math notranslate nohighlight">\(R'_t = R_t + I_t\)</span>. This approach helps agents receive more frequent feedback, facilitating learning in sparse reward settings.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> How do trust region methods ensure stable policy updates in reinforcement learning, and what are their limitations?</p>
+<p><strong>Answer:</strong>
+Trust region methods in reinforcement learning (RL) stabilize policy updates by constraining the change in policy between iterations. This is achieved by optimizing a surrogate objective subject to a constraint on the Kullback-Leibler (KL) divergence between the old and new policy. The KL divergence, <span class="math notranslate nohighlight">\(D_{KL}(\pi_{\theta_{\text{old}}} \| \pi_{\theta})\)</span>, ensures that the new policy <span class="math notranslate nohighlight">\(\pi_{\theta}\)</span> does not deviate too much from the old policy <span class="math notranslate nohighlight">\(\pi_{\theta_{\text{old}}}\)</span>, thus preventing large, potentially destabilizing updates. Trust Region Policy Optimization (TRPO) is a popular algorithm implementing this approach.</p>
+<p>However, trust region methods have limitations. They can be computationally expensive due to the need for second-order optimization techniques and the calculation of the KL divergence. Moreover, the constraint might be too restrictive, slowing down learning, or too loose, failing to prevent instability. Balancing this trade-off is crucial and often requires careful tuning of hyperparameters, such as the trust region size.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> What are the theoretical implications of function approximation error in deep Q-learning algorithms?</p>
+<p><strong>Answer:</strong>
+In deep Q-learning, function approximation error arises when using neural networks to estimate the Q-values, leading to instability and divergence. The Bellman equation, <span class="math notranslate nohighlight">\(Q(s, a) = r + \gamma \max_{a'} Q(s', a')\)</span>, is approximated by a neural network, introducing errors due to limited capacity and training data.</p>
+<p>Theoretical implications include the “deadly triad”: bootstrapping, off-policy learning, and function approximation. These factors can cause Q-values to diverge or oscillate. Errors in Q-value estimates can propagate over time, leading to suboptimal policies.</p>
+<p>Techniques like experience replay and target networks mitigate these issues. Experience replay breaks correlation between consecutive samples, and target networks stabilize learning by using a slowly updated target Q-network. However, approximation errors still affect convergence rates and policy quality, highlighting the need for careful design and tuning of the network architecture and learning process.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> How does the concept of entropy regularization influence exploration in actor-critic algorithms?</p>
+<p><strong>Answer:</strong>
+Entropy regularization in actor-critic algorithms promotes exploration by adding an entropy term to the loss function. This term encourages the policy to have higher entropy, meaning more randomness in action selection. The entropy of a probability distribution <span class="math notranslate nohighlight">\(p\)</span> is given by <span class="math notranslate nohighlight">\(H(p) = -\sum_{a} p(a) \log p(a)\)</span>, where <span class="math notranslate nohighlight">\(a\)</span> is an action. By maximizing this entropy, the policy avoids premature convergence to suboptimal deterministic policies.</p>
+<p>Incorporating entropy regularization, the actor’s objective becomes <span class="math notranslate nohighlight">\(J(\theta) = \mathbb{E}[\log \pi_\theta(a|s) A(s,a)] + \beta H(\pi_\theta(\cdot|s))\)</span>, where <span class="math notranslate nohighlight">\(\beta\)</span> is a hyperparameter controlling the trade-off between exploration and exploitation. A higher <span class="math notranslate nohighlight">\(\beta\)</span> value increases exploration by encouraging more stochastic policies. This is crucial in environments with sparse rewards or when the agent needs to discover new strategies. By maintaining a balance between exploration and exploitation, entropy regularization helps the agent find better policies over time.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> How does the choice of value function approximation impact the convergence of policy gradient methods?</p>
+<p><strong>Answer:</strong>
+The choice of value function approximation significantly impacts the convergence of policy gradient methods. Policy gradient methods aim to optimize the expected return by adjusting the policy parameters in the direction of the gradient of the expected return. The value function approximation is used to estimate the expected return, which is crucial for computing the policy gradient.</p>
+<p>If the value function approximation is biased or has high variance, it can lead to inaccurate gradient estimates, slowing down convergence or causing instability. For example, using a linear function approximator might be insufficient for complex environments, while a neural network might capture more intricate patterns at the cost of increased variance.</p>
+<p>Mathematically, the policy gradient is given by <span class="math notranslate nohighlight">\(\nabla_\theta J(\theta) = \mathbb{E}_{\pi_\theta}[\nabla_\theta \log \pi_\theta(a|s) Q^\pi(s,a)]\)</span>, where <span class="math notranslate nohighlight">\(Q^\pi(s,a)\)</span> is the action-value function. Accurate estimation of <span class="math notranslate nohighlight">\(Q^\pi(s,a)\)</span> is crucial for effective convergence.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> What are the theoretical implications of policy gradient methods assuming differentiable policies in continuous action spaces?</p>
+<p><strong>Answer:</strong>
+Policy gradient methods in reinforcement learning aim to optimize a policy by directly estimating the gradient of expected rewards with respect to policy parameters. In continuous action spaces, assuming differentiable policies allows for the application of gradient-based optimization techniques. The theoretical implications include:</p>
+<ol class="arabic simple">
+<li><p><strong>Convergence</strong>: Differentiability ensures that the policy gradient theorem can be applied, which states that the gradient of the expected return can be expressed as <span class="math notranslate nohighlight">\(\nabla_\theta J(\theta) = \mathbb{E}_{\tau \sim \pi_\theta} [\nabla_\theta \log \pi_\theta(a|s) R(\tau)]\)</span>, where <span class="math notranslate nohighlight">\(J(\theta)\)</span> is the expected return, <span class="math notranslate nohighlight">\(\pi_\theta\)</span> is the policy, and <span class="math notranslate nohighlight">\(R(\tau)\)</span> is the return of trajectory <span class="math notranslate nohighlight">\(\tau\)</span>.</p></li>
+<li><p><strong>Exploration</strong>: Continuous action spaces require careful exploration strategies, often achieved by parameterizing policies using distributions (e.g., Gaussian) that allow sampling of actions.</p></li>
+<li><p><strong>Stability</strong>: Differentiability can lead to more stable updates compared to non-differentiable policies, facilitating the use of advanced optimization methods like natural gradients.</p></li>
+</ol>
+<hr class="docutils" />
+<p><strong>Question:</strong> Explain the challenges in designing reward functions that capture long-term objectives in reinforcement learning.</p>
+<p><strong>Answer:</strong>
+Designing reward functions for long-term objectives in reinforcement learning (RL) is challenging due to several factors. First, reward sparsity can occur when rewards are infrequent, making it difficult for the agent to learn the association between actions and long-term outcomes. Second, the credit assignment problem arises, where it’s hard to determine which actions are responsible for future rewards. This is exacerbated in environments with delayed rewards.</p>
+<p>Mathematically, the RL objective is to maximize the expected cumulative reward <span class="math notranslate nohighlight">\(\mathbb{E}[\sum_{t=0}^{\infty} \gamma^t r_t]\)</span>, where <span class="math notranslate nohighlight">\(\gamma\)</span> is the discount factor and <span class="math notranslate nohighlight">\(r_t\)</span> is the reward at time <span class="math notranslate nohighlight">\(t\)</span>. A low <span class="math notranslate nohighlight">\(\gamma\)</span> focuses on short-term rewards, while a high <span class="math notranslate nohighlight">\(\gamma\)</span> emphasizes long-term rewards, but increases the difficulty of learning due to the aforementioned issues. Additionally, poorly designed reward functions can lead to unintended behaviors, where the agent finds shortcuts or exploits in the reward structure that do not align with the intended long-term objectives.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> Explain how function approximation introduces bias and variance trade-offs in deep reinforcement learning.</p>
+<p><strong>Answer:</strong>
+In deep reinforcement learning (DRL), function approximation is used to estimate value functions or policies. This introduces a bias-variance trade-off, a fundamental concept in statistical learning.</p>
+<p><strong>Bias</strong> refers to systematic errors introduced by approximating a complex function with a simpler model, such as a neural network. High bias can lead to underfitting, where the model fails to capture important patterns in the data.</p>
+<p><strong>Variance</strong> involves the sensitivity of the model to fluctuations in the training dataset. High variance can lead to overfitting, where the model captures noise as if it were a genuine pattern.</p>
+<p>In DRL, choosing the architecture and complexity of the neural network affects this trade-off. For example, a smaller network may have high bias but low variance, while a larger network may have low bias but high variance. Balancing these is crucial for effective learning and generalization in DRL tasks.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> How does the off-policy correction in importance sampling impact stability in reinforcement learning algorithms?</p>
+<p><strong>Answer:</strong>
+In reinforcement learning, off-policy methods allow learning from a different distribution than the one generated by the current policy. Importance sampling is a technique used to correct the distribution mismatch by re-weighting samples. The importance weight for a sample is the ratio of the probability of the sample under the target policy to its probability under the behavior policy.</p>
+<p>Mathematically, if <span class="math notranslate nohighlight">\(\pi\)</span> is the target policy and <span class="math notranslate nohighlight">\(\beta\)</span> is the behavior policy, the importance weight for a trajectory <span class="math notranslate nohighlight">\(\tau\)</span> is <span class="math notranslate nohighlight">\(w(\tau) = \frac{\pi(\tau)}{\beta(\tau)}\)</span>. This re-weighting can lead to high variance, especially if <span class="math notranslate nohighlight">\(\pi\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> are very different, causing instability in learning. Techniques such as truncated importance sampling or using a baseline can reduce variance and improve stability, but they introduce bias. Balancing bias and variance is crucial for stable off-policy learning.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> Analyze the challenges in transferring learned policies across tasks with different state and action spaces.</p>
+<p><strong>Answer:</strong>
+Transferring learned policies across tasks with different state and action spaces presents significant challenges. Firstly, the representation mismatch arises when the state or action spaces differ, requiring a mapping or transformation to align them. This is non-trivial, especially if the spaces have different dimensions or types (e.g., discrete vs. continuous).</p>
+<p>Secondly, the dynamics mismatch involves differences in transition dynamics between tasks, which can lead to suboptimal policy performance if not properly accounted for. Policies learned in one environment may not generalize due to these differences.</p>
+<p>Mathematically, if <span class="math notranslate nohighlight">\(S_1\)</span> and <span class="math notranslate nohighlight">\(S_2\)</span> are state spaces, and <span class="math notranslate nohighlight">\(A_1\)</span> and <span class="math notranslate nohighlight">\(A_2\)</span> are action spaces for tasks <span class="math notranslate nohighlight">\(T_1\)</span> and <span class="math notranslate nohighlight">\(T_2\)</span>, finding a function <span class="math notranslate nohighlight">\(f: S_1 \times A_1 \to S_2 \times A_2\)</span> that preserves task structure is complex.</p>
+<p>Finally, reward function differences can lead to misalignment in policy objectives, requiring adaptation or re-learning to achieve desirable outcomes in the new task.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> Analyze the impact of using off-policy correction techniques in multi-agent reinforcement learning scenarios.</p>
+<p><strong>Answer:</strong>
+In multi-agent reinforcement learning (MARL), off-policy correction techniques are crucial for ensuring stable learning when agents learn from experiences generated by different policies. These techniques, such as importance sampling, address the discrepancy between the behavior policy (which generates data) and the target policy (which is being optimized).</p>
+<p>Off-policy corrections adjust the value estimates by reweighting the sampled experiences, typically using importance weights <span class="math notranslate nohighlight">\(w_t = \frac{\pi(a_t | s_t)}{\mu(a_t | s_t)}\)</span>, where <span class="math notranslate nohighlight">\(\pi\)</span> is the target policy and <span class="math notranslate nohighlight">\(\mu\)</span> is the behavior policy. This helps mitigate the bias introduced by off-policy data, allowing agents to learn accurate value functions.</p>
+<p>In MARL, where agents’ actions can be interdependent, off-policy corrections help maintain consistency across agents’ policies, leading to more stable convergence. However, high variance in importance weights can lead to instability, necessitating techniques like clipping or variance reduction to ensure effective learning. Overall, off-policy correction techniques enable efficient and robust learning in complex, multi-agent environments.</p>
+<hr class="docutils" />
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Recurrent%20Neural%20Networks.html" class="btn btn-neutral float-left" title="Recurrent Neural Networks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Self-Supervised%20Learning.html" class="btn btn-neutral float-right" title="Self-Supervised Learning" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Moein Kareshk.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

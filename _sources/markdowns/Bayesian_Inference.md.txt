@@ -1,0 +1,112 @@
+# Bayesian Inference
+---
+## Question (hard): Explain how you would use Bayesian inference to update the parameters of a probabilistic graphical model when new data arrives. What are the computational challenges associated with this process, and how might variational inference or MCMC methods help address them?
+## Answer:
+### Background
+
+Probabilistic graphical models (PGMs) represent complex distributions through a graph structure, where nodes correspond to random variables and edges indicate conditional dependencies. Bayesian inference involves updating our beliefs about the parameters of these models as new data becomes available. This is achieved through the use of Bayes' theorem, which provides a principled way to update the posterior distribution of the parameters given new evidence.
+
+### Intuition
+
+Bayesian inference treats the parameters of the model as random variables and updates our knowledge about these parameters as we observe more data. When new data is observed, the prior distribution of the parameters is updated to form the posterior distribution. This process is inherently recursive, allowing for continuous updating as new data arrives.
+
+### Detailed Answer
+
+#### Bayesian Updating
+
+Given a probabilistic graphical model with parameters $\theta$ and observed data $D$, Bayesian inference starts with a prior distribution $p(\theta)$ over the parameters. When new data $D_{\text{new}}$ arrives, we update the posterior distribution using Bayes' theorem:
+
+$$
+p(\theta \mid D, D_{\text{new}}) = \frac{p(D_{\text{new}} \mid \theta) p(\theta \mid D)}{p(D_{\text{new}} \mid D)}.
+$$
+
+Here, $p(D_{\text{new}} \mid \theta)$ is the likelihood of the new data given the parameters, and $p(\theta \mid D)$ is the posterior distribution of the parameters before observing $D_{\text{new}}$. The denominator, $p(D_{\text{new}} \mid D)$, is a normalization constant ensuring that the posterior distribution integrates to one.
+
+#### Computational Challenges
+
+1. **Intractable Integrals**: The computation of the marginal likelihood $p(D_{\text{new}} \mid D)$ often involves high-dimensional integrals, which can be intractable.
+
+2. **Complexity of Posterior**: The posterior distribution can become complex, with no closed-form solution, especially in non-conjugate models or when the data has high dimensionality.
+
+3. **Scalability**: As the amount of data grows, exact Bayesian updating becomes computationally expensive.
+
+### Variational Inference and MCMC Methods
+
+To address these challenges, approximate inference methods like Variational Inference (VI) and Markov Chain Monte Carlo (MCMC) are employed.
+
+#### Variational Inference
+
+Variational Inference approximates the posterior distribution by a simpler distribution $q(\theta)$ from a parametrized family, minimizing the Kullback-Leibler (KL) divergence between the true posterior and the approximating distribution:
+
+$$
+\text{KL}(q(\theta) \| p(\theta \mid D, D_{\text{new}})).
+$$
+
+This approach converts the problem of integration into an optimization problem, which is generally more tractable. VI is particularly useful for large datasets as it scales linearly with the number of observations.
+
+#### Markov Chain Monte Carlo
+
+MCMC methods, such as the Metropolis-Hastings algorithm and Gibbs sampling, generate samples from the posterior distribution. These samples can be used to approximate expectations and other properties of the posterior. MCMC is advantageous because it provides a flexible framework that can handle complex posteriors. However, it can be computationally intensive and slow to converge, especially for high-dimensional models.
+
+### Example
+
+Consider a Bayesian network used for modeling a medical diagnosis system. When a new patient record arrives, we need to update the parameters (e.g., disease probabilities) based on this new evidence. 
+
+- **Variational Inference**: We might choose a Gaussian distribution to approximate the posterior of the parameters and then optimize the parameters of this Gaussian to best fit the new data. This allows us to quickly update our model as new patient data arrives.
+
+- **MCMC**: Alternatively, we could use MCMC to sample from the posterior distribution of the network's parameters. This approach would provide a more accurate representation of the posterior but at a higher computational cost.
+
+In summary, Bayesian inference provides a framework for updating probabilistic graphical models with new data. While exact inference is often computationally challenging, methods like Variational Inference and MCMC offer practical solutions to approximate the posterior distribution, each with its trade-offs in terms of accuracy and computational efficiency.
+---
+## Question (hard): In Bayesian inference, what is the significance of the prior distribution, and how does it influence posterior estimates? Discuss the implications of choosing non-informative vs. informative priors in the context of parameter estimation.
+## Answer:
+### Background
+
+In Bayesian inference, the aim is to update our beliefs about a parameter or a model given new data. This is done using Bayes' theorem, which mathematically combines prior beliefs with the likelihood of observed data to produce a posterior distribution. The formula for Bayes' theorem is:
+
+$$
+p(\theta \mid \mathcal{D}) = \frac{p(\mathcal{D} \mid \theta) \cdot p(\theta)}{p(\mathcal{D})}
+$$
+
+where:
+- $p(\theta \mid \mathcal{D})$ is the posterior distribution of the parameter $\theta$ given the data $\mathcal{D}$.
+- $p(\mathcal{D} \mid \theta)$ is the likelihood of the data given the parameter.
+- $p(\theta)$ is the prior distribution, representing our beliefs about $\theta$ before seeing the data.
+- $p(\mathcal{D})$ is the marginal likelihood or evidence, which normalizes the posterior.
+
+### Intuition
+
+The prior distribution encapsulates our existing beliefs or knowledge about the parameters before observing the data. It plays a crucial role in Bayesian inference as it influences the posterior distribution, particularly when the data is sparse or noisy. The choice of prior can significantly affect the results of the inference, especially in cases with limited data.
+
+### Detailed Answer
+
+**Significance of the Prior Distribution:**
+
+1. **Influence on Posterior**: The prior distribution combines with the likelihood to form the posterior. If the prior is strongly peaked or informative, it can dominate the posterior, especially when the data is not sufficiently informative. Conversely, a flat or non-informative prior allows the data to have more influence on the posterior.
+
+2. **Regularization**: Priors can act as a form of regularization. For instance, a prior that penalizes large values of a parameter can prevent overfitting by discouraging extreme estimates.
+
+3. **Incorporating Domain Knowledge**: Priors provide a mechanism to incorporate domain knowledge and expert beliefs into the model, which can be particularly useful in fields like medicine or finance where previous knowledge is substantial.
+
+**Non-informative vs. Informative Priors:**
+
+- **Non-informative Priors**: These are designed to have minimal influence on the posterior. An example is the uniform prior, which assigns equal probability to all parameter values within a certain range. Non-informative priors are often used when there is little to no prior knowledge available. While they allow the data to speak for itself, they can lead to computational issues or unintuitive results, especially if the parameter space is large or infinite.
+
+- **Informative Priors**: These reflect specific, pre-existing beliefs about the parameters. They are typically based on previous studies, expert opinion, or theoretical considerations. Informative priors can guide the inference process, especially when data is scarce. However, they can also lead to biased results if the prior is incorrect or too strong relative to the data.
+
+### Implications
+
+1. **Bias-Variance Tradeoff**: The choice between non-informative and informative priors involves a tradeoff between bias and variance. Informative priors can reduce variance but introduce bias if they are not accurate. Non-informative priors reduce bias but may increase variance, especially with limited data.
+
+2. **Robustness and Sensitivity**: The sensitivity of the posterior to the choice of prior is a critical consideration. Robust models exhibit little change in posterior estimates with different reasonable priors. Sensitivity analysis can be conducted to assess how the choice of prior affects the results.
+
+3. **Computational Considerations**: The choice of prior can also impact the computational complexity of Bayesian inference. Complex or high-dimensional priors may require advanced sampling techniques such as Markov Chain Monte Carlo (MCMC) for posterior estimation.
+
+### Example
+
+Consider a scenario where we want to estimate the probability of a coin landing heads, $\theta$. If we have no prior information, we might choose a non-informative prior like $\text{Beta}(1, 1)$, which is a uniform distribution over [0, 1]. If we have prior information suggesting the coin is biased towards heads, we might choose an informative prior like $\text{Beta}(5, 1)$.
+
+The posterior distribution will be different in each case. With the non-informative prior, the posterior will primarily reflect the data. With the informative prior, the posterior will be a compromise between the prior information and the observed data.
+
+In conclusion, the choice of prior in Bayesian inference is a critical decision that influences the results of the analysis. Careful consideration should be given to the nature of the prior, the context of the problem, and the available data.
+---

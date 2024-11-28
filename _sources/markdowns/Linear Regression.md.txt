@@ -1,0 +1,128 @@
+# Linear Regression
+---
+**Question:** What is the significance of the F-statistic in linear regression, and how is it interpreted?
+
+**Answer:**
+The F-statistic in linear regression is a measure used to determine the overall significance of the model. It tests the null hypothesis that all regression coefficients are equal to zero, meaning that none of the independent variables have a linear relationship with the dependent variable.
+
+Mathematically, the F-statistic is calculated as:
+
+$$ F = \frac{\text{Explained Variance} / p}{\text{Unexplained Variance} / (n-p-1)} $$
+
+where $p$ is the number of predictors, and $n$ is the number of observations.
+
+A larger F-statistic indicates that the model explains a significant portion of the variance in the dependent variable, suggesting that at least one predictor is significantly related to the outcome. If the p-value associated with the F-statistic is below a certain threshold (e.g., 0.05), we reject the null hypothesis, concluding that the model provides a better fit than a model with no predictors.
+
+---
+
+**Question:** How does the assumption of linearity affect the interpretability of interaction terms in linear regression?
+
+**Answer:**
+In linear regression, the assumption of linearity implies that the relationship between the dependent variable and the independent variables is additive and linear. This assumption simplifies the interpretation of interaction terms. An interaction term in a linear regression model is typically represented as the product of two variables, say $X_1$ and $X_2$. The coefficient of this interaction term indicates how the effect of one independent variable on the dependent variable changes with the level of the other independent variable.
+
+For example, if the model is $Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 (X_1 \cdot X_2) + \epsilon$, the coefficient $\beta_3$ represents the change in the effect of $X_1$ on $Y$ for a one-unit change in $X_2$. This linearity assumption allows for straightforward interpretation of these interactions, as each term contributes additively to the prediction.
+
+---
+
+**Question:** Discuss the impact of influential data points on parameter estimation in linear regression models.
+
+**Answer:**
+Influential data points in linear regression can significantly affect parameter estimation. These points, often outliers or leverage points, can disproportionately sway the fitted model. In linear regression, the estimated parameters $\hat{\beta}$ are computed as $\hat{\beta} = (X^TX)^{-1}X^Ty$, where $X$ is the design matrix and $y$ is the response vector. Influential points can alter $X^TX$, leading to biased estimates. 
+
+Cook's distance is a common measure to identify influential points, calculated as $D_i = \frac{(\hat{y}_{i} - \hat{y}_{i(-i)})^2}{p \cdot \hat{\sigma}^2}$, where $\hat{y}_{i(-i)}$ is the predicted value excluding the $i^{th}$ observation. If $D_i$ is large, the point is influential. 
+
+For example, in a dataset with a single outlier far from the rest, the regression line might tilt towards the outlier, misrepresenting the true relationship. Thus, detecting and managing influential points is crucial for robust parameter estimation.
+
+---
+
+**Question:** Explain the role of residual analysis in diagnosing non-linearity in linear regression models.
+
+**Answer:**
+Residual analysis in linear regression involves examining the differences between observed and predicted values, known as residuals. In a well-fitted linear model, residuals should be randomly distributed with constant variance and zero mean. Non-linearity can be diagnosed if residuals exhibit systematic patterns, such as curvature or trends, indicating that the linear model fails to capture the true relationship. 
+
+Mathematically, for a linear model $Y = \beta_0 + \beta_1 X + \epsilon$, the residuals are $e_i = y_i - \hat{y}_i$, where $\hat{y}_i$ is the predicted value. Patterns in a residual plot (e.g., $e_i$ vs. $\hat{y}_i$) suggest model inadequacies. For instance, a U-shaped pattern implies that a quadratic term might be needed. 
+
+Thus, residual analysis is crucial for identifying non-linearity, guiding model refinement, and ensuring the assumptions of linear regression are met.
+
+---
+
+**Question:** Explain the role of regularization techniques like Lasso in addressing overfitting in linear regression.
+
+**Answer:**
+Regularization techniques like Lasso (Least Absolute Shrinkage and Selection Operator) help address overfitting in linear regression by adding a penalty term to the loss function, which discourages overly complex models. In linear regression, the objective is to minimize the sum of squared errors (SSE):
+
+$$ J(\beta) = \sum_{i=1}^{n} (y_i - X_i \beta)^2 $$
+
+Lasso adds an $L_1$ penalty, which is the sum of the absolute values of the coefficients:
+
+$$ J(\beta) = \sum_{i=1}^{n} (y_i - X_i \beta)^2 + \lambda \sum_{j=1}^{p} |\beta_j| $$
+
+The parameter $\lambda$ controls the strength of the penalty. As $\lambda$ increases, more coefficients are driven to zero, effectively performing variable selection and simplifying the model. This helps prevent overfitting by reducing variance at the cost of a small increase in bias, leading to better generalization on unseen data.
+
+---
+
+**Question:** How does multicollinearity affect coefficient estimates and model interpretability in linear regression?
+
+**Answer:**
+Multicollinearity occurs when two or more independent variables in a linear regression model are highly correlated, leading to instability in the coefficient estimates. When multicollinearity is present, the variance of the estimated coefficients increases, making them sensitive to small changes in the model. This can result in large standard errors, causing the coefficients to be statistically insignificant even if they are theoretically important.
+
+Mathematically, if $X$ is the matrix of independent variables, multicollinearity implies that $X^TX$ is nearly singular, making the inversion $\left(X^TX\right)^{-1}$ unstable. This instability affects the ordinary least squares (OLS) estimate $\hat{\beta} = \left(X^TX\right)^{-1}X^Ty$.
+
+As a result, model interpretability is compromised since it becomes difficult to discern the individual effect of each predictor variable on the dependent variable. In extreme cases, multicollinearity can lead to misleading inferences about the relationships between variables.
+
+---
+
+**Question:** Explain the role of ridge regression in handling multicollinearity and its effect on model coefficients.
+
+**Answer:**
+Ridge regression addresses multicollinearity by adding a penalty term to the least squares objective function. The standard linear regression objective is to minimize the sum of squared errors:
+
+$$\min \sum_{i=1}^n (y_i - \beta_0 - \sum_{j=1}^p \beta_j x_{ij})^2$$
+
+Ridge regression modifies this by adding a penalty on the size of the coefficients:
+
+$$\min \sum_{i=1}^n (y_i - \beta_0 - \sum_{j=1}^p \beta_j x_{ij})^2 + \lambda \sum_{j=1}^p \beta_j^2$$
+
+Here, $\lambda \geq 0$ is a tuning parameter. This penalty term shrinks the coefficients towards zero, reducing their variance. In the presence of multicollinearity, where predictors are highly correlated, ridge regression stabilizes the coefficient estimates by imposing this constraint. As $\lambda$ increases, the coefficients are more heavily penalized, leading to smaller values. This helps to mitigate the effects of multicollinearity, which can cause large variances in the coefficient estimates in ordinary least squares regression.
+
+---
+
+**Question:** How does the presence of autocorrelation in residuals affect the validity of linear regression results?
+
+**Answer:**
+Autocorrelation in residuals implies that the residuals from a linear regression model are not independent, violating one of the key assumptions of ordinary least squares (OLS) regression. This affects the validity of hypothesis tests and confidence intervals. Specifically, the presence of autocorrelation can lead to underestimated standard errors, which in turn causes the test statistics to be inflated, leading to incorrect conclusions about the significance of predictors. 
+
+Mathematically, if $\epsilon_t$ are the residuals, autocorrelation implies $E[\epsilon_t \epsilon_{t-k}] \neq 0$ for some lag $k$. This violates the assumption $E[\epsilon_t \epsilon_{t-k}] = 0$ for $k \neq 0$. 
+
+An example of this is time series data where observations closer in time are more likely to be similar. Techniques like the Durbin-Watson test can be used to detect autocorrelation, and methods such as generalized least squares (GLS) can be employed to correct it.
+
+---
+
+**Question:** Analyze the effects of non-linearity violations on the assumptions and predictions of linear regression models.
+
+**Answer:**
+Linear regression assumes a linear relationship between the independent variables $X$ and the dependent variable $Y$, expressed as $Y = X\beta + \epsilon$, where $\beta$ are the coefficients and $\epsilon$ is the error term. Non-linearity violations occur when this assumption does not hold, meaning the true relationship is not linear.
+
+Such violations lead to biased and inconsistent estimates of $\beta$, as the model cannot capture the true pattern in the data. This results in poor predictive performance and potentially misleading conclusions. For example, if the true relationship is quadratic, a linear model will systematically under or overestimate $Y$ depending on the region of $X$.
+
+To address non-linearity, one might transform variables (e.g., using logarithms or polynomials) or employ non-linear models like polynomial regression or machine learning techniques such as decision trees or neural networks, which can capture complex relationships.
+
+---
+
+**Question:** Analyze the computational challenges of implementing linear regression with extremely large feature sets.
+
+**Answer:**
+Implementing linear regression with extremely large feature sets presents several computational challenges:
+
+1. **Memory Usage**: The design matrix $X$ becomes very large, requiring significant memory to store. For $n$ samples and $p$ features, $X$ is $n \times p$. 
+
+2. **Computational Complexity**: Solving the normal equation $(X^TX)^{-1}X^Ty$ involves computing $X^TX$, which is $p \times p$, and inverting it, both of which have a complexity of $O(p^2n + p^3)$. This becomes prohibitive as $p$ grows.
+
+3. **Numerical Stability**: Large feature sets can lead to multicollinearity, causing $X^TX$ to be ill-conditioned and making the inversion numerically unstable.
+
+4. **Overfitting**: With more features than samples, the model risks overfitting, capturing noise instead of the underlying trend.
+
+Techniques like regularization (e.g., Ridge, Lasso), dimensionality reduction (e.g., PCA), and stochastic gradient descent can mitigate these issues.
+
+---
+

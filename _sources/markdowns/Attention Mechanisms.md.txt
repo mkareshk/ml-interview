@@ -1,0 +1,15 @@
+# Attention Mechanisms
+---
+**Question:** How does multi-head attention enhance the model's ability to capture complex relationships in transformer architectures?
+
+**Answer:**
+Multi-head attention enhances a transformer's ability to capture complex relationships by allowing the model to focus on different parts of the input sequence simultaneously. In the context of the transformer architecture, attention mechanisms compute a weighted sum of input values, where the weights are determined by the similarity between queries and keys. Multi-head attention extends this by using multiple sets of queries, keys, and values, which are linearly projected into different subspaces. 
+
+Mathematically, if we have $h$ attention heads, each head $i$ computes:
+
+$$\text{Attention}(Q_i, K_i, V_i) = \text{softmax}\left(\frac{Q_i K_i^T}{\sqrt{d_k}}\right)V_i$$
+
+where $Q_i$, $K_i$, and $V_i$ are the query, key, and value matrices for head $i$, and $d_k$ is the dimensionality of the keys. These outputs are concatenated and linearly transformed to produce the final output. This allows the model to capture different types of dependencies and interactions in the data, improving the representation power and generalization ability.
+
+---
+

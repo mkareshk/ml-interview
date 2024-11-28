@@ -1,0 +1,302 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Optimization Algorithms &mdash; My Questions 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Reinforcement Learning" href="Reinforcement_Learning.html" />
+    <link rel="prev" title="Neural Networks" href="Neural_Networks.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            My Questions
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Bayesian_Inference.html">Bayesian Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Causal_Inference.html">Causal Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Feature_Selection.html">Feature Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Generative_Models.html">Generative Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Graph_Neural_Networks.html">Graph Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Kernel_Methods.html">Kernel Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Neural_Networks.html">Neural Networks</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Optimization Algorithms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#question-hard-contrast-the-use-of-gradient-descent-and-newton-s-method-in-optimization-how-does-the-curvature-information-in-newton-s-method-influence-convergence-properties-and-what-are-the-practical-challenges-in-its-implementation">Question (hard): Contrast the use of gradient descent and Newton’s method in optimization. How does the curvature information in Newton’s method influence convergence properties, and what are the practical challenges in its implementation?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#answer">Answer:</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#background">Background</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#intuition">Intuition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#detailed-answer">Detailed Answer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#both-gradient-descent-and-newton-s-method-have-their-merits-and-limitations-gradient-descent-is-simple-and-widely-applicable-while-newton-s-method-offers-faster-convergence-at-the-cost-of-higher-computational-demand-the-choice-between-them-depends-on-the-specific-problem-the-dimensionality-of-the-space-and-computational-resources-in-many-practical-scenarios-quasi-newton-methods-provide-a-useful-compromise-by-approximating-the-hessian-to-gain-some-of-the-benefits-of-newton-like-methods-without-the-full-computational-burden">Both gradient descent and Newton’s method have their merits and limitations. Gradient descent is simple and widely applicable, while Newton’s method offers faster convergence at the cost of higher computational demand. The choice between them depends on the specific problem, the dimensionality of the space, and computational resources. In many practical scenarios, quasi-Newton methods provide a useful compromise by approximating the Hessian to gain some of the benefits of Newton-like methods without the full computational burden.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#question-hard-discuss-the-differences-between-first-order-and-second-order-optimization-algorithms-in-machine-learning-what-are-the-trade-offs-in-terms-of-convergence-speed-and-computational-requirements">Question (hard): Discuss the differences between first-order and second-order optimization algorithms in machine learning. What are the trade-offs in terms of convergence speed and computational requirements?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Answer:</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Background</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Intuition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Detailed Answer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#first-order-optimization-algorithms">First-Order Optimization Algorithms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#second-order-optimization-algorithms">Second-Order Optimization Algorithms</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#trade-offs">Trade-offs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#the-choice-between-first-order-and-second-order-methods-depends-on-the-specific-problem-context-including-the-size-of-the-dataset-the-dimensionality-of-the-parameter-space-and-the-computational-resources-available-first-order-methods-are-typically-favored-for-large-scale-machine-learning-problems-due-to-their-lower-computational-cost-while-second-order-methods-may-be-preferred-in-scenarios-where-fast-convergence-is-critical-and-computational-resources-are-sufficient">The choice between first-order and second-order methods depends on the specific problem context, including the size of the dataset, the dimensionality of the parameter space, and the computational resources available. First-order methods are typically favored for large-scale machine learning problems due to their lower computational cost, while second-order methods may be preferred in scenarios where fast convergence is critical and computational resources are sufficient.</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Reinforcement_Learning.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Transfer_Learning.html">Transfer Learning</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">My Questions</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Optimization Algorithms</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/markdowns/Optimization_Algorithms.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="optimization-algorithms">
+<h1>Optimization Algorithms<a class="headerlink" href="#optimization-algorithms" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<section id="question-hard-contrast-the-use-of-gradient-descent-and-newton-s-method-in-optimization-how-does-the-curvature-information-in-newton-s-method-influence-convergence-properties-and-what-are-the-practical-challenges-in-its-implementation">
+<h2>Question (hard): Contrast the use of gradient descent and Newton’s method in optimization. How does the curvature information in Newton’s method influence convergence properties, and what are the practical challenges in its implementation?<a class="headerlink" href="#question-hard-contrast-the-use-of-gradient-descent-and-newton-s-method-in-optimization-how-does-the-curvature-information-in-newton-s-method-influence-convergence-properties-and-what-are-the-practical-challenges-in-its-implementation" title="Link to this heading"></a></h2>
+</section>
+<section id="answer">
+<h2>Answer:<a class="headerlink" href="#answer" title="Link to this heading"></a></h2>
+<section id="background">
+<h3>Background<a class="headerlink" href="#background" title="Link to this heading"></a></h3>
+<p>Gradient descent and Newton’s method are two fundamental optimization techniques used to minimize (or maximize) functions. Both methods are iterative, but they differ significantly in how they leverage information about the function being optimized.</p>
+<p><strong>Gradient Descent:</strong></p>
+<p>Gradient descent is a first-order optimization algorithm that uses the gradient (first derivative) of the function to guide the search for the minimum. The update rule is typically:</p>
+<p>$$
+\mathbf{x}_{k+1} = \mathbf{x}_k - \alpha \nabla f(\mathbf{x}_k)
+$$</p>
+<p>where $\alpha$ is the learning rate, $\nabla f(\mathbf{x}_k)$ is the gradient of the function $f$ at point $\mathbf{x}_k$.</p>
+<p><strong>Newton’s Method:</strong></p>
+<p>Newton’s method, on the other hand, is a second-order optimization algorithm that uses both the gradient and the Hessian (second derivative) of the function. The update rule is:</p>
+<p>$$
+\mathbf{x}_{k+1} = \mathbf{x}_k - \left(\nabla^2 f(\mathbf{x}_k)\right)^{-1} \nabla f(\mathbf{x}_k)
+$$</p>
+<p>where $\nabla^2 f(\mathbf{x}_k)$ is the Hessian matrix of the function at point $\mathbf{x}_k$.</p>
+</section>
+<section id="intuition">
+<h3>Intuition<a class="headerlink" href="#intuition" title="Link to this heading"></a></h3>
+<p><strong>Curvature Information:</strong></p>
+<p>Newton’s method takes into account the curvature of the function through the Hessian matrix. This curvature information allows Newton’s method to adjust the step size and direction more intelligently than gradient descent, potentially leading to faster convergence.</p>
+<p>In regions where the function is approximately quadratic, Newton’s method can converge extremely quickly, often in just a few iterations. This is because the method effectively fits a quadratic model to the function and jumps directly to the minimum of this model.</p>
+</section>
+<section id="detailed-answer">
+<h3>Detailed Answer<a class="headerlink" href="#detailed-answer" title="Link to this heading"></a></h3>
+<p><strong>Convergence Properties:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Gradient Descent:</strong></p>
+<ul class="simple">
+<li><p>Convergence is generally linear, meaning that the error decreases by a constant factor in each iteration.</p></li>
+<li><p>The choice of learning rate $\alpha$ is crucial; if too small, convergence is slow; if too large, the method may diverge.</p></li>
+<li><p>It’s sensitive to the condition number of the Hessian, especially in ill-conditioned problems.</p></li>
+</ul>
+</li>
+<li><p><strong>Newton’s Method:</strong></p>
+<ul class="simple">
+<li><p>Convergence is typically quadratic, meaning that the number of correct digits roughly doubles with each iteration, provided that the initial guess is close enough to the minimum.</p></li>
+<li><p>The method is less sensitive to the condition number than gradient descent due to its use of the Hessian.</p></li>
+</ul>
+</li>
+</ol>
+<p><strong>Practical Challenges:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Computational Cost:</strong></p>
+<ul class="simple">
+<li><p>Newton’s method requires the computation of the Hessian and its inverse, which can be computationally expensive and memory-intensive for high-dimensional problems.</p></li>
+<li><p>Inverting the Hessian matrix is generally $\mathcal{O}(n^3)$ in time complexity, where $n$ is the number of parameters.</p></li>
+</ul>
+</li>
+<li><p><strong>Non-convexity:</strong></p>
+<ul class="simple">
+<li><p>For non-convex functions, the Hessian may not be positive definite, leading to directions of negative curvature. This can cause Newton’s method to diverge or find saddle points rather than local minima.</p></li>
+</ul>
+</li>
+<li><p><strong>Implementation Complexity:</strong></p>
+<ul class="simple">
+<li><p>Implementing Newton’s method requires careful handling of numerical stability and ensuring that the Hessian is invertible.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h3>
+<p>Consider optimizing the Rosenbrock function, a common test problem for optimization algorithms:</p>
+<p>$$
+f(x, y) = (a - x)^2 + b(y - x^2)^2
+$$</p>
+<p>where $a = 1$ and $b = 100$. The function has a narrow, curved valley, which makes gradient descent challenging without careful tuning of the learning rate.</p>
+<p>In contrast, Newton’s method, when applicable, can take advantage of the curvature information to navigate the valley efficiently. However, due to the high computational cost, in practice, quasi-Newton methods like BFGS or L-BFGS are often used, which approximate the Hessian or its inverse rather than computing it directly.</p>
+</section>
+<section id="conclusion">
+<h3>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading"></a></h3>
+</section>
+</section>
+<section id="both-gradient-descent-and-newton-s-method-have-their-merits-and-limitations-gradient-descent-is-simple-and-widely-applicable-while-newton-s-method-offers-faster-convergence-at-the-cost-of-higher-computational-demand-the-choice-between-them-depends-on-the-specific-problem-the-dimensionality-of-the-space-and-computational-resources-in-many-practical-scenarios-quasi-newton-methods-provide-a-useful-compromise-by-approximating-the-hessian-to-gain-some-of-the-benefits-of-newton-like-methods-without-the-full-computational-burden">
+<h2>Both gradient descent and Newton’s method have their merits and limitations. Gradient descent is simple and widely applicable, while Newton’s method offers faster convergence at the cost of higher computational demand. The choice between them depends on the specific problem, the dimensionality of the space, and computational resources. In many practical scenarios, quasi-Newton methods provide a useful compromise by approximating the Hessian to gain some of the benefits of Newton-like methods without the full computational burden.<a class="headerlink" href="#both-gradient-descent-and-newton-s-method-have-their-merits-and-limitations-gradient-descent-is-simple-and-widely-applicable-while-newton-s-method-offers-faster-convergence-at-the-cost-of-higher-computational-demand-the-choice-between-them-depends-on-the-specific-problem-the-dimensionality-of-the-space-and-computational-resources-in-many-practical-scenarios-quasi-newton-methods-provide-a-useful-compromise-by-approximating-the-hessian-to-gain-some-of-the-benefits-of-newton-like-methods-without-the-full-computational-burden" title="Link to this heading"></a></h2>
+</section>
+<section id="question-hard-discuss-the-differences-between-first-order-and-second-order-optimization-algorithms-in-machine-learning-what-are-the-trade-offs-in-terms-of-convergence-speed-and-computational-requirements">
+<h2>Question (hard): Discuss the differences between first-order and second-order optimization algorithms in machine learning. What are the trade-offs in terms of convergence speed and computational requirements?<a class="headerlink" href="#question-hard-discuss-the-differences-between-first-order-and-second-order-optimization-algorithms-in-machine-learning-what-are-the-trade-offs-in-terms-of-convergence-speed-and-computational-requirements" title="Link to this heading"></a></h2>
+</section>
+<section id="id1">
+<h2>Answer:<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>In machine learning, optimization algorithms are crucial for training models by minimizing a loss function. The choice between first-order and second-order optimization algorithms hinges on a trade-off between convergence speed and computational cost. Let’s explore these concepts in detail.</p>
+<section id="id2">
+<h3>Background<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>Optimization algorithms are used to find the minimum of a loss function $f(\theta)$, where $\theta$ represents the parameters of a model. The goal is to adjust $\theta$ such that $f(\theta)$ is minimized. First-order and second-order optimization methods refer to the use of first and second derivatives of the function, respectively.</p>
+</section>
+<section id="id3">
+<h3>Intuition<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>First-Order Optimization Algorithms</strong>: These algorithms use the gradient (first derivative) of the loss function. The gradient provides the direction of steepest ascent, and by taking the negative of this gradient, we obtain the direction of steepest descent. A popular first-order algorithm is the Gradient Descent.</p></li>
+<li><p><strong>Second-Order Optimization Algorithms</strong>: These algorithms use both the gradient and the Hessian matrix (second derivative) of the loss function. The Hessian provides information about the curvature of the loss surface, allowing for more informed updates. Newton’s method is a classic example of a second-order optimization algorithm.</p></li>
+</ol>
+</section>
+<section id="id4">
+<h3>Detailed Answer<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<section id="first-order-optimization-algorithms">
+<h4>First-Order Optimization Algorithms<a class="headerlink" href="#first-order-optimization-algorithms" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Gradient Descent</strong>: The basic update rule is given by:
+$$ \theta_{t+1} = \theta_t - \eta \nabla f(\theta_t) $$
+where $\eta$ is the learning rate, and $\nabla f(\theta_t)$ is the gradient of the function at $\theta_t$.</p></li>
+<li><p><strong>Stochastic Gradient Descent (SGD)</strong>: An extension of Gradient Descent that uses a randomly selected subset of the data (a mini-batch) to compute the gradient, which can improve convergence speed for large datasets.</p></li>
+<li><p><strong>Variants</strong>: Algorithms like Momentum, RMSprop, and Adam build on SGD to improve convergence by using adaptive learning rates or momentum terms.</p></li>
+</ul>
+</section>
+<section id="second-order-optimization-algorithms">
+<h4>Second-Order Optimization Algorithms<a class="headerlink" href="#second-order-optimization-algorithms" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Newton’s Method</strong>: The update rule involves the inverse of the Hessian matrix:
+$$ \theta_{t+1} = \theta_t - H^{-1}(\theta_t) \nabla f(\theta_t) $$
+where $H(\theta_t)$ is the Hessian matrix at $\theta_t$.</p></li>
+<li><p><strong>Quasi-Newton Methods</strong>: These methods, such as BFGS, approximate the Hessian to reduce computational cost, avoiding the need to calculate and invert the Hessian explicitly.</p></li>
+</ul>
+</section>
+</section>
+<section id="trade-offs">
+<h3>Trade-offs<a class="headerlink" href="#trade-offs" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Convergence Speed</strong>:</p>
+<ul class="simple">
+<li><p><strong>First-Order Methods</strong>: Typically have slower convergence, especially near the minimum where the gradient becomes small. However, they are often sufficient for large-scale problems and can be enhanced with techniques like adaptive learning rates.</p></li>
+<li><p><strong>Second-Order Methods</strong>: Generally have faster convergence due to their ability to account for curvature, making more informed steps towards the minimum.</p></li>
+</ul>
+</li>
+<li><p><strong>Computational Requirements</strong>:</p>
+<ul class="simple">
+<li><p><strong>First-Order Methods</strong>: Require only the computation of the gradient, which is computationally inexpensive. This makes them suitable for high-dimensional problems.</p></li>
+<li><p><strong>Second-Order Methods</strong>: The computation of the Hessian and its inverse can be computationally prohibitive for large-scale problems. Quasi-Newton methods mitigate this to some extent, but still involve higher computational overhead than first-order methods.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="id5">
+<h3>Example<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<p>Consider optimizing a quadratic function $f(\theta) = \frac{1}{2} \theta^T A \theta - b^T \theta$, where $A$ is a symmetric positive definite matrix.</p>
+<ul class="simple">
+<li><p><strong>Gradient Descent</strong>: The gradient is $A \theta - b$, and the update rule is:
+$$ \theta_{t+1} = \theta_t - \eta (A \theta_t - b) $$
+Convergence is linear, and the rate depends on the condition number of $A$.</p></li>
+<li><p><strong>Newton’s Method</strong>: The Hessian is $A$, and the update rule is:
+$$ \theta_{t+1} = \theta_t - A^{-1} (A \theta_t - b) $$
+Convergence is quadratic, much faster than gradient descent, but it requires computing $A^{-1}$.</p></li>
+</ul>
+</section>
+<section id="id6">
+<h3>Conclusion<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+</section>
+</section>
+<section id="the-choice-between-first-order-and-second-order-methods-depends-on-the-specific-problem-context-including-the-size-of-the-dataset-the-dimensionality-of-the-parameter-space-and-the-computational-resources-available-first-order-methods-are-typically-favored-for-large-scale-machine-learning-problems-due-to-their-lower-computational-cost-while-second-order-methods-may-be-preferred-in-scenarios-where-fast-convergence-is-critical-and-computational-resources-are-sufficient">
+<h2>The choice between first-order and second-order methods depends on the specific problem context, including the size of the dataset, the dimensionality of the parameter space, and the computational resources available. First-order methods are typically favored for large-scale machine learning problems due to their lower computational cost, while second-order methods may be preferred in scenarios where fast convergence is critical and computational resources are sufficient.<a class="headerlink" href="#the-choice-between-first-order-and-second-order-methods-depends-on-the-specific-problem-context-including-the-size-of-the-dataset-the-dimensionality-of-the-parameter-space-and-the-computational-resources-available-first-order-methods-are-typically-favored-for-large-scale-machine-learning-problems-due-to-their-lower-computational-cost-while-second-order-methods-may-be-preferred-in-scenarios-where-fast-convergence-is-critical-and-computational-resources-are-sufficient" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Neural_Networks.html" class="btn btn-neutral float-left" title="Neural Networks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Reinforcement_Learning.html" class="btn btn-neutral float-right" title="Reinforcement Learning" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Moein.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

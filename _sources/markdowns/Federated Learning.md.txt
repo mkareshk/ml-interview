@@ -1,0 +1,47 @@
+# Federated Learning
+---
+**Question:** What role does secure aggregation play in ensuring privacy-preserving Federated Learning?
+
+**Answer:**
+Secure aggregation is crucial in privacy-preserving Federated Learning (FL) as it ensures that individual client updates remain confidential. In FL, clients collaboratively train a global model by sending local updates to a central server. Secure aggregation allows the server to aggregate these updates without accessing individual data, thus preserving privacy.
+
+Mathematically, if $x_i$ represents the update from client $i$, secure aggregation computes the sum $S = \sum_{i=1}^{N} x_i$ without revealing any $x_i$. Techniques like homomorphic encryption or secret sharing enable this by allowing computations on encrypted data or distributed shares.
+
+For example, in a simple secret sharing scheme, each client splits their update into random shares distributed among other clients. The server only receives sums of shares, which collectively reconstruct the aggregate update. This ensures that any intercepted or compromised data does not reveal individual updates, maintaining data privacy and security.
+
+---
+
+**Question:** How does Federated Averaging differ from traditional gradient descent in distributed learning environments?
+
+**Answer:**
+Federated Averaging (FedAvg) and traditional gradient descent both aim to optimize a model, but they differ in how they handle data distribution and aggregation. In traditional distributed gradient descent, each worker computes gradients on its local data, and these gradients are aggregated (e.g., averaged) at a central server to update the global model. This requires frequent communication of gradients between workers and the server.
+
+In contrast, FedAvg is designed for federated learning, where data remains decentralized on client devices. Each client computes model updates locally using its data and sends these updates to the server. The server then averages these updates to form a new global model. This process reduces communication frequency and data transfer, as clients only send model updates after several local training steps, rather than every gradient computation. Mathematically, if $w_k^t$ is the model on client $k$ at iteration $t$, FedAvg updates the global model $w$ as $w^{t+1} = \frac{1}{K} \sum_{k=1}^{K} w_k^t$, where $K$ is the number of clients.
+
+---
+
+**Question:** How does Federated Learning address the issue of model drift in non-i.i.d. data distributions across clients?
+
+**Answer:**
+Federated Learning (FL) addresses model drift in non-i.i.d. data by employing techniques like personalized models and aggregation strategies. In FL, clients train local models on their data and send updates to a central server. Non-i.i.d. data can cause model drift due to varying data distributions across clients.
+
+To mitigate this, FL uses personalized models, where each client adapts a global model to their local data, reducing drift. Aggregation strategies like FedAvg combine local updates while considering data distribution, ensuring the global model remains robust.
+
+Mathematically, if $w_i$ is the local model weight update from client $i$, and $n_i$ is the number of samples at client $i$, the global model update $w$ is computed as $w = \frac{1}{N} \sum_{i=1}^K n_i w_i$, where $N = \sum_{i=1}^K n_i$. This weighted averaging accounts for data heterogeneity, reducing model drift and improving generalization across diverse client data.
+
+---
+
+**Question:** How does Federated Learning handle model drift in non-i.i.d. data distributions across clients?
+
+**Answer:**
+Federated Learning (FL) addresses model drift in non-i.i.d. data distributions by using several techniques. Firstly, it employs a weighted aggregation method, such as Federated Averaging (FedAvg), which combines models from clients based on their data size, thus giving more influence to clients with more data. Mathematically, the global model update is given by $w_{t+1} = \sum_{k=1}^{K} \frac{n_k}{n} w_{t+1}^k$, where $w_{t+1}^k$ is the model from client $k$, $n_k$ is the number of samples on client $k$, and $n$ is the total number of samples across all clients. Secondly, FL can incorporate personalization techniques, where each client maintains a personalized model to better fit their local data. Lastly, FL may use techniques like multi-task learning or meta-learning to adapt to diverse client distributions. These strategies help mitigate the effects of model drift and improve the robustness of the global model to non-i.i.d. data.
+
+---
+
+**Question:** How does differential privacy impact model performance in Federated Learning with non-i.i.d. client data?
+
+**Answer:**
+In Federated Learning (FL) with non-i.i.d. client data, differential privacy (DP) introduces noise to ensure privacy, which can degrade model performance. Non-i.i.d. data implies heterogeneity across clients, leading to challenges in achieving a global model that generalizes well. DP typically adds Gaussian or Laplacian noise to gradients or model updates, controlled by a privacy budget $\epsilon$. This noise can exacerbate the variance introduced by non-i.i.d. data, potentially slowing convergence and reducing accuracy. For example, if client data distributions vary significantly, the noise may disproportionately affect clients with less data or unique distributions, leading to biased updates. Balancing privacy and utility is crucial, often requiring careful tuning of $\epsilon$ and employing techniques like adaptive clipping or personalized models to mitigate performance loss while maintaining privacy guarantees.
+
+---
+

@@ -1,0 +1,241 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Random Forests &mdash; Machine Learning Interview Questions 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/theme_overrides.css" />
+
+  
+    <link rel="canonical" href="https://mkareshk.github.io/ml-interview/markdowns/Random%20Forests.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Recurrent Neural Networks" href="Recurrent%20Neural%20Networks.html" />
+    <link rel="prev" title="Quantum Machine Learning" href="Quantum%20Machine%20Learning.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Machine Learning Interview Questions
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Active%20Learning.html">Active Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Anomaly%20Detection.html">Anomaly Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Attention%20Mechanisms.html">Attention Mechanisms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Bayesian%20Inference.html">Bayesian Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Bayesian%20Neural%20Networks.html">Bayesian Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Clustering%20Algorithms.html">Clustering Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Convolutional%20Neural%20Networks.html">Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cross-Validation%20Techniques.html">Cross-Validation Techniques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Decision%20Trees.html">Decision Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Dimensionality%20Reduction.html">Dimensionality Reduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Ensemble%20Methods.html">Ensemble Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Ethics%20in%20Machine%20Learning.html">Ethics in Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Feature%20Engineering.html">Feature Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Federated%20Learning.html">Federated Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Generative%20Adversarial%20Networks.html">Generative Adversarial Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Gradient%20Descent%20Variants.html">Gradient Descent Variants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Graphical%20Models.html">Graphical Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hyperparameter%20Tuning.html">Hyperparameter Tuning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Interpretability%20and%20Explainability.html">Interpretability and Explainability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="K-Nearest%20Neighbors.html">K-Nearest Neighbors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Linear%20Regression.html">Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Logistic%20Regression.html">Logistic Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Markov%20Decision%20Processes.html">Markov Decision Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Meta-Learning.html">Meta-Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Model%20Evaluation%20Metrics.html">Model Evaluation Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Naive%20Bayes.html">Naive Bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Natural%20Language%20Processing.html">Natural Language Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Neural%20Networks.html">Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Optimization%20Algorithms.html">Optimization Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Quantum%20Machine%20Learning.html">Quantum Machine Learning</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Random Forests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Recurrent%20Neural%20Networks.html">Recurrent Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Reinforcement%20Learning.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Self-Supervised%20Learning.html">Self-Supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Semi-Supervised%20Learning.html">Semi-Supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Supervised%20Learning.html">Supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Support%20Vector%20Machines.html">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Time%20Series%20Analysis.html">Time Series Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Transfer%20Learning.html">Transfer Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unsupervised%20Learning.html">Unsupervised Learning</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Machine Learning Interview Questions</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Random Forests</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/markdowns/Random Forests.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="random-forests">
+<h1>Random Forests<a class="headerlink" href="#random-forests" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<p><strong>Question:</strong> How do Random Forests handle feature importance in datasets with large numbers of irrelevant features?</p>
+<p><strong>Answer:</strong>
+Random Forests handle feature importance by leveraging the ensemble of decision trees, each trained on a bootstrap sample of the data with a random subset of features. This randomness reduces overfitting and allows the model to assess the importance of features more robustly.</p>
+<p>Feature importance in Random Forests is typically measured by the mean decrease in impurity (Gini impurity or entropy) or by permutation importance. In the context of many irrelevant features, the ensemble nature of Random Forests helps in diluting the effect of these features, as they are less likely to consistently contribute to reducing impurity across multiple trees.</p>
+<p>Mathematically, for a feature <span class="math notranslate nohighlight">\(X_j\)</span>, its importance can be quantified as:
+$<span class="math notranslate nohighlight">\( I(X_j) = \frac{1}{T} \sum_{t=1}^{T} \Delta I_t(X_j) \)</span><span class="math notranslate nohighlight">\(
+where \)</span>\Delta I_t(X_j)<span class="math notranslate nohighlight">\( is the decrease in impurity from splits on \)</span>X_j<span class="math notranslate nohighlight">\( in tree \)</span>t<span class="math notranslate nohighlight">\(, and \)</span>T$ is the total number of trees.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> What are the implications of using an extremely large number of predictors for each split in Random Forests?</p>
+<p><strong>Answer:</strong>
+In Random Forests, each tree is trained on a random subset of features at each split to ensure diversity among the trees, which improves generalization. Using an extremely large number of predictors for each split (e.g., close to the total number of features) reduces this diversity. This can lead to several implications:</p>
+<ol class="arabic simple">
+<li><p><strong>Overfitting</strong>: The trees may become too similar to each other, as they are more likely to use the same dominant features, leading to overfitting.</p></li>
+<li><p><strong>Reduced Variance Reduction</strong>: The ensemble effect of Random Forests relies on variance reduction through diverse trees. Less diversity means less variance reduction.</p></li>
+<li><p><strong>Computational Cost</strong>: Evaluating a large number of features at each split increases computational cost.</p></li>
+</ol>
+<p>Mathematically, if <span class="math notranslate nohighlight">\(m\)</span> is the number of features considered at each split, setting <span class="math notranslate nohighlight">\(m\)</span> too high (e.g., <span class="math notranslate nohighlight">\(m = p\)</span>, where <span class="math notranslate nohighlight">\(p\)</span> is the total number of features) undermines the randomness that contributes to the model’s robustness.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> Explain the impact of different impurity measures on the performance and stability of Random Forest models.</p>
+<p><strong>Answer:</strong>
+Random Forests use decision trees as base learners, and the choice of impurity measure affects tree construction. Common impurity measures are Gini impurity and entropy.</p>
+<p>Gini impurity, used in CART, is defined as <span class="math notranslate nohighlight">\(Gini(p) = 1 - \sum_{i=1}^{c} p_i^2\)</span>, where <span class="math notranslate nohighlight">\(p_i\)</span> is the probability of class <span class="math notranslate nohighlight">\(i\)</span>. It favors larger partitions with fewer distinct classes, often leading to simpler trees.</p>
+<p>Entropy, used in ID3 and C4.5, is defined as <span class="math notranslate nohighlight">\(Entropy(p) = -\sum_{i=1}^{c} p_i \log(p_i)\)</span>. It is more sensitive to class distribution changes, potentially yielding more complex trees.</p>
+<p>The choice impacts Random Forest performance: Gini impurity might result in faster training and slightly better performance due to simpler trees, while entropy could improve accuracy in datasets with complex class distributions. Stability is generally robust due to the ensemble nature, but individual tree stability can vary with impurity choice. Overall, the impact is dataset-dependent.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> Analyze the effect of correlated features on the diversity and accuracy of Random Forest ensembles.</p>
+<p><strong>Answer:</strong>
+Correlated features can negatively impact the diversity and accuracy of Random Forest ensembles. Random Forests rely on the principle of decorrelating individual trees to improve robustness and generalization. When features are highly correlated, the bootstrap samples and feature selection at each split may lead to similar decision boundaries across different trees, reducing ensemble diversity. This lack of diversity can diminish the “wisdom of the crowd” effect, where the variance of the ensemble prediction is reduced.</p>
+<p>Mathematically, if features <span class="math notranslate nohighlight">\(X_1\)</span> and <span class="math notranslate nohighlight">\(X_2\)</span> are highly correlated, the probability of selecting both in different trees increases, leading to similar splits and less diverse models. This can result in overfitting to noise present in these correlated features, reducing accuracy.</p>
+<p>For example, in a dataset where <span class="math notranslate nohighlight">\(X_1 = X_2 + \epsilon\)</span>, where <span class="math notranslate nohighlight">\(\epsilon\)</span> is small, trees may repeatedly choose <span class="math notranslate nohighlight">\(X_1\)</span> or <span class="math notranslate nohighlight">\(X_2\)</span>, leading to redundant splits and less informative trees in the ensemble.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> Explain how Random Forests can be used for imputing missing data and the underlying methodology.</p>
+<p><strong>Answer:</strong>
+Random Forests can impute missing data by leveraging their ensemble nature. The method, known as “missForest,” iteratively estimates missing values using Random Forest predictions. Initially, missing values are filled with initial guesses (e.g., column means for numerical data). Then, Random Forests are trained to predict each feature with missing data, using other features as predictors.</p>
+<p>For each iteration, a Random Forest model is trained on the complete cases to predict the missing values of a particular feature. This process is repeated for all features with missing values. The imputed values are updated iteratively until convergence, i.e., when changes between iterations are minimal.</p>
+<p>Mathematically, if <span class="math notranslate nohighlight">\(X_{ij}\)</span> is a missing value, the Random Forest model <span class="math notranslate nohighlight">\(f_j\)</span> predicts <span class="math notranslate nohighlight">\(X_{ij}\)</span> using <span class="math notranslate nohighlight">\(X_{-j}\)</span>, the other features of the <span class="math notranslate nohighlight">\(i\)</span>-th observation. This process is repeated, refining estimates, until convergence, offering robust imputation by capturing complex feature interactions and dependencies.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> Discuss the impact of different bootstrapping strategies on the performance of Random Forests.</p>
+<p><strong>Answer:</strong>
+Bootstrapping in Random Forests involves sampling with replacement from the training data to create diverse subsets for building each decision tree. The choice of bootstrapping strategy can significantly affect model performance.</p>
+<ol class="arabic simple">
+<li><p><strong>Standard Bootstrapping</strong>: This is the default approach where each tree is trained on a random sample of the dataset, typically containing about 63.2% of the original data due to sampling with replacement. This introduces diversity among trees, reducing variance and improving generalization.</p></li>
+<li><p><strong>Subsampling</strong>: Instead of sampling with replacement, subsampling selects a subset without replacement. This can lead to less diverse trees, potentially increasing bias but reducing variance.</p></li>
+<li><p><strong>Stratified Bootstrapping</strong>: Ensures each class is proportionally represented in each bootstrap sample, beneficial for imbalanced datasets.</p></li>
+</ol>
+<p>The impact of these strategies is a trade-off between bias and variance. Standard bootstrapping often provides a good balance, but specific datasets may benefit from alternative strategies.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> Discuss the trade-offs between using bootstrap sampling versus subsampling in Random Forest ensemble construction.</p>
+<p><strong>Answer:</strong>
+Bootstrap sampling and subsampling are two methods for generating datasets for training individual trees in a Random Forest.</p>
+<p>Bootstrap sampling involves sampling with replacement from the original dataset, typically resulting in each tree being trained on approximately 63.2% of the unique examples due to the nature of sampling with replacement. This method introduces diversity among trees, which is crucial for reducing variance and improving generalization.</p>
+<p>Subsampling, on the other hand, samples without replacement, often using a smaller fraction of the dataset. This can lead to less diversity among trees compared to bootstrap sampling, potentially increasing bias but reducing variance.</p>
+<p>The trade-off is between bias and variance: bootstrap sampling tends to produce more diverse trees, reducing variance but potentially increasing bias if the dataset is small. Subsampling might be preferred in large datasets where computational efficiency is important, as it can reduce training time while maintaining sufficient diversity. The choice depends on the specific dataset and computational constraints.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> Discuss the implications of utilizing quantum computing for optimizing Random Forest hyperparameters.</p>
+<p><strong>Answer:</strong>
+Quantum computing offers potential speedups for optimizing Random Forest hyperparameters by leveraging quantum algorithms like the Quantum Approximate Optimization Algorithm (QAOA) or Grover’s search. These algorithms can explore the hyperparameter space more efficiently than classical methods. For instance, Grover’s algorithm can provide a quadratic speedup in searching unsorted spaces, which is beneficial for hyperparameter tuning where the search space is large.</p>
+<p>Random Forests have hyperparameters such as the number of trees, maximum depth, and minimum samples per leaf. Optimizing these can be framed as a search problem over discrete spaces, where quantum algorithms can potentially find optimal or near-optimal solutions faster.</p>
+<p>However, practical implementation requires quantum computers with sufficient qubits and error correction, which are still under development. The implications include potential reductions in computational time and resources, but the current limitations of quantum hardware must be considered.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> How does the choice of maximum tree depth influence the interpretability and performance of Random Forests?</p>
+<p><strong>Answer:</strong>
+The maximum tree depth in a Random Forest affects both interpretability and performance. A shallower tree (smaller maximum depth) is more interpretable because it contains fewer decision nodes, making it easier to visualize and understand. However, it may not capture complex patterns in the data, potentially leading to underfitting.</p>
+<p>Conversely, deeper trees (larger maximum depth) can model more complex relationships and interactions, potentially improving performance by reducing bias. However, this can lead to overfitting, especially if the trees become too complex and capture noise in the training data. Additionally, deeper trees are harder to interpret due to the increased number of nodes and branches.</p>
+<p>In Random Forests, individual tree depth is less critical since the ensemble averages out errors. However, controlling tree depth can still help balance bias-variance trade-offs, improving generalization while maintaining some interpretability. The optimal depth often depends on the specific dataset and problem context.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> Discuss the trade-offs of using extremely deep versus shallow trees in a Random Forest ensemble.</p>
+<p><strong>Answer:</strong>
+In a Random Forest, using extremely deep trees can lead to overfitting, where each tree captures noise and specific patterns in the training data, reducing generalization to unseen data. Deep trees have high variance but low bias. Conversely, shallow trees may underfit, failing to capture complex patterns, resulting in high bias but low variance.</p>
+<p>The trade-off involves balancing bias and variance. Deep trees provide more flexibility and can model intricate relationships, but at the cost of increased computational resources and potential overfitting. Shallow trees are computationally efficient and robust to overfitting, but may not capture all data intricacies.</p>
+<p>Random Forests mitigate these issues by averaging predictions across trees, reducing overfitting typical in deep trees while maintaining some complexity. The ensemble effect helps strike a balance, but the choice of tree depth should consider the dataset size, feature complexity, and computational constraints.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> How does the random forest algorithm mitigate overfitting compared to a single decision tree?</p>
+<p><strong>Answer:</strong>
+Random forests mitigate overfitting by averaging multiple decision trees, which reduces variance. In a single decision tree, the model can capture noise in the training data, leading to overfitting. Random forests build multiple trees using bootstrap aggregating (bagging), where each tree is trained on a random subset of the data with replacement. Additionally, at each split in a tree, a random subset of features is considered, introducing further randomness.</p>
+<p>Mathematically, let <span class="math notranslate nohighlight">\(T_1, T_2, \ldots, T_B\)</span> be the individual trees, and <span class="math notranslate nohighlight">\(\hat{f}(x) = \frac{1}{B} \sum_{b=1}^B T_b(x)\)</span> be the random forest prediction. The variance of <span class="math notranslate nohighlight">\(\hat{f}(x)\)</span> is reduced compared to a single tree, <span class="math notranslate nohighlight">\(Var(T(x))\)</span>, due to averaging: <span class="math notranslate nohighlight">\(Var(\hat{f}(x)) = \frac{1}{B} Var(T(x))\)</span> if trees are uncorrelated. This ensemble approach stabilizes predictions and mitigates overfitting, as errors from individual trees can cancel out.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> How does the choice of impurity measure affect the interpretability of Random Forest models?</p>
+<p><strong>Answer:</strong>
+The choice of impurity measure, such as Gini impurity or entropy, primarily affects the structure of individual decision trees within a Random Forest. While both measures aim to create pure nodes, they may lead to different splits, thereby influencing the interpretability of the model. Gini impurity, defined as <span class="math notranslate nohighlight">\(G = 1 - \sum_{i=1}^{C} p_i^2\)</span>, tends to favor larger partitions and is computationally simpler. Entropy, given by <span class="math notranslate nohighlight">\(H = -\sum_{i=1}^{C} p_i \log(p_i)\)</span>, is more sensitive to changes in class distribution. Although the overall interpretability of Random Forests is limited due to their ensemble nature, the impurity measure can subtly affect feature importance rankings and decision path consistency. However, the impact on interpretability is generally minor compared to the inherent complexity of the ensemble model, which aggregates multiple trees to enhance predictive performance at the cost of individual tree transparency.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> Analyze the effects of varying tree depth on the interpretability of Random Forest models in high-dimensional datasets.</p>
+<p><strong>Answer:</strong>
+Random Forest models, consisting of an ensemble of decision trees, balance between bias and variance through tree depth. In high-dimensional datasets, deeper trees can capture complex patterns but may lead to overfitting, reducing interpretability. Interpretability is crucial for understanding model decisions, particularly in high-dimensional spaces where feature interactions are complex.</p>
+<p>Shallow trees offer better interpretability as they are simpler and easier to visualize, but they might underfit, missing important interactions. Conversely, deeper trees can model intricate relationships but become difficult to interpret due to their complexity.</p>
+<p>Mathematically, the depth of a tree affects the number of nodes <span class="math notranslate nohighlight">\(N\)</span>, with <span class="math notranslate nohighlight">\(N = 2^{d+1} - 1\)</span> for a complete binary tree of depth <span class="math notranslate nohighlight">\(d\)</span>. As <span class="math notranslate nohighlight">\(d\)</span> increases, the number of possible decision paths grows exponentially, complicating interpretability.</p>
+<p>Thus, in high-dimensional settings, a balance must be struck between capturing necessary complexity and maintaining model transparency, often using techniques like feature importance or partial dependence plots to aid interpretability.</p>
+<hr class="docutils" />
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Quantum%20Machine%20Learning.html" class="btn btn-neutral float-left" title="Quantum Machine Learning" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Recurrent%20Neural%20Networks.html" class="btn btn-neutral float-right" title="Recurrent Neural Networks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Moein Kareshk.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

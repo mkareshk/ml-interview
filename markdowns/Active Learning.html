@@ -1,0 +1,196 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Active Learning &mdash; Machine Learning Interview Questions 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/theme_overrides.css" />
+
+  
+    <link rel="canonical" href="https://mkareshk.github.io/ml-interview/markdowns/Active%20Learning.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Anomaly Detection" href="Anomaly%20Detection.html" />
+    <link rel="prev" title="Machine Learning Interview Questions" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Machine Learning Interview Questions
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Active Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Anomaly%20Detection.html">Anomaly Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Attention%20Mechanisms.html">Attention Mechanisms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Bayesian%20Inference.html">Bayesian Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Bayesian%20Neural%20Networks.html">Bayesian Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Clustering%20Algorithms.html">Clustering Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Convolutional%20Neural%20Networks.html">Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cross-Validation%20Techniques.html">Cross-Validation Techniques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Decision%20Trees.html">Decision Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Dimensionality%20Reduction.html">Dimensionality Reduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Ensemble%20Methods.html">Ensemble Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Ethics%20in%20Machine%20Learning.html">Ethics in Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Feature%20Engineering.html">Feature Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Federated%20Learning.html">Federated Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Generative%20Adversarial%20Networks.html">Generative Adversarial Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Gradient%20Descent%20Variants.html">Gradient Descent Variants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Graphical%20Models.html">Graphical Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hyperparameter%20Tuning.html">Hyperparameter Tuning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Interpretability%20and%20Explainability.html">Interpretability and Explainability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="K-Nearest%20Neighbors.html">K-Nearest Neighbors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Linear%20Regression.html">Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Logistic%20Regression.html">Logistic Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Markov%20Decision%20Processes.html">Markov Decision Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Meta-Learning.html">Meta-Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Model%20Evaluation%20Metrics.html">Model Evaluation Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Naive%20Bayes.html">Naive Bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Natural%20Language%20Processing.html">Natural Language Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Neural%20Networks.html">Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Optimization%20Algorithms.html">Optimization Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Quantum%20Machine%20Learning.html">Quantum Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Random%20Forests.html">Random Forests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Recurrent%20Neural%20Networks.html">Recurrent Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Reinforcement%20Learning.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Self-Supervised%20Learning.html">Self-Supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Semi-Supervised%20Learning.html">Semi-Supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Supervised%20Learning.html">Supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Support%20Vector%20Machines.html">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Time%20Series%20Analysis.html">Time Series Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Transfer%20Learning.html">Transfer Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unsupervised%20Learning.html">Unsupervised Learning</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Machine Learning Interview Questions</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Active Learning</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/markdowns/Active Learning.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="active-learning">
+<h1>Active Learning<a class="headerlink" href="#active-learning" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<p><strong>Question:</strong> Discuss the implications of using uncertainty sampling in active learning for imbalanced datasets.</p>
+<p><strong>Answer:</strong>
+Uncertainty sampling in active learning involves selecting data points for labeling where the model is least confident. In imbalanced datasets, this approach may lead to over-sampling of the minority class, as the model is often less confident about these instances. While this can help improve the model’s performance on the minority class, it may also result in neglecting the majority class, potentially leading to a skewed decision boundary.</p>
+<p>Mathematically, uncertainty can be quantified using measures like entropy <span class="math notranslate nohighlight">\(H(x) = -\sum_{i} p(y_i|x) \log p(y_i|x)\)</span>, where <span class="math notranslate nohighlight">\(p(y_i|x)\)</span> is the predicted probability of class <span class="math notranslate nohighlight">\(y_i\)</span> for instance <span class="math notranslate nohighlight">\(x\)</span>. In imbalanced datasets, <span class="math notranslate nohighlight">\(p(y_i|x)\)</span> for minority classes is often lower, increasing <span class="math notranslate nohighlight">\(H(x)\)</span> and thus the likelihood of selection.</p>
+<p>The main implication is the need for careful balance and potentially incorporating strategies like cost-sensitive learning or class balancing to ensure overall model performance does not degrade.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> How does the exploration-exploitation trade-off impact dataset selection strategies in active learning?</p>
+<p><strong>Answer:</strong>
+In active learning, the exploration-exploitation trade-off is crucial for dataset selection strategies. Exploration involves selecting data points that provide new information about the underlying data distribution, often by choosing samples where the model is uncertain. Exploitation, on the other hand, focuses on selecting samples that the model is confident about to refine its predictions.</p>
+<p>Mathematically, if <span class="math notranslate nohighlight">\(p(y|x, \theta)\)</span> represents the model’s prediction, exploration might target samples where the entropy <span class="math notranslate nohighlight">\(H(y|x, \theta) = -\sum p(y|x, \theta) \log p(y|x, \theta)\)</span> is high, indicating uncertainty. Exploitation might focus on minimizing the expected loss <span class="math notranslate nohighlight">\(\mathbb{E}[L(y, \hat{y})]\)</span>.</p>
+<p>Balancing these aspects ensures that the model learns efficiently by sampling informative data points while refining its current knowledge. Too much exploration can lead to inefficiency, while too much exploitation may cause the model to miss critical insights from unexplored data regions.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> How does pool-based active learning differ from stream-based active learning in terms of computational efficiency?</p>
+<p><strong>Answer:</strong>
+Pool-based active learning involves selecting samples from a large, static pool of unlabeled data to query for labeling. This approach allows for more computationally efficient selection strategies, as the entire pool can be evaluated before making a decision. Techniques like uncertainty sampling or query-by-committee can be applied to the entire dataset to find the most informative samples.</p>
+<p>In contrast, stream-based active learning processes data in a sequential manner, deciding whether to query each incoming sample for labeling as it arrives. This can be less computationally intensive per sample, as it does not require evaluating the entire dataset at once. However, it may be less efficient overall if the stream contains many uninformative samples, as each must be considered individually.</p>
+<p>Mathematically, pool-based methods can optimize over a set <span class="math notranslate nohighlight">\(\mathcal{U}\)</span>, while stream-based methods make decisions based on a single sample <span class="math notranslate nohighlight">\(x_t\)</span> at each time <span class="math notranslate nohighlight">\(t\)</span>. Thus, pool-based methods can leverage batch processing, whereas stream-based methods are inherently online.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> How does uncertainty sampling influence the convergence rate of model learning in active learning frameworks?</p>
+<p><strong>Answer:</strong>
+In active learning, uncertainty sampling selects data points for labeling where the model is least confident. This strategy can significantly influence the convergence rate of model learning. By focusing on uncertain data points, the model can achieve faster convergence with fewer labeled examples, as it prioritizes learning from the most informative samples.</p>
+<p>Mathematically, if <span class="math notranslate nohighlight">\(\theta_t\)</span> represents the model parameters at iteration <span class="math notranslate nohighlight">\(t\)</span>, the update rule can be influenced by the selected samples <span class="math notranslate nohighlight">\(x_i\)</span> with high uncertainty, effectively modifying the gradient <span class="math notranslate nohighlight">\(\nabla \mathcal{L}(\theta_t, x_i)\)</span> used in optimization.</p>
+<p>This targeted approach reduces the number of iterations needed to reach a desired accuracy level, compared to random sampling. However, the convergence rate depends on the model’s ability to generalize from these uncertain points and the representativeness of the selected samples. Thus, while uncertainty sampling often accelerates learning, its efficiency is context-dependent and may vary based on the problem structure and data distribution.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> What are the theoretical implications of using query-by-committee in active learning with non-convex hypothesis spaces?</p>
+<p><strong>Answer:</strong>
+Query-by-committee (QBC) in active learning involves maintaining a committee of models that vote on the most informative data points to label next. In non-convex hypothesis spaces, the theoretical implications include increased model diversity and exploration of the hypothesis space. Non-convex spaces, characterized by multiple local minima, benefit from QBC as it encourages sampling in regions of high disagreement among committee members, potentially escaping local minima traps.</p>
+<p>Mathematically, if <span class="math notranslate nohighlight">\(\mathcal{H}\)</span> is a non-convex hypothesis space, QBC seeks to minimize the expected generalization error <span class="math notranslate nohighlight">\(E_{x,y}[(h(x) - y)^2]\)</span> by selecting points <span class="math notranslate nohighlight">\(x\)</span> that maximize the disagreement <span class="math notranslate nohighlight">\(D(h_1, h_2, ..., h_n)\)</span> among hypotheses <span class="math notranslate nohighlight">\(h_i \in \mathcal{H}\)</span>. This disagreement can be quantified using measures like variance or entropy.</p>
+<p>QBC’s theoretical advantage is in its ability to efficiently explore complex spaces, potentially improving learning rates and model robustness by focusing on informative samples that reduce uncertainty across the hypothesis space.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> How does the choice of uncertainty sampling method affect the convergence rate in pool-based active learning?</p>
+<p><strong>Answer:</strong>
+In pool-based active learning, the choice of uncertainty sampling method significantly influences the convergence rate, which is the speed at which the learning algorithm reaches a desired level of accuracy. Uncertainty sampling selects the most uncertain samples for labeling, aiming to maximize information gain. Methods like least confident, margin sampling, and entropy sampling have different criteria for uncertainty.</p>
+<p>For instance, least confident sampling selects samples for which the model’s predicted probability for the most likely class is lowest, while margin sampling chooses samples with the smallest difference between the top two predicted probabilities. Entropy sampling considers the overall uncertainty distribution across all classes.</p>
+<p>The convergence rate depends on how well the chosen method aligns with the data distribution and model capacity. A method that effectively reduces model uncertainty can lead to faster convergence. However, inappropriate sampling may result in slow convergence or suboptimal performance due to redundant or non-informative samples being selected.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> Analyze the trade-offs between exploration and exploitation in active learning with deep neural networks.</p>
+<p><strong>Answer:</strong>
+In active learning with deep neural networks, the exploration-exploitation trade-off is crucial. Exploration involves selecting diverse and uncertain samples to improve the model’s generalization, while exploitation focuses on refining the model’s accuracy on known data.</p>
+<p>Mathematically, let <span class="math notranslate nohighlight">\(U(x)\)</span> represent the uncertainty of a sample <span class="math notranslate nohighlight">\(x\)</span>. Exploration seeks to maximize <span class="math notranslate nohighlight">\(U(x)\)</span>, selecting samples where the model is least certain. Conversely, exploitation minimizes the model’s loss <span class="math notranslate nohighlight">\(L(x, y)\)</span> on labeled data <span class="math notranslate nohighlight">\((x, y)\)</span>, focusing on areas where the model already performs well.</p>
+<p>The trade-off is balancing these objectives: too much exploration may waste resources on irrelevant data, while excessive exploitation risks overfitting. Techniques like Bayesian active learning balance this by using acquisition functions, e.g., Expected Improvement or Thompson Sampling, which weigh uncertainty against potential gains.</p>
+<p>For instance, in image classification, exploration might involve labeling ambiguous images, while exploitation refines predictions on clear cases, ensuring robust model performance.</p>
+<hr class="docutils" />
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Machine Learning Interview Questions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Anomaly%20Detection.html" class="btn btn-neutral float-right" title="Anomaly Detection" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Moein Kareshk.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

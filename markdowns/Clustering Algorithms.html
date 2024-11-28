@@ -1,0 +1,245 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clustering Algorithms &mdash; Machine Learning Interview Questions 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/theme_overrides.css" />
+
+  
+    <link rel="canonical" href="https://mkareshk.github.io/ml-interview/markdowns/Clustering%20Algorithms.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Convolutional Neural Networks" href="Convolutional%20Neural%20Networks.html" />
+    <link rel="prev" title="Bayesian Neural Networks" href="Bayesian%20Neural%20Networks.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Machine Learning Interview Questions
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Active%20Learning.html">Active Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Anomaly%20Detection.html">Anomaly Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Attention%20Mechanisms.html">Attention Mechanisms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Bayesian%20Inference.html">Bayesian Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Bayesian%20Neural%20Networks.html">Bayesian Neural Networks</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Clustering Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Convolutional%20Neural%20Networks.html">Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cross-Validation%20Techniques.html">Cross-Validation Techniques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Decision%20Trees.html">Decision Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Dimensionality%20Reduction.html">Dimensionality Reduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Ensemble%20Methods.html">Ensemble Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Ethics%20in%20Machine%20Learning.html">Ethics in Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Feature%20Engineering.html">Feature Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Federated%20Learning.html">Federated Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Generative%20Adversarial%20Networks.html">Generative Adversarial Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Gradient%20Descent%20Variants.html">Gradient Descent Variants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Graphical%20Models.html">Graphical Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hyperparameter%20Tuning.html">Hyperparameter Tuning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Interpretability%20and%20Explainability.html">Interpretability and Explainability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="K-Nearest%20Neighbors.html">K-Nearest Neighbors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Linear%20Regression.html">Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Logistic%20Regression.html">Logistic Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Markov%20Decision%20Processes.html">Markov Decision Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Meta-Learning.html">Meta-Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Model%20Evaluation%20Metrics.html">Model Evaluation Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Naive%20Bayes.html">Naive Bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Natural%20Language%20Processing.html">Natural Language Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Neural%20Networks.html">Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Optimization%20Algorithms.html">Optimization Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Quantum%20Machine%20Learning.html">Quantum Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Random%20Forests.html">Random Forests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Recurrent%20Neural%20Networks.html">Recurrent Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Reinforcement%20Learning.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Self-Supervised%20Learning.html">Self-Supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Semi-Supervised%20Learning.html">Semi-Supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Supervised%20Learning.html">Supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Support%20Vector%20Machines.html">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Time%20Series%20Analysis.html">Time Series Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Transfer%20Learning.html">Transfer Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unsupervised%20Learning.html">Unsupervised Learning</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Machine Learning Interview Questions</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Clustering Algorithms</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/markdowns/Clustering Algorithms.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="clustering-algorithms">
+<h1>Clustering Algorithms<a class="headerlink" href="#clustering-algorithms" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<p><strong>Question:</strong> What are the challenges in selecting the number of clusters in hierarchical clustering methods?</p>
+<p><strong>Answer:</strong>
+Selecting the number of clusters in hierarchical clustering presents several challenges. Unlike partitional clustering methods like k-means, hierarchical clustering does not require specifying the number of clusters upfront. Instead, it produces a dendrogram, a tree-like diagram that illustrates the arrangement of the clusters. The challenge lies in deciding where to “cut” the dendrogram to form clusters.</p>
+<p>One issue is the subjective nature of choosing the cut-off point, which can significantly affect the resulting clusters. The dendrogram might not have clear gaps or natural breaks, making the selection ambiguous.</p>
+<p>Additionally, hierarchical clustering is sensitive to noise and outliers, which can distort the dendrogram structure, complicating the decision.</p>
+<p>Quantitative methods such as the silhouette score or the elbow method can help, but they may not always provide a clear answer. Furthermore, hierarchical methods can be computationally expensive, especially for large datasets, complicating the assessment of different cluster numbers.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> How does DBSCAN determine the density threshold for identifying noise versus clusters?</p>
+<p><strong>Answer:</strong>
+DBSCAN (Density-Based Spatial Clustering of Applications with Noise) determines the density threshold using two parameters: <span class="math notranslate nohighlight">\(\epsilon\)</span> (epsilon) and <span class="math notranslate nohighlight">\(\text{minPts}\)</span> (minimum number of points). A point is considered a core point if there are at least <span class="math notranslate nohighlight">\(\text{minPts}\)</span> points within its <span class="math notranslate nohighlight">\(\epsilon\)</span>-radius neighborhood. Points that do not meet this criterion are classified as noise or border points.</p>
+<p>Clusters are formed by core points and their directly reachable neighbors, and expanded by connecting core points that are within <span class="math notranslate nohighlight">\(\epsilon\)</span> of each other. Noise points are those that cannot be reached from any core point. Thus, the density threshold is implicitly set by <span class="math notranslate nohighlight">\(\epsilon\)</span> and <span class="math notranslate nohighlight">\(\text{minPts}\)</span>, which define the minimum density of points required to form a cluster, distinguishing it from noise.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> How does initial centroid selection impact the convergence and outcomes of the K-means clustering algorithm?</p>
+<p><strong>Answer:</strong>
+In K-means clustering, the initial selection of centroids significantly impacts both convergence speed and the quality of the final clusters. Poor initial centroids can lead to suboptimal solutions due to the algorithm’s sensitivity to initial conditions, as K-means can converge to local minima. For example, if initial centroids are chosen far from the true cluster centers, the algorithm may require more iterations to converge or may converge to a less optimal clustering.</p>
+<p>Mathematically, K-means aims to minimize the sum of squared distances between data points and their nearest centroid:</p>
+<div class="math notranslate nohighlight">
+\[J = \sum_{i=1}^{k} \sum_{x \in C_i} \|x - \mu_i\|^2\]</div>
+<p>where <span class="math notranslate nohighlight">\(C_i\)</span> is the set of points in cluster <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(\mu_i\)</span> is the centroid of cluster <span class="math notranslate nohighlight">\(i\)</span>. The choice of initial centroids affects the initial value of <span class="math notranslate nohighlight">\(J\)</span>, influencing the optimization path. Techniques like K-means++ improve convergence by smartly initializing centroids to reduce the likelihood of poor local minima.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> What are the consequences of high-dimensionality on the performance and interpretability of density-based clustering algorithms?</p>
+<p><strong>Answer:</strong>
+High-dimensionality poses significant challenges for density-based clustering algorithms, such as DBSCAN. In high-dimensional spaces, the concept of density becomes less meaningful due to the “curse of dimensionality.” As dimensions increase, data points tend to become equidistant from each other, making it difficult to define dense regions. This phenomenon leads to the “distance concentration effect,” where the difference between the nearest and farthest neighbor distances diminishes.</p>
+<p>Mathematically, consider a dataset where each point has <span class="math notranslate nohighlight">\(d\)</span> dimensions. As <span class="math notranslate nohighlight">\(d\)</span> increases, the volume of the space grows exponentially, but the volume occupied by the data grows linearly, causing sparse data distribution. Consequently, density estimation becomes unreliable, and the algorithm may struggle to identify meaningful clusters.</p>
+<p>Furthermore, interpretability suffers because visualizing high-dimensional clusters is challenging, and the results may be sensitive to parameter choices such as the neighborhood radius <span class="math notranslate nohighlight">\(\epsilon\)</span> and the minimum number of points required to form a dense region.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> How does the choice of linkage criterion in hierarchical clustering affect dendrogram stability and cluster interpretability?</p>
+<p><strong>Answer:</strong>
+In hierarchical clustering, the linkage criterion determines how the distance between clusters is computed. Common criteria include single, complete, average, and Ward’s linkage.</p>
+<ul class="simple">
+<li><p><strong>Single linkage</strong> considers the minimum distance between points in two clusters, leading to elongated, “chained” clusters, which can be unstable as small changes in data can significantly alter the dendrogram.</p></li>
+<li><p><strong>Complete linkage</strong> uses the maximum distance, resulting in compact, spherical clusters, enhancing stability but potentially ignoring larger structures.</p></li>
+<li><p><strong>Average linkage</strong> averages distances, balancing between single and complete linkage, offering moderate stability and interpretability.</p></li>
+<li><p><strong>Ward’s linkage</strong> minimizes variance within clusters, often producing interpretable, stable clusters, but it can be computationally intensive.</p></li>
+</ul>
+<p>The choice affects dendrogram stability: more stable criteria (e.g., complete, Ward’s) lead to consistent clustering results under small data perturbations. Interpretability is influenced by the shape and compactness of clusters; more compact clusters (e.g., complete, Ward’s) are often easier to interpret.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> How does the choice of linkage criterion in hierarchical clustering affect cluster stability and interpretability?</p>
+<p><strong>Answer:</strong>
+The choice of linkage criterion in hierarchical clustering significantly affects both cluster stability and interpretability. Linkage criteria determine how distances between clusters are calculated, influencing the shape and structure of the resulting dendrogram.</p>
+<ol class="arabic simple">
+<li><p><strong>Single Linkage</strong>: Computes the minimum distance between points in different clusters. It can result in “chaining” where clusters form long, thin chains, which might be unstable to small perturbations in data.</p></li>
+<li><p><strong>Complete Linkage</strong>: Uses the maximum distance between points in different clusters. It tends to produce more compact clusters, enhancing interpretability but may be less stable if clusters are not well-separated.</p></li>
+<li><p><strong>Average Linkage</strong>: Considers the average distance between all pairs of points in different clusters. It balances between single and complete linkage, often yielding more stable and interpretable clusters.</p></li>
+</ol>
+<p>Mathematically, for clusters <span class="math notranslate nohighlight">\(C_i\)</span> and <span class="math notranslate nohighlight">\(C_j\)</span>, the linkage function <span class="math notranslate nohighlight">\(d(C_i, C_j)\)</span> varies: single linkage uses <span class="math notranslate nohighlight">\(\min(d(x, y))\)</span>, complete uses <span class="math notranslate nohighlight">\(\max(d(x, y))\)</span>, and average uses <span class="math notranslate nohighlight">\(\frac{1}{|C_i||C_j|}\sum_{x \in C_i, y \in C_j} d(x, y)\)</span>. These choices impact the dendrogram’s shape, affecting how clusters are perceived and interpreted.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> Explain the impact of initialization on the convergence and stability of Gaussian Mixture Models.</p>
+<p><strong>Answer:</strong>
+Initialization significantly affects the convergence and stability of Gaussian Mixture Models (GMMs). GMMs are typically optimized using the Expectation-Maximization (EM) algorithm, which is sensitive to initial parameter values. Poor initialization can lead to convergence to local optima, slow convergence, or even divergence.</p>
+<p>The EM algorithm iteratively updates the parameters by maximizing the likelihood function, which is non-convex. Thus, different starting points can lead to different solutions. For instance, initializing the means of the Gaussian components too closely can cause them to collapse into fewer components than intended.</p>
+<p>Common initialization techniques include using k-means clustering to set initial means, random initialization, or using a subset of the data. A good initialization strategy can significantly improve the likelihood of finding a global or near-global optimum, enhancing both convergence speed and stability. Mathematically, the likelihood function <span class="math notranslate nohighlight">\(L(\theta)\)</span> is maximized, where <span class="math notranslate nohighlight">\(\theta\)</span> represents the parameters of the GMM, and its shape depends on the initial values.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> How do spectral clustering algorithms leverage eigenvalues for identifying non-convex clusters in high-dimensional data?</p>
+<p><strong>Answer:</strong>
+Spectral clustering leverages the eigenvalues and eigenvectors of a similarity matrix derived from the data to identify clusters, especially in non-convex shapes. The process begins by constructing a similarity graph where nodes represent data points and edges represent similarities. The adjacency matrix <span class="math notranslate nohighlight">\(A\)</span> is used to form the Laplacian matrix <span class="math notranslate nohighlight">\(L = D - A\)</span>, where <span class="math notranslate nohighlight">\(D\)</span> is the degree matrix.</p>
+<p>Eigenvectors of <span class="math notranslate nohighlight">\(L\)</span> capture the graph’s connectivity. By computing the first <span class="math notranslate nohighlight">\(k\)</span> eigenvectors (corresponding to the smallest non-zero eigenvalues), spectral clustering projects the data into a lower-dimensional space where clusters are more easily separable. These eigenvectors form a new feature space, and standard clustering algorithms like <span class="math notranslate nohighlight">\(k\)</span>-means are applied to group the data.</p>
+<p>This method effectively captures complex structures by focusing on the data’s intrinsic geometry, allowing it to identify non-convex clusters that traditional methods might miss.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> What are the challenges and strategies for adapting DBSCAN to handle high-dimensional data clustering?</p>
+<p><strong>Answer:</strong>
+DBSCAN (Density-Based Spatial Clustering of Applications with Noise) is effective for clustering spatial data, but struggles with high-dimensional data due to the “curse of dimensionality.” In high dimensions, the notion of density becomes less meaningful because distances between points tend to become similar, making it hard to distinguish between dense and sparse regions.</p>
+<p>Strategies to adapt DBSCAN for high-dimensional data include:</p>
+<ol class="arabic simple">
+<li><p><strong>Dimensionality Reduction</strong>: Techniques like PCA or t-SNE can reduce dimensions while preserving important data structures.</p></li>
+<li><p><strong>Subspace Clustering</strong>: Focuses on finding clusters in relevant subspaces of the data, where meaningful clusters may exist.</p></li>
+<li><p><strong>Metric Learning</strong>: Adapts the distance metric to better capture the structure of the data in high dimensions.</p></li>
+<li><p><strong>Parameter Tuning</strong>: Adjusting parameters like <span class="math notranslate nohighlight">\(\varepsilon\)</span> (radius) and <span class="math notranslate nohighlight">\(\text{minPts}\)</span> (minimum points) based on domain knowledge or using adaptive methods.</p></li>
+</ol>
+<p>These strategies help DBSCAN maintain its effectiveness by addressing the challenges posed by high-dimensional spaces.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> Analyze the role of Gaussian Mixture Models in capturing complex cluster shapes in multivariate data.</p>
+<p><strong>Answer:</strong>
+Gaussian Mixture Models (GMMs) are powerful tools for capturing complex cluster shapes in multivariate data due to their probabilistic framework. A GMM assumes that the data is generated from a mixture of several Gaussian distributions, each representing a cluster. The model is defined as:</p>
+<div class="math notranslate nohighlight">
+\[p(x) = \sum_{k=1}^{K} \pi_k \mathcal{N}(x | \mu_k, \Sigma_k)\]</div>
+<p>where <span class="math notranslate nohighlight">\(K\)</span> is the number of clusters, <span class="math notranslate nohighlight">\(\pi_k\)</span> are the mixing coefficients, <span class="math notranslate nohighlight">\(\mu_k\)</span> are the means, and <span class="math notranslate nohighlight">\(\Sigma_k\)</span> are the covariance matrices of the Gaussian components.</p>
+<p>The flexibility of GMMs lies in their ability to model clusters with different shapes, orientations, and sizes, as each component has its own covariance matrix <span class="math notranslate nohighlight">\(\Sigma_k\)</span>. This allows GMMs to capture elliptical clusters and overlapping regions, unlike k-means which assumes spherical clusters. The Expectation-Maximization (EM) algorithm is typically used to estimate the parameters by maximizing the likelihood function.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> Explain the impact of initialization methods on the convergence and performance of K-means clustering.</p>
+<p><strong>Answer:</strong>
+Initialization methods significantly impact the convergence and performance of K-means clustering. K-means aims to partition data into <span class="math notranslate nohighlight">\(k\)</span> clusters by minimizing the within-cluster variance. The algorithm is sensitive to the initial placement of centroids, as it can converge to local minima.</p>
+<p>Random initialization can lead to poor clustering and slow convergence. This is because the algorithm may start with centroids far from optimal positions, requiring more iterations to converge.</p>
+<p>K-means++ is a popular initialization method that improves convergence speed and clustering quality. It selects initial centroids in a way that spreads them out, reducing the likelihood of poor local minima. Specifically, it chooses the first centroid randomly, and each subsequent centroid is chosen with probability proportional to its squared distance from the nearest existing centroid.</p>
+<p>Better initialization reduces the number of iterations needed for convergence and often results in a lower final within-cluster variance, leading to more accurate clustering results.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> How do spectral clustering algorithms handle non-linearity and noise in high-dimensional datasets?</p>
+<p><strong>Answer:</strong>
+Spectral clustering handles non-linearity by leveraging the eigenvectors of a similarity matrix derived from the data. It transforms the original high-dimensional space into a lower-dimensional space where linear clustering techniques, like k-means, can be effectively applied. This transformation is achieved by constructing a graph where nodes represent data points and edges represent similarities, often using a Gaussian kernel to capture non-linear relationships.</p>
+<p>Mathematically, given a dataset <span class="math notranslate nohighlight">\(X = \{x_1, x_2, \ldots, x_n\}\)</span>, a similarity matrix <span class="math notranslate nohighlight">\(W\)</span> is constructed where <span class="math notranslate nohighlight">\(W_{ij} = \exp\left(-\frac{\|x_i - x_j\|^2}{2\sigma^2}\right)\)</span>. The Laplacian matrix <span class="math notranslate nohighlight">\(L = D - W\)</span>, where <span class="math notranslate nohighlight">\(D\)</span> is the degree matrix, is then used. The eigenvectors of <span class="math notranslate nohighlight">\(L\)</span> corresponding to the smallest eigenvalues form a new representation of the data.</p>
+<p>Spectral clustering is robust to noise as the eigenvectors tend to smooth out noise, focusing on the global structure of the data rather than local variations.</p>
+<hr class="docutils" />
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Bayesian%20Neural%20Networks.html" class="btn btn-neutral float-left" title="Bayesian Neural Networks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Convolutional%20Neural%20Networks.html" class="btn btn-neutral float-right" title="Convolutional Neural Networks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Moein Kareshk.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

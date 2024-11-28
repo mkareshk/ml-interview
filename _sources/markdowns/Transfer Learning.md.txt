@@ -1,0 +1,48 @@
+# Transfer Learning
+---
+**Question:** Discuss the role of fine-tuning versus feature extraction in transfer learning for small datasets.
+
+**Answer:**
+In transfer learning, fine-tuning and feature extraction are two strategies to leverage pre-trained models, especially when dealing with small datasets.
+
+**Feature Extraction** involves using the pre-trained model as a fixed feature extractor. The model's layers up to a certain point are used to generate features, which are then fed into a new classifier. This approach is computationally efficient and reduces overfitting, as only the new classifier's parameters are learned.
+
+**Fine-Tuning** involves adjusting the pre-trained model's parameters on the new dataset. This is beneficial when the new dataset is similar to the original dataset and when you have enough data to avoid overfitting. Fine-tuning can lead to better performance as it allows the model to better adapt to the new task.
+
+Mathematically, if $\theta$ represents model parameters, feature extraction keeps $\theta$ fixed, while fine-tuning updates $\theta$ using backpropagation. The choice depends on dataset size, similarity, and computational resources.
+
+---
+
+**Question:** How can transfer learning be leveraged to improve model performance in low-resource language settings?
+
+**Answer:**
+Transfer learning can significantly enhance model performance in low-resource language settings by leveraging knowledge from high-resource languages or multilingual models. In transfer learning, a model is pre-trained on a large corpus of data from a high-resource language, capturing general linguistic features. This pre-trained model is then fine-tuned on the low-resource language data, which is typically scarce. 
+
+Mathematically, consider a model parameterized by $\theta$ pre-trained on a source task $T_s$ with a large dataset $D_s$. The objective is to minimize the loss $L_s(\theta)$. In transfer learning, we adapt $\theta$ to a target task $T_t$ with a smaller dataset $D_t$, minimizing $L_t(\theta)$, where $\theta$ is initialized from the pre-trained model. 
+
+This approach allows the model to transfer learned representations, such as syntax and semantics, which are often shared across languages, thus improving performance on the low-resource language task.
+
+---
+
+**Question:** What are the theoretical implications of using transfer learning for low-resource language settings in NLP?
+
+**Answer:**
+Transfer learning in low-resource language settings leverages models pre-trained on high-resource languages, like English, to improve performance on languages with limited data. Theoretically, this approach exploits the shared structures and patterns across languages, such as syntax and semantics, encoded in the model's parameters. 
+
+Mathematically, if $\theta$ represents the model parameters, transfer learning aims to find $\theta^*$ that minimizes the loss on both source and target tasks, i.e., $\theta^* = \arg\min_\theta (\mathcal{L}_S(\theta) + \lambda \mathcal{L}_T(\theta))$, where $\mathcal{L}_S$ and $\mathcal{L}_T$ are the source and target task losses, respectively, and $\lambda$ balances the two.
+
+The implications include improved generalization and reduced overfitting on the target language, as the model benefits from the broader linguistic knowledge learned from the source language. However, challenges remain in effectively adapting these models to capture target-specific linguistic nuances.
+
+---
+
+**Question:** How does the choice of a source model architecture influence the success of transfer learning for target tasks with different modalities?
+
+**Answer:**
+The choice of source model architecture significantly impacts transfer learning success across different modalities. Architectures pretrained on similar modalities to the target task often transfer better due to shared feature representations. For instance, convolutional neural networks (CNNs) excel in image-based tasks due to their ability to capture spatial hierarchies, making them suitable for tasks like medical imaging or satellite image analysis.
+
+Mathematically, transfer learning involves adapting a model $f_S$ trained on source data $X_S$ to a target task with data $X_T$. The effectiveness depends on the similarity of the feature space and task distributions $P(X_S, Y_S)$ and $P(X_T, Y_T)$. If $f_S$ captures features relevant to $X_T$, the transfer is more efficient, reducing the need for extensive retraining.
+
+For different modalities, mismatched architectures may require more adaptation, such as modifying layers or using domain adaptation techniques, to align feature representations effectively.
+
+---
+

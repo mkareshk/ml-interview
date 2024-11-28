@@ -1,0 +1,70 @@
+# Convolutional Neural Networks
+---
+**Question:** How does the choice of stride in convolutional layers affect feature map size and receptive field in CNNs?
+
+**Answer:**
+In convolutional neural networks (CNNs), the stride is the number of pixels by which the filter matrix is shifted across the input image. The choice of stride affects two main aspects: the size of the feature map and the receptive field.
+
+1. **Feature Map Size**: A larger stride reduces the spatial dimensions of the output feature map. For an input of size $N \times N$, a filter of size $F \times F$, and a stride $S$, the output size is given by $\left(\frac{N-F}{S} + 1\right) \times \left(\frac{N-F}{S} + 1\right)$. Thus, increasing the stride decreases the output size.
+
+2. **Receptive Field**: The receptive field is the region of the input that affects a particular activation in the feature map. Larger strides lead to fewer overlaps between receptive fields, potentially missing finer details but capturing more global patterns.
+
+Example: With a stride of 1, each filter moves one pixel at a time, capturing detailed features, while a stride of 2 skips pixels, reducing feature map size and increasing the receptive field.
+
+---
+
+**Question:** Analyze the role of skip connections in ResNet architectures for mitigating vanishing gradient problems in CNNs.
+
+**Answer:**
+Skip connections in ResNet architectures address the vanishing gradient problem by allowing gradients to flow more easily through the network during backpropagation. In traditional deep neural networks, gradients can diminish exponentially as they are propagated backwards through many layers, leading to poor learning in early layers. 
+
+ResNet introduces identity skip connections, which bypass one or more layers by adding the input of a layer directly to its output:
+
+$$\mathbf{y} = \mathcal{F}(\mathbf{x}, \{\mathbf{W}_i\}) + \mathbf{x}$$
+
+where $\mathcal{F}(\mathbf{x}, \{\mathbf{W}_i\})$ represents the residual mapping to be learned. This formulation allows the network to learn the residual function more easily, as it can focus on learning the difference between the input and the output, rather than the entire transformation.
+
+The presence of skip connections ensures that gradients can propagate directly through these connections, thus mitigating the vanishing gradient problem and enabling the training of very deep networks.
+
+---
+
+**Question:** What are the effects of different pooling strategies on spatial information retention in CNNs?
+
+**Answer:**
+Pooling strategies in Convolutional Neural Networks (CNNs) affect spatial information retention significantly. Max pooling captures the most prominent features by selecting the maximum value within a window, which may lead to loss of fine-grained spatial details. Average pooling, on the other hand, computes the average of values in the window, preserving more spatial information but potentially smoothing out important features.
+
+Mathematically, for a feature map $X$ with pooling window $W$, max pooling is defined as $Y = \max_{i \in W} X_i$, while average pooling is $Y = \frac{1}{|W|} \sum_{i \in W} X_i$. 
+
+Global pooling (e.g., global average pooling) reduces the entire feature map to a single value per feature channel, drastically reducing spatial information but often used to prevent overfitting. Thus, pooling choice impacts the balance between feature abstraction and spatial detail preservation, influencing the model's ability to generalize and detect intricate patterns.
+
+---
+
+**Question:** How does the choice of padding strategy affect feature representation and spatial dimensions in CNNs?
+
+**Answer:**
+In Convolutional Neural Networks (CNNs), the choice of padding strategy significantly affects feature representation and spatial dimensions. Padding is used to control the spatial size of the output feature maps.
+
+1. **Valid Padding (No Padding):** No additional pixels are added. This reduces the spatial dimensions of the feature maps, potentially losing edge information. For an input of size $n \times n$ and a filter of size $f \times f$, the output size is $(n-f+1) \times (n-f+1)$.
+
+2. **Same Padding:** Padding is added to maintain the input size. This ensures that the spatial dimensions of the output feature map are the same as the input. For a stride of 1, the padding $p$ is typically $\frac{f-1}{2}$ for a filter size $f$.
+
+Padding affects the network's ability to capture edge features and influences the depth of the network by preserving spatial dimensions, impacting computational efficiency and model performance.
+
+---
+
+**Question:** How does the use of depthwise separable convolutions influence model complexity and performance in CNN architectures?
+
+**Answer:**
+Depthwise separable convolutions reduce model complexity and improve performance by decomposing standard convolutions into two separate operations: depthwise and pointwise convolutions. In a standard convolution, a 3D filter is applied across all input channels, which is computationally expensive. In contrast, a depthwise separable convolution first applies a depthwise convolution, where each filter operates independently on each input channel, followed by a pointwise convolution, which uses a $1 \times 1$ filter to combine the outputs from the depthwise step.
+
+This separation reduces the number of parameters and computations significantly. For an input with $C_{in}$ channels and $C_{out}$ filters of size $K \times K$, a standard convolution requires $K^2 \times C_{in} \times C_{out}$ operations. In contrast, a depthwise separable convolution requires $K^2 \times C_{in} + C_{in} \times C_{out}$ operations, leading to faster training and inference, while often maintaining comparable accuracy.
+
+---
+
+**Question:** Discuss the implications of depthwise separable convolutions on computational efficiency and model accuracy in CNNs.
+
+**Answer:**
+Depthwise separable convolutions significantly enhance computational efficiency in Convolutional Neural Networks (CNNs) by decomposing a standard convolution into two separate operations: depthwise and pointwise convolutions. A depthwise convolution applies a single filter per input channel, reducing computation from $O(D_k^2 \cdot M \cdot N \cdot D_f^2)$ to $O(D_k^2 \cdot M \cdot N)$, where $D_k$ is the kernel size, $M$ is the number of input channels, $N$ is the number of output channels, and $D_f$ is the spatial dimension of the feature map. The subsequent pointwise convolution (1x1 convolution) combines these outputs, requiring $O(M \cdot N \cdot D_f^2)$ operations. This results in a substantial reduction in computational cost and memory usage, often by a factor of $1/N$ compared to standard convolutions. While this approach can slightly reduce model accuracy due to less expressive power, it is often negligible, making depthwise separable convolutions popular in mobile and real-time applications like MobileNet.
+
+---
+

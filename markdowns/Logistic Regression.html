@@ -1,0 +1,252 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logistic Regression &mdash; Machine Learning Interview Questions 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/theme_overrides.css" />
+
+  
+    <link rel="canonical" href="https://mkareshk.github.io/ml-interview/markdowns/Logistic%20Regression.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Markov Decision Processes" href="Markov%20Decision%20Processes.html" />
+    <link rel="prev" title="Linear Regression" href="Linear%20Regression.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Machine Learning Interview Questions
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Active%20Learning.html">Active Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Anomaly%20Detection.html">Anomaly Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Attention%20Mechanisms.html">Attention Mechanisms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Bayesian%20Inference.html">Bayesian Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Bayesian%20Neural%20Networks.html">Bayesian Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Clustering%20Algorithms.html">Clustering Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Convolutional%20Neural%20Networks.html">Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cross-Validation%20Techniques.html">Cross-Validation Techniques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Decision%20Trees.html">Decision Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Dimensionality%20Reduction.html">Dimensionality Reduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Ensemble%20Methods.html">Ensemble Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Ethics%20in%20Machine%20Learning.html">Ethics in Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Feature%20Engineering.html">Feature Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Federated%20Learning.html">Federated Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Generative%20Adversarial%20Networks.html">Generative Adversarial Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Gradient%20Descent%20Variants.html">Gradient Descent Variants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Graphical%20Models.html">Graphical Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hyperparameter%20Tuning.html">Hyperparameter Tuning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Interpretability%20and%20Explainability.html">Interpretability and Explainability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="K-Nearest%20Neighbors.html">K-Nearest Neighbors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Linear%20Regression.html">Linear Regression</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Logistic Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Markov%20Decision%20Processes.html">Markov Decision Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Meta-Learning.html">Meta-Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Model%20Evaluation%20Metrics.html">Model Evaluation Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Naive%20Bayes.html">Naive Bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Natural%20Language%20Processing.html">Natural Language Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Neural%20Networks.html">Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Optimization%20Algorithms.html">Optimization Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Quantum%20Machine%20Learning.html">Quantum Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Random%20Forests.html">Random Forests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Recurrent%20Neural%20Networks.html">Recurrent Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Reinforcement%20Learning.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Self-Supervised%20Learning.html">Self-Supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Semi-Supervised%20Learning.html">Semi-Supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Supervised%20Learning.html">Supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Support%20Vector%20Machines.html">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Time%20Series%20Analysis.html">Time Series Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Transfer%20Learning.html">Transfer Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unsupervised%20Learning.html">Unsupervised Learning</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Machine Learning Interview Questions</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Logistic Regression</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/markdowns/Logistic Regression.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="logistic-regression">
+<h1>Logistic Regression<a class="headerlink" href="#logistic-regression" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<p><strong>Question:</strong> How does multicollinearity affect the variance of logistic regression coefficient estimates?</p>
+<p><strong>Answer:</strong>
+Multicollinearity in logistic regression occurs when predictor variables are highly correlated, leading to instability in coefficient estimates. Mathematically, if <span class="math notranslate nohighlight">\(X\)</span> is the design matrix, multicollinearity implies that <span class="math notranslate nohighlight">\(X^TX\)</span> is nearly singular, resulting in inflated variances of the estimated coefficients <span class="math notranslate nohighlight">\(\hat{\beta}\)</span>.</p>
+<p>The variance of the coefficient estimates can be expressed as <span class="math notranslate nohighlight">\(Var(\hat{\beta}) = (X^TX)^{-1}\sigma^2\)</span>, where <span class="math notranslate nohighlight">\(\sigma^2\)</span> is the variance of the error term. When <span class="math notranslate nohighlight">\(X^TX\)</span> is nearly singular, its inverse <span class="math notranslate nohighlight">\((X^TX)^{-1}\)</span> has large values, thus increasing <span class="math notranslate nohighlight">\(Var(\hat{\beta})\)</span>. This inflation causes the estimates to be sensitive to small changes in the data, leading to unreliable and unstable coefficient estimates.</p>
+<p>In practice, this can result in large standard errors, making it difficult to determine the significance of individual predictors. Techniques like ridge regression or principal component analysis can mitigate these effects by reducing multicollinearity.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> What are the assumptions of logistic regression, and how do violations affect model validity and predictions?</p>
+<p><strong>Answer:</strong>
+Logistic regression assumes: 1) <strong>Linearity of log-odds</strong>: The log-odds of the dependent variable are a linear combination of the independent variables. Violations can lead to biased coefficients and poor predictions. 2) <strong>Independence of errors</strong>: Observations should be independent. Violations (e.g., autocorrelation) can lead to underestimated standard errors. 3) <strong>No multicollinearity</strong>: Independent variables should not be highly correlated. Violations can inflate standard errors and make it difficult to assess the effect of each predictor. 4) <strong>Binary outcome</strong>: The dependent variable should be binary. For multinomial outcomes, use extensions like multinomial logistic regression. 5) <strong>Large sample size</strong>: Ensures reliable estimates and convergence of the model. Violations can result in overfitting or convergence issues. 6) <strong>Homoscedasticity</strong> is not required, unlike linear regression. Violations of these assumptions can lead to incorrect inferences, unreliable predictions, and reduced model validity, necessitating alternative methods or transformations.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> Discuss the interpretation of logistic regression coefficients in the presence of interaction terms.</p>
+<p><strong>Answer:</strong>
+In logistic regression, coefficients represent the change in the log odds of the dependent variable for a one-unit change in the predictor variable, holding other variables constant. When interaction terms are present, the interpretation becomes more complex.</p>
+<p>Consider a model with two predictors, <span class="math notranslate nohighlight">\(X_1\)</span> and <span class="math notranslate nohighlight">\(X_2\)</span>, and their interaction <span class="math notranslate nohighlight">\(X_1 \times X_2\)</span>. The model is:</p>
+<div class="math notranslate nohighlight">
+\[ \log \left( \frac{p}{1-p} \right) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 (X_1 \times X_2) \]</div>
+<p>Here, <span class="math notranslate nohighlight">\(\beta_1\)</span> is the effect of <span class="math notranslate nohighlight">\(X_1\)</span> when <span class="math notranslate nohighlight">\(X_2 = 0\)</span>, and <span class="math notranslate nohighlight">\(\beta_2\)</span> is the effect of <span class="math notranslate nohighlight">\(X_2\)</span> when <span class="math notranslate nohighlight">\(X_1 = 0\)</span>. The interaction coefficient <span class="math notranslate nohighlight">\(\beta_3\)</span> indicates how the effect of <span class="math notranslate nohighlight">\(X_1\)</span> on the log odds changes with <span class="math notranslate nohighlight">\(X_2\)</span> and vice versa. Thus, the effect of <span class="math notranslate nohighlight">\(X_1\)</span> is <span class="math notranslate nohighlight">\(\beta_1 + \beta_3 X_2\)</span>, and the effect of <span class="math notranslate nohighlight">\(X_2\)</span> is <span class="math notranslate nohighlight">\(\beta_2 + \beta_3 X_1\)</span>, showing the dependency on the interacting variable.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> Discuss the implications of using a non-linear activation function in logistic regression models.</p>
+<p><strong>Answer:</strong>
+Using a non-linear activation function in logistic regression fundamentally changes the model’s behavior. Logistic regression traditionally uses the logistic sigmoid function <span class="math notranslate nohighlight">\(\sigma(z) = \frac{1}{1 + e^{-z}}\)</span> to map predicted values to probabilities, maintaining linearity in the decision boundary.</p>
+<p>Introducing a non-linear activation function, such as ReLU or tanh, transforms logistic regression into a different model class, akin to a neural network. This allows the model to capture non-linear relationships in the data, potentially improving performance on complex datasets.</p>
+<p>However, it also complicates the model’s interpretability and training. The decision boundary becomes non-linear, and the model may require more sophisticated optimization techniques and regularization to prevent overfitting. Additionally, the probabilistic interpretation of outputs as direct probabilities is lost, as the output of non-linear activations may not directly correspond to probability values.</p>
+<p>In essence, using non-linear activations shifts logistic regression from a simple linear classifier to a more flexible, but complex, model.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> Discuss the impact of multicollinearity on the variance and stability of logistic regression coefficient estimates.</p>
+<p><strong>Answer:</strong>
+Multicollinearity occurs when two or more predictor variables in a logistic regression model are highly correlated. This can inflate the variance of the coefficient estimates, making them unstable and difficult to interpret. The variance of the estimated coefficients <span class="math notranslate nohighlight">\(\hat{\beta}\)</span> in logistic regression is given by the diagonal elements of the covariance matrix:</p>
+<div class="math notranslate nohighlight">
+\[\text{Var}(\hat{\beta}) = (X^TX)^{-1} \sigma^2,\]</div>
+<p>where <span class="math notranslate nohighlight">\(X\)</span> is the design matrix and <span class="math notranslate nohighlight">\(\sigma^2\)</span> is the error variance. When multicollinearity is present, <span class="math notranslate nohighlight">\(X^TX\)</span> becomes nearly singular, leading to large variances in <span class="math notranslate nohighlight">\(\hat{\beta}\)</span>. This instability can result in large changes in the coefficient estimates with small changes in the data. Consequently, the model’s predictions can become unreliable. Regularization techniques such as L1 (Lasso) or L2 (Ridge) penalties can help mitigate these issues by adding a penalty term to the loss function, thus stabilizing the coefficient estimates.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> Discuss the implications of perfect separation on logistic regression coefficient estimation and model convergence.</p>
+<p><strong>Answer:</strong>
+In logistic regression, perfect separation occurs when the predictor variables can perfectly predict the binary outcome. This leads to issues in coefficient estimation and model convergence. Specifically, the maximum likelihood estimates (MLE) of the coefficients do not exist because the likelihood function does not have a maximum; it increases indefinitely as the coefficients grow towards infinity.</p>
+<p>Mathematically, if <span class="math notranslate nohighlight">\(y_i \in \{0, 1\}\)</span> and <span class="math notranslate nohighlight">\(X_i\)</span> are the predictor variables, the logistic regression model estimates <span class="math notranslate nohighlight">\(P(y_i = 1 \mid X_i) = \frac{1}{1 + e^{-X_i^T \beta}}\)</span>. When perfect separation occurs, there exists a hyperplane that completely separates the classes, causing the log-likelihood function to be unbounded.</p>
+<p>This leads to non-convergence of optimization algorithms used for fitting the model, such as Newton-Raphson or gradient descent, as they fail to find finite parameter estimates. Regularization techniques, like adding a penalty term (e.g., L2 regularization), can mitigate these issues by constraining the coefficient estimates.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> How does the choice of regularization (L1 vs L2) affect sparsity and interpretability in logistic regression models?</p>
+<p><strong>Answer:</strong>
+In logistic regression, the choice between L1 and L2 regularization affects sparsity and interpretability. L1 regularization, also known as Lasso, adds a penalty term <span class="math notranslate nohighlight">\(\lambda \sum |w_i|\)</span> to the loss function, where <span class="math notranslate nohighlight">\(w_i\)</span> are the model coefficients. This penalty encourages sparsity, often resulting in many coefficients being exactly zero, which simplifies the model and enhances interpretability by identifying key features.</p>
+<p>In contrast, L2 regularization, or Ridge, adds a penalty term <span class="math notranslate nohighlight">\(\lambda \sum w_i^2\)</span>. This tends to shrink coefficients towards zero but rarely to exactly zero, leading to a less sparse model. While L2 regularization helps in stabilizing the model and reducing multicollinearity, it does not inherently improve interpretability as it retains all features.</p>
+<p>Thus, L1 regularization is preferred for feature selection and interpretability, while L2 is used for improving model generalization and handling multicollinearity.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> How does the choice of optimization algorithm impact the convergence speed and stability of logistic regression?</p>
+<p><strong>Answer:</strong>
+The choice of optimization algorithm significantly affects the convergence speed and stability of logistic regression. Gradient descent variants, like Stochastic Gradient Descent (SGD), Mini-batch Gradient Descent, and Batch Gradient Descent, differ in how they update weights, impacting convergence. SGD updates weights more frequently, which can lead to faster convergence but may cause instability due to noisy updates. Batch Gradient Descent is more stable but slower, as it processes the entire dataset per update. Advanced algorithms like Newton’s Method or Quasi-Newton methods (e.g., BFGS) use second-order derivatives, providing faster convergence by better approximating the curvature of the loss surface. However, they require more computation per iteration. Algorithms like Adam and RMSprop adapt the learning rate, balancing speed and stability by adjusting updates based on past gradients. In summary, the choice of optimization algorithm affects the trade-off between convergence speed and stability, impacting the efficiency and reliability of logistic regression training.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> How does logistic regression handle multicollinearity and what are its implications on parameter estimation?</p>
+<p><strong>Answer:</strong>
+Logistic regression does not inherently handle multicollinearity, which occurs when predictor variables are highly correlated. Multicollinearity can inflate the variance of coefficient estimates, making them unstable and unreliable. This instability arises because the design matrix <span class="math notranslate nohighlight">\(X\)</span> becomes nearly singular, complicating the inversion of <span class="math notranslate nohighlight">\(X^TX\)</span> in the estimation process.</p>
+<p>The implications include difficulty in determining the individual effect of correlated predictors, as the standard errors of the coefficients increase, leading to wider confidence intervals and less statistically significant estimates. This can be problematic in hypothesis testing and model interpretation.</p>
+<p>To mitigate multicollinearity, techniques such as ridge regression (which adds an <span class="math notranslate nohighlight">\(L_2\)</span> penalty) or principal component analysis (PCA) can be employed. These methods help stabilize the coefficient estimates by either regularizing them or transforming the feature space to reduce correlation among predictors.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> Explain the role of the Hessian matrix in the optimization of logistic regression models.</p>
+<p><strong>Answer:</strong>
+In logistic regression, the Hessian matrix plays a crucial role in optimization, particularly in methods like Newton-Raphson. The Hessian is the matrix of second-order partial derivatives of the log-likelihood function with respect to the model parameters. For logistic regression, the Hessian matrix <span class="math notranslate nohighlight">\(H\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[ H = X^T W X \]</div>
+<p>where <span class="math notranslate nohighlight">\(X\)</span> is the matrix of input features, and <span class="math notranslate nohighlight">\(W\)</span> is a diagonal matrix with elements <span class="math notranslate nohighlight">\(w_i = p_i (1 - p_i)\)</span>, with <span class="math notranslate nohighlight">\(p_i\)</span> being the predicted probability for the <span class="math notranslate nohighlight">\(i\)</span>-th sample.</p>
+<p>The Hessian provides curvature information of the log-likelihood surface, allowing for more efficient parameter updates. Newton-Raphson uses the Hessian to adjust the parameter vector <span class="math notranslate nohighlight">\(\beta\)</span> as:</p>
+<div class="math notranslate nohighlight">
+\[ \beta_{new} = \beta_{old} - H^{-1} \nabla L(\beta) \]</div>
+<p>where <span class="math notranslate nohighlight">\(\nabla L(\beta)\)</span> is the gradient of the log-likelihood. This results in faster convergence compared to gradient descent, especially near the optimum.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> How does logistic regression handle perfect separation in data, and what are the implications for parameter estimation?</p>
+<p><strong>Answer:</strong>
+Logistic regression encounters issues with perfect separation, where a linear combination of features can perfectly predict the binary outcome. In such cases, the likelihood function becomes unbounded, leading to infinite maximum likelihood estimates for the coefficients. This occurs because the logistic function’s asymptotic nature allows probabilities to approach 0 or 1, making the log-likelihood increase indefinitely as coefficients grow.</p>
+<p>Mathematically, if <span class="math notranslate nohighlight">\(y_i \in \{0, 1\}\)</span> and <span class="math notranslate nohighlight">\(x_i\)</span> is perfectly separable, then <span class="math notranslate nohighlight">\(\beta^T x_i\)</span> can be adjusted to make <span class="math notranslate nohighlight">\(P(y_i = 1 | x_i)\)</span> approach 1 or 0 perfectly, causing the log-likelihood <span class="math notranslate nohighlight">\(\sum_{i=1}^n [y_i \log(\sigma(\beta^T x_i)) + (1-y_i) \log(1 - \sigma(\beta^T x_i))]\)</span> to diverge.</p>
+<p>Implications include instability in parameter estimation and variance inflation. Regularization techniques, such as L2 (ridge) regularization, can mitigate these issues by constraining the magnitude of the coefficients, thus providing finite estimates.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> How does regularization impact the variance-bias trade-off in logistic regression models?</p>
+<p><strong>Answer:</strong>
+Regularization in logistic regression, such as L1 (Lasso) or L2 (Ridge), impacts the bias-variance trade-off by introducing a penalty term to the loss function. The loss function with L2 regularization is given by:</p>
+<div class="math notranslate nohighlight">
+\[ J(\theta) = -\frac{1}{m} \sum_{i=1}^{m} \left[ y^{(i)} \log(h_\theta(x^{(i)})) + (1-y^{(i)}) \log(1-h_\theta(x^{(i)})) \right] + \frac{\lambda}{2m} \sum_{j=1}^{n} \theta_j^2 \]</div>
+<p>where <span class="math notranslate nohighlight">\(\lambda\)</span> is the regularization parameter. Increasing <span class="math notranslate nohighlight">\(\lambda\)</span> increases the penalty on large coefficients, effectively reducing model complexity. This can decrease variance, as the model becomes less sensitive to fluctuations in the training data, but may increase bias if the model becomes too simplistic. Conversely, a smaller <span class="math notranslate nohighlight">\(\lambda\)</span> allows for a more complex model with potentially lower bias but higher variance. Therefore, regularization helps in finding a balance between bias and variance, aiming to minimize overall prediction error.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> How does logistic regression handle data with perfect separation, and what are the implications for model estimation?</p>
+<p><strong>Answer:</strong>
+In logistic regression, perfect separation occurs when the predictor variables can perfectly predict the binary outcome without error. This leads to issues in model estimation because the likelihood function does not converge to a finite maximum. Specifically, the estimated coefficients tend to infinity, which is problematic for interpretation and prediction.</p>
+<p>Mathematically, logistic regression estimates parameters by maximizing the likelihood function:</p>
+<div class="math notranslate nohighlight">
+\[ L(\beta) = \prod_{i=1}^{n} \left( \frac{1}{1 + e^{-x_i^T \beta}} \right)^{y_i} \left( \frac{e^{-x_i^T \beta}}{1 + e^{-x_i^T \beta}} \right)^{1-y_i} \]</div>
+<p>When there is perfect separation, the log-likelihood function becomes flat, leading to non-unique and infinite solutions for <span class="math notranslate nohighlight">\(\beta\)</span>. This can be addressed by using regularization techniques, such as L2 regularization (Ridge), which add a penalty term to the likelihood, or by using Bayesian approaches with informative priors to stabilize the estimates.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> How does the choice of regularization technique affect the parameter estimates in logistic regression?</p>
+<p><strong>Answer:</strong>
+In logistic regression, regularization techniques like L1 (Lasso) and L2 (Ridge) affect parameter estimates by adding penalty terms to the loss function, which is typically the negative log-likelihood.</p>
+<p>L1 regularization adds a penalty proportional to the absolute value of the coefficients, <span class="math notranslate nohighlight">\(\lambda \sum_{j=1}^p |\beta_j|\)</span>, which encourages sparsity, potentially setting some coefficients to zero. This can lead to simpler models by performing feature selection.</p>
+<p>L2 regularization adds a penalty proportional to the square of the coefficients, <span class="math notranslate nohighlight">\(\lambda \sum_{j=1}^p \beta_j^2\)</span>, which discourages large coefficients and helps in reducing model variance, leading to more stable estimates.</p>
+<p>The choice between L1 and L2 affects the bias-variance tradeoff: L1 can increase bias but reduce variance through feature selection, while L2 generally reduces variance without necessarily increasing bias as much. The strength of regularization is controlled by the hyperparameter <span class="math notranslate nohighlight">\(\lambda\)</span>, which must be tuned for optimal performance.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> Explain the impact of class imbalance on the decision boundary and performance of logistic regression models.</p>
+<p><strong>Answer:</strong>
+Class imbalance in logistic regression can significantly skew the decision boundary and degrade model performance. Logistic regression models aim to find a decision boundary that best separates the classes by maximizing the likelihood of the data. In the presence of class imbalance, the model tends to favor the majority class, as it minimizes the overall error by predicting the majority class more often.</p>
+<p>Mathematically, logistic regression estimates the probability <span class="math notranslate nohighlight">\(P(y=1|x) = \frac{1}{1 + e^{-z}}\)</span>, where <span class="math notranslate nohighlight">\(z = \beta_0 + \beta_1 x_1 + \ldots + \beta_n x_n\)</span>. The decision boundary is where <span class="math notranslate nohighlight">\(P(y=1|x) = 0.5\)</span>. With imbalance, the boundary shifts towards the minority class, leading to higher false negatives.</p>
+<p>For example, in a dataset with 90% of class 0 and 10% of class 1, the model might predict class 0 for most inputs, achieving high accuracy but poor recall for class 1. Techniques like resampling, weighting, or using different evaluation metrics can mitigate these effects.</p>
+<hr class="docutils" />
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Linear%20Regression.html" class="btn btn-neutral float-left" title="Linear Regression" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Markov%20Decision%20Processes.html" class="btn btn-neutral float-right" title="Markov Decision Processes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Moein Kareshk.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

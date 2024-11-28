@@ -1,0 +1,172 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Self-Supervised Learning &mdash; Machine Learning Interview Questions 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/theme_overrides.css" />
+
+  
+    <link rel="canonical" href="https://mkareshk.github.io/ml-interview/markdowns/Self-Supervised%20Learning.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Semi-Supervised Learning" href="Semi-Supervised%20Learning.html" />
+    <link rel="prev" title="Reinforcement Learning" href="Reinforcement%20Learning.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Machine Learning Interview Questions
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Active%20Learning.html">Active Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Anomaly%20Detection.html">Anomaly Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Attention%20Mechanisms.html">Attention Mechanisms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Bayesian%20Inference.html">Bayesian Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Bayesian%20Neural%20Networks.html">Bayesian Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Clustering%20Algorithms.html">Clustering Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Convolutional%20Neural%20Networks.html">Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cross-Validation%20Techniques.html">Cross-Validation Techniques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Decision%20Trees.html">Decision Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Dimensionality%20Reduction.html">Dimensionality Reduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Ensemble%20Methods.html">Ensemble Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Ethics%20in%20Machine%20Learning.html">Ethics in Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Feature%20Engineering.html">Feature Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Federated%20Learning.html">Federated Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Generative%20Adversarial%20Networks.html">Generative Adversarial Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Gradient%20Descent%20Variants.html">Gradient Descent Variants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Graphical%20Models.html">Graphical Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hyperparameter%20Tuning.html">Hyperparameter Tuning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Interpretability%20and%20Explainability.html">Interpretability and Explainability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="K-Nearest%20Neighbors.html">K-Nearest Neighbors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Linear%20Regression.html">Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Logistic%20Regression.html">Logistic Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Markov%20Decision%20Processes.html">Markov Decision Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Meta-Learning.html">Meta-Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Model%20Evaluation%20Metrics.html">Model Evaluation Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Naive%20Bayes.html">Naive Bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Natural%20Language%20Processing.html">Natural Language Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Neural%20Networks.html">Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Optimization%20Algorithms.html">Optimization Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Quantum%20Machine%20Learning.html">Quantum Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Random%20Forests.html">Random Forests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Recurrent%20Neural%20Networks.html">Recurrent Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Reinforcement%20Learning.html">Reinforcement Learning</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Self-Supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Semi-Supervised%20Learning.html">Semi-Supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Supervised%20Learning.html">Supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Support%20Vector%20Machines.html">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Time%20Series%20Analysis.html">Time Series Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Transfer%20Learning.html">Transfer Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unsupervised%20Learning.html">Unsupervised Learning</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Machine Learning Interview Questions</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Self-Supervised Learning</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/markdowns/Self-Supervised Learning.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="self-supervised-learning">
+<h1>Self-Supervised Learning<a class="headerlink" href="#self-supervised-learning" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<p><strong>Question:</strong> What are the key differences between self-supervised learning and traditional supervised learning in representation learning?</p>
+<p><strong>Answer:</strong>
+Self-supervised learning (SSL) and traditional supervised learning differ primarily in the use of labeled data. In supervised learning, models learn representations using labeled datasets, where each input has an associated target output. This requires significant human effort to label data, which can be costly and time-consuming.</p>
+<p>In contrast, SSL leverages the structure of the data itself to generate labels, allowing models to learn from unlabeled data. This is often achieved through pretext tasks, such as predicting missing parts of the input or contrasting different views of the same data. For example, in computer vision, a common SSL task is to rotate an image and predict the rotation angle.</p>
+<p>Mathematically, supervised learning optimizes a loss function <span class="math notranslate nohighlight">\(L(y, \hat{y})\)</span>, where <span class="math notranslate nohighlight">\(y\)</span> is the true label and <span class="math notranslate nohighlight">\(\hat{y}\)</span> is the predicted label. SSL optimizes a loss <span class="math notranslate nohighlight">\(L_{SSL}(x)\)</span>, where <span class="math notranslate nohighlight">\(x\)</span> is the input, without requiring explicit labels. This enables learning robust representations from vast amounts of unlabeled data.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> How does self-supervised learning leverage data augmentations to improve model generalization in visual tasks?</p>
+<p><strong>Answer:</strong>
+Self-supervised learning (SSL) leverages data augmentations to improve model generalization by creating surrogate tasks that encourage the model to learn robust and invariant features. In visual tasks, data augmentations such as rotations, flips, color jittering, and cropping are applied to images to generate different views of the same input. The model is trained to produce similar representations for these augmented views, often using contrastive loss functions like InfoNCE.</p>
+<p>Mathematically, given two augmented views <span class="math notranslate nohighlight">\(x_i\)</span> and <span class="math notranslate nohighlight">\(x_j\)</span> of the same image, the model aims to minimize the distance between their embeddings <span class="math notranslate nohighlight">\(z_i\)</span> and <span class="math notranslate nohighlight">\(z_j\)</span> while maximizing the distance from embeddings of other images. This is often expressed as:</p>
+<div class="math notranslate nohighlight">
+\[ \mathcal{L}_{i,j} = -\log \frac{\exp(\text{sim}(z_i, z_j) / \tau)}{\sum_{k=1}^{2N} \mathbb{1}_{[k \neq i]} \exp(\text{sim}(z_i, z_k) / \tau)} \]</div>
+<p>where <span class="math notranslate nohighlight">\(\text{sim}(\cdot, \cdot)\)</span> is a similarity function and <span class="math notranslate nohighlight">\(\tau\)</span> is a temperature parameter. This process encourages the model to learn features that generalize well across variations, improving its performance on downstream tasks.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> How can self-supervised learning improve the transferability of learned representations to downstream tasks?</p>
+<p><strong>Answer:</strong>
+Self-supervised learning (SSL) enhances the transferability of learned representations by leveraging unlabeled data to create pretext tasks that capture intrinsic data structures. Unlike supervised learning, which relies on labeled data, SSL formulates tasks where the labels are derived from the data itself, such as predicting missing parts of an image or the next word in a sentence. This process encourages the model to learn general features that are useful across various tasks.</p>
+<p>Mathematically, given a dataset <span class="math notranslate nohighlight">\(X\)</span>, SSL aims to learn a representation <span class="math notranslate nohighlight">\(f(X)\)</span> that minimizes a pretext loss <span class="math notranslate nohighlight">\(L_{pretext}(f(X))\)</span>. The learned representation <span class="math notranslate nohighlight">\(f(X)\)</span> is then fine-tuned on a downstream task with a loss <span class="math notranslate nohighlight">\(L_{downstream}(f(X), Y)\)</span>, where <span class="math notranslate nohighlight">\(Y\)</span> is the task-specific label. The pretext task encourages the model to capture features that are invariant and robust, improving performance on downstream tasks by providing a strong initialization point and reducing the need for large labeled datasets.</p>
+<hr class="docutils" />
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Reinforcement%20Learning.html" class="btn btn-neutral float-left" title="Reinforcement Learning" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Semi-Supervised%20Learning.html" class="btn btn-neutral float-right" title="Semi-Supervised Learning" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Moein Kareshk.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

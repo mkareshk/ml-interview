@@ -1,0 +1,99 @@
+# Graphical Models
+---
+**Question:** How does the choice of clique potentials affect the expressiveness of a Markov Random Field?
+
+**Answer:**
+In a Markov Random Field (MRF), the choice of clique potentials, denoted as $\phi_C(x_C)$ for a clique $C$, significantly impacts the model's expressiveness. Clique potentials define the interactions between variables within a clique, determining how likely certain configurations are. The expressiveness of an MRF is its ability to capture complex dependencies and distributions over the variables.
+
+For instance, if clique potentials are limited to simple forms, such as linear or Gaussian, the MRF may only capture basic interactions. Conversely, more complex potentials, such as neural networks or higher-order polynomials, allow the MRF to model intricate dependencies and multimodal distributions. This flexibility can be crucial for accurately representing real-world phenomena.
+
+Mathematically, the joint distribution is $P(X) = \frac{1}{Z} \prod_{C \in \mathcal{C}} \phi_C(x_C)$, where $Z$ is the partition function. The choice of $\phi_C$ directly influences the shape and complexity of $P(X)$, thus affecting the MRF's expressiveness.
+
+---
+
+**Question:** Analyze the computational complexity of exact inference in Bayesian Networks with discrete variables.
+
+**Answer:**
+The computational complexity of exact inference in Bayesian Networks (BNs) with discrete variables is generally NP-hard. This complexity arises from the need to compute the posterior distribution of a set of query variables given evidence, which involves summing over all possible configurations of the hidden variables. For a BN with $n$ discrete variables, each with $k$ states, the naive approach requires evaluating $k^n$ joint configurations, leading to exponential complexity.
+
+Exact inference methods like variable elimination and the junction tree algorithm aim to reduce this complexity by exploiting the network's structure. They transform the problem into a series of smaller subproblems. However, these methods can still be exponential in the size of the largest clique in the moralized graph of the BN, known as the treewidth. Thus, the complexity is $O(k^{\text{treewidth}})$, where treewidth is a measure of graph connectivity. For large or densely connected networks, exact inference remains computationally infeasible.
+
+---
+
+**Question:** How does the concept of message passing facilitate inference in loopy graphical models?
+
+**Answer:**
+Message passing, particularly belief propagation, is a technique used for inference in graphical models. In loopy graphical models, which contain cycles, exact inference is generally intractable. However, message passing can be adapted to perform approximate inference. 
+
+In this context, messages are iteratively passed between nodes (variables) and edges (factors) of the graph. Each message represents a distribution over possible states of a variable, conditioned on evidence received from neighboring nodes. The process involves updating beliefs about variable states based on these messages until convergence.
+
+Mathematically, if $m_{x \to f}(x)$ is a message from variable $x$ to factor $f$, and $m_{f \to x}(x)$ is from factor $f$ to variable $x$, the updates are:
+
+$$m_{x \to f}(x) = \prod_{h \in \text{ne}(x) \setminus f} m_{h \to x}(x)$$
+
+$$m_{f \to x}(x) = \sum_{\{x' \setminus x\}} f(x') \prod_{y \in \text{ne}(f) \setminus x} m_{y \to f}(y)$$
+
+Despite cycles, this iterative process often yields good approximations in practice.
+
+---
+
+**Question:** How does the choice of clique potentials impact the expressiveness and computational complexity of Markov Random Fields?
+
+**Answer:**
+In Markov Random Fields (MRFs), clique potentials define the interactions between variables in cliques, impacting both expressiveness and computational complexity. Expressiveness refers to the ability of the MRF to model complex dependencies. Richer potentials, such as those allowing arbitrary interactions, increase expressiveness but also computational complexity, especially in inference tasks like marginalization or MAP estimation. For instance, with pairwise potentials $\psi(x_i, x_j)$, the complexity is often manageable, but higher-order cliques $\psi(x_i, x_j, x_k)$ can lead to exponential growth in complexity. The choice of potentials affects the partition function $Z = \sum_{\mathbf{x}} \prod_{c \in C} \psi_c(\mathbf{x}_c)$, where $C$ is the set of cliques. Complex potentials make $Z$ harder to compute, impacting tasks like sampling and learning. Thus, there's a trade-off: richer potentials enhance expressiveness but increase computational demands, necessitating approximations or restrictions for tractability.
+
+---
+
+**Question:** How does the concept of conditional independence influence the structure learning of Bayesian Networks?
+
+**Answer:**
+Conditional independence is a cornerstone in learning the structure of Bayesian Networks (BNs). A BN represents the joint probability distribution of a set of variables using a directed acyclic graph (DAG). Each node corresponds to a variable, and edges represent dependencies. Conditional independence allows us to simplify this structure by omitting edges where variables are independent given some other variables.
+
+Mathematically, if $X$, $Y$, and $Z$ are random variables, $X$ is conditionally independent of $Y$ given $Z$ if $P(X, Y | Z) = P(X | Z)P(Y | Z)$. This concept helps in determining the absence of edges in the DAG, reducing complexity.
+
+For example, if $A$ and $B$ are conditionally independent given $C$, the BN structure can omit a direct edge between $A$ and $B$. This reduces the number of parameters and simplifies inference and learning in the network.
+
+---
+
+**Question:** Discuss the role of factorization in representing joint probability distributions in undirected graphical models.
+
+**Answer:**
+In undirected graphical models, also known as Markov Random Fields (MRFs), factorization plays a crucial role in representing joint probability distributions. The joint distribution of a set of random variables $X = \{X_1, X_2, \ldots, X_n\}$ is expressed as a product of potential functions defined over cliques of the graph:
+
+$$ P(X) = \frac{1}{Z} \prod_{C \in \mathcal{C}} \psi_C(X_C), $$
+
+where $\mathcal{C}$ is the set of cliques, $\psi_C(X_C)$ is the potential function for clique $C$, and $Z$ is the partition function ensuring normalization. Factorization simplifies the representation of $P(X)$ by leveraging the graph's structure, which encodes conditional independencies. This reduces computational complexity, as we only need to consider local interactions within cliques rather than the entire joint distribution. For example, in a pairwise MRF, the joint distribution can be factorized into pairwise potentials, significantly simplifying inference and learning tasks.
+
+---
+
+**Question:** How does the choice of potential functions affect the expressiveness and inference complexity in Markov random fields?
+
+**Answer:**
+In Markov Random Fields (MRFs), potential functions define the interactions between variables. The choice of potential functions impacts both expressiveness and inference complexity. Expressiveness refers to the ability of the MRF to capture complex dependencies; richer potentials can model more intricate relationships. For example, higher-order potentials allow for capturing dependencies among more than two variables simultaneously, increasing expressiveness.
+
+However, complex potentials often increase inference complexity. Inference in MRFs involves computing marginal probabilities or the partition function, which can be computationally expensive. For instance, exact inference is NP-hard for general MRFs with arbitrary potentials. Simpler potentials, like pairwise interactions, often allow for more efficient inference algorithms, such as belief propagation or variational methods.
+
+Thus, there is a trade-off: using more expressive potentials can capture richer dependencies but may require approximate inference methods to manage computational complexity.
+
+---
+
+**Question:** Discuss the role of junction tree algorithms in exact inference of probabilistic graphical models and their computational trade-offs.
+
+**Answer:**
+Junction tree algorithms facilitate exact inference in probabilistic graphical models (PGMs) by transforming the graph into a tree structure, enabling efficient computation of marginal and conditional probabilities. In PGMs, such as Bayesian networks or Markov random fields, direct inference can be computationally challenging due to loops and high-dimensional dependencies. 
+
+The junction tree algorithm involves three main steps: triangulation of the graph, construction of the junction tree, and message passing. Triangulation adds edges to eliminate cycles, creating a chordal graph. A junction tree is then formed, where each node (clique) represents a maximal fully connected subgraph. Message passing, akin to belief propagation, computes exact marginal distributions.
+
+The main trade-off is computational complexity. While junction trees provide exact solutions, their efficiency depends on the size of the largest clique, known as the treewidth. High treewidth can lead to exponential complexity, making the algorithm impractical for large, dense graphs. Thus, it balances between exactness and computational feasibility.
+
+---
+
+**Question:** What are the computational challenges in exact inference in graphical models with cycles, and how can they be mitigated?
+
+**Answer:**
+Exact inference in graphical models with cycles, such as loopy belief networks, is computationally challenging due to the need to compute marginal probabilities or partition functions, which are generally NP-hard. The complexity arises because cycles create dependencies that prevent straightforward factorization of the joint distribution. For example, in a Markov Random Field, computing the partition function requires summing over an exponential number of configurations.
+
+One approach to mitigate these challenges is to use approximate inference methods like Loopy Belief Propagation (LBP), which iteratively updates beliefs and can converge to a good approximation of the true marginals. Variational methods, such as Mean Field and Expectation Propagation, approximate the true distribution with a simpler one, reducing computational complexity. Another approach is to use sampling methods like Markov Chain Monte Carlo (MCMC), which approximate the distribution by generating samples, though they can be computationally expensive and slow to converge.
+
+---
+

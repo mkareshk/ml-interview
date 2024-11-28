@@ -1,0 +1,173 @@
+# Logistic Regression
+---
+**Question:** How does multicollinearity affect the variance of logistic regression coefficient estimates?
+
+**Answer:**
+Multicollinearity in logistic regression occurs when predictor variables are highly correlated, leading to instability in coefficient estimates. Mathematically, if $X$ is the design matrix, multicollinearity implies that $X^TX$ is nearly singular, resulting in inflated variances of the estimated coefficients $\hat{\beta}$.
+
+The variance of the coefficient estimates can be expressed as $Var(\hat{\beta}) = (X^TX)^{-1}\sigma^2$, where $\sigma^2$ is the variance of the error term. When $X^TX$ is nearly singular, its inverse $(X^TX)^{-1}$ has large values, thus increasing $Var(\hat{\beta})$. This inflation causes the estimates to be sensitive to small changes in the data, leading to unreliable and unstable coefficient estimates.
+
+In practice, this can result in large standard errors, making it difficult to determine the significance of individual predictors. Techniques like ridge regression or principal component analysis can mitigate these effects by reducing multicollinearity.
+
+---
+
+**Question:** What are the assumptions of logistic regression, and how do violations affect model validity and predictions?
+
+**Answer:**
+Logistic regression assumes: 1) **Linearity of log-odds**: The log-odds of the dependent variable are a linear combination of the independent variables. Violations can lead to biased coefficients and poor predictions. 2) **Independence of errors**: Observations should be independent. Violations (e.g., autocorrelation) can lead to underestimated standard errors. 3) **No multicollinearity**: Independent variables should not be highly correlated. Violations can inflate standard errors and make it difficult to assess the effect of each predictor. 4) **Binary outcome**: The dependent variable should be binary. For multinomial outcomes, use extensions like multinomial logistic regression. 5) **Large sample size**: Ensures reliable estimates and convergence of the model. Violations can result in overfitting or convergence issues. 6) **Homoscedasticity** is not required, unlike linear regression. Violations of these assumptions can lead to incorrect inferences, unreliable predictions, and reduced model validity, necessitating alternative methods or transformations.
+
+---
+
+**Question:** Discuss the interpretation of logistic regression coefficients in the presence of interaction terms.
+
+**Answer:**
+In logistic regression, coefficients represent the change in the log odds of the dependent variable for a one-unit change in the predictor variable, holding other variables constant. When interaction terms are present, the interpretation becomes more complex.
+
+Consider a model with two predictors, $X_1$ and $X_2$, and their interaction $X_1 \times X_2$. The model is:
+
+$$ \log \left( \frac{p}{1-p} \right) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 (X_1 \times X_2) $$
+
+Here, $\beta_1$ is the effect of $X_1$ when $X_2 = 0$, and $\beta_2$ is the effect of $X_2$ when $X_1 = 0$. The interaction coefficient $\beta_3$ indicates how the effect of $X_1$ on the log odds changes with $X_2$ and vice versa. Thus, the effect of $X_1$ is $\beta_1 + \beta_3 X_2$, and the effect of $X_2$ is $\beta_2 + \beta_3 X_1$, showing the dependency on the interacting variable.
+
+---
+
+**Question:** Discuss the implications of using a non-linear activation function in logistic regression models.
+
+**Answer:**
+Using a non-linear activation function in logistic regression fundamentally changes the model's behavior. Logistic regression traditionally uses the logistic sigmoid function $\sigma(z) = \frac{1}{1 + e^{-z}}$ to map predicted values to probabilities, maintaining linearity in the decision boundary.
+
+Introducing a non-linear activation function, such as ReLU or tanh, transforms logistic regression into a different model class, akin to a neural network. This allows the model to capture non-linear relationships in the data, potentially improving performance on complex datasets.
+
+However, it also complicates the model's interpretability and training. The decision boundary becomes non-linear, and the model may require more sophisticated optimization techniques and regularization to prevent overfitting. Additionally, the probabilistic interpretation of outputs as direct probabilities is lost, as the output of non-linear activations may not directly correspond to probability values.
+
+In essence, using non-linear activations shifts logistic regression from a simple linear classifier to a more flexible, but complex, model.
+
+---
+
+**Question:** Discuss the impact of multicollinearity on the variance and stability of logistic regression coefficient estimates.
+
+**Answer:**
+Multicollinearity occurs when two or more predictor variables in a logistic regression model are highly correlated. This can inflate the variance of the coefficient estimates, making them unstable and difficult to interpret. The variance of the estimated coefficients $\hat{\beta}$ in logistic regression is given by the diagonal elements of the covariance matrix:
+
+$$\text{Var}(\hat{\beta}) = (X^TX)^{-1} \sigma^2,$$
+
+where $X$ is the design matrix and $\sigma^2$ is the error variance. When multicollinearity is present, $X^TX$ becomes nearly singular, leading to large variances in $\hat{\beta}$. This instability can result in large changes in the coefficient estimates with small changes in the data. Consequently, the model's predictions can become unreliable. Regularization techniques such as L1 (Lasso) or L2 (Ridge) penalties can help mitigate these issues by adding a penalty term to the loss function, thus stabilizing the coefficient estimates.
+
+---
+
+**Question:** Discuss the implications of perfect separation on logistic regression coefficient estimation and model convergence.
+
+**Answer:**
+In logistic regression, perfect separation occurs when the predictor variables can perfectly predict the binary outcome. This leads to issues in coefficient estimation and model convergence. Specifically, the maximum likelihood estimates (MLE) of the coefficients do not exist because the likelihood function does not have a maximum; it increases indefinitely as the coefficients grow towards infinity.
+
+Mathematically, if $y_i \in \{0, 1\}$ and $X_i$ are the predictor variables, the logistic regression model estimates $P(y_i = 1 \mid X_i) = \frac{1}{1 + e^{-X_i^T \beta}}$. When perfect separation occurs, there exists a hyperplane that completely separates the classes, causing the log-likelihood function to be unbounded.
+
+This leads to non-convergence of optimization algorithms used for fitting the model, such as Newton-Raphson or gradient descent, as they fail to find finite parameter estimates. Regularization techniques, like adding a penalty term (e.g., L2 regularization), can mitigate these issues by constraining the coefficient estimates.
+
+---
+
+**Question:** How does the choice of regularization (L1 vs L2) affect sparsity and interpretability in logistic regression models?
+
+**Answer:**
+In logistic regression, the choice between L1 and L2 regularization affects sparsity and interpretability. L1 regularization, also known as Lasso, adds a penalty term $\lambda \sum |w_i|$ to the loss function, where $w_i$ are the model coefficients. This penalty encourages sparsity, often resulting in many coefficients being exactly zero, which simplifies the model and enhances interpretability by identifying key features.
+
+In contrast, L2 regularization, or Ridge, adds a penalty term $\lambda \sum w_i^2$. This tends to shrink coefficients towards zero but rarely to exactly zero, leading to a less sparse model. While L2 regularization helps in stabilizing the model and reducing multicollinearity, it does not inherently improve interpretability as it retains all features. 
+
+Thus, L1 regularization is preferred for feature selection and interpretability, while L2 is used for improving model generalization and handling multicollinearity.
+
+---
+
+**Question:** How does the choice of optimization algorithm impact the convergence speed and stability of logistic regression?
+
+**Answer:**
+The choice of optimization algorithm significantly affects the convergence speed and stability of logistic regression. Gradient descent variants, like Stochastic Gradient Descent (SGD), Mini-batch Gradient Descent, and Batch Gradient Descent, differ in how they update weights, impacting convergence. SGD updates weights more frequently, which can lead to faster convergence but may cause instability due to noisy updates. Batch Gradient Descent is more stable but slower, as it processes the entire dataset per update. Advanced algorithms like Newton's Method or Quasi-Newton methods (e.g., BFGS) use second-order derivatives, providing faster convergence by better approximating the curvature of the loss surface. However, they require more computation per iteration. Algorithms like Adam and RMSprop adapt the learning rate, balancing speed and stability by adjusting updates based on past gradients. In summary, the choice of optimization algorithm affects the trade-off between convergence speed and stability, impacting the efficiency and reliability of logistic regression training.
+
+---
+
+**Question:** How does logistic regression handle multicollinearity and what are its implications on parameter estimation?
+
+**Answer:**
+Logistic regression does not inherently handle multicollinearity, which occurs when predictor variables are highly correlated. Multicollinearity can inflate the variance of coefficient estimates, making them unstable and unreliable. This instability arises because the design matrix $X$ becomes nearly singular, complicating the inversion of $X^TX$ in the estimation process.
+
+The implications include difficulty in determining the individual effect of correlated predictors, as the standard errors of the coefficients increase, leading to wider confidence intervals and less statistically significant estimates. This can be problematic in hypothesis testing and model interpretation.
+
+To mitigate multicollinearity, techniques such as ridge regression (which adds an $L_2$ penalty) or principal component analysis (PCA) can be employed. These methods help stabilize the coefficient estimates by either regularizing them or transforming the feature space to reduce correlation among predictors.
+
+---
+
+**Question:** Explain the role of the Hessian matrix in the optimization of logistic regression models.
+
+**Answer:**
+In logistic regression, the Hessian matrix plays a crucial role in optimization, particularly in methods like Newton-Raphson. The Hessian is the matrix of second-order partial derivatives of the log-likelihood function with respect to the model parameters. For logistic regression, the Hessian matrix $H$ is given by:
+
+$$ H = X^T W X $$
+
+where $X$ is the matrix of input features, and $W$ is a diagonal matrix with elements $w_i = p_i (1 - p_i)$, with $p_i$ being the predicted probability for the $i$-th sample.
+
+The Hessian provides curvature information of the log-likelihood surface, allowing for more efficient parameter updates. Newton-Raphson uses the Hessian to adjust the parameter vector $\beta$ as:
+
+$$ \beta_{new} = \beta_{old} - H^{-1} \nabla L(\beta) $$
+
+where $\nabla L(\beta)$ is the gradient of the log-likelihood. This results in faster convergence compared to gradient descent, especially near the optimum.
+
+---
+
+**Question:** How does logistic regression handle perfect separation in data, and what are the implications for parameter estimation?
+
+**Answer:**
+Logistic regression encounters issues with perfect separation, where a linear combination of features can perfectly predict the binary outcome. In such cases, the likelihood function becomes unbounded, leading to infinite maximum likelihood estimates for the coefficients. This occurs because the logistic function's asymptotic nature allows probabilities to approach 0 or 1, making the log-likelihood increase indefinitely as coefficients grow.
+
+Mathematically, if $y_i \in \{0, 1\}$ and $x_i$ is perfectly separable, then $\beta^T x_i$ can be adjusted to make $P(y_i = 1 | x_i)$ approach 1 or 0 perfectly, causing the log-likelihood $\sum_{i=1}^n [y_i \log(\sigma(\beta^T x_i)) + (1-y_i) \log(1 - \sigma(\beta^T x_i))]$ to diverge.
+
+Implications include instability in parameter estimation and variance inflation. Regularization techniques, such as L2 (ridge) regularization, can mitigate these issues by constraining the magnitude of the coefficients, thus providing finite estimates.
+
+---
+
+**Question:** How does regularization impact the variance-bias trade-off in logistic regression models?
+
+**Answer:**
+Regularization in logistic regression, such as L1 (Lasso) or L2 (Ridge), impacts the bias-variance trade-off by introducing a penalty term to the loss function. The loss function with L2 regularization is given by:
+
+$$ J(\theta) = -\frac{1}{m} \sum_{i=1}^{m} \left[ y^{(i)} \log(h_\theta(x^{(i)})) + (1-y^{(i)}) \log(1-h_\theta(x^{(i)})) \right] + \frac{\lambda}{2m} \sum_{j=1}^{n} \theta_j^2 $$
+
+where $\lambda$ is the regularization parameter. Increasing $\lambda$ increases the penalty on large coefficients, effectively reducing model complexity. This can decrease variance, as the model becomes less sensitive to fluctuations in the training data, but may increase bias if the model becomes too simplistic. Conversely, a smaller $\lambda$ allows for a more complex model with potentially lower bias but higher variance. Therefore, regularization helps in finding a balance between bias and variance, aiming to minimize overall prediction error.
+
+---
+
+**Question:** How does logistic regression handle data with perfect separation, and what are the implications for model estimation?
+
+**Answer:**
+In logistic regression, perfect separation occurs when the predictor variables can perfectly predict the binary outcome without error. This leads to issues in model estimation because the likelihood function does not converge to a finite maximum. Specifically, the estimated coefficients tend to infinity, which is problematic for interpretation and prediction.
+
+Mathematically, logistic regression estimates parameters by maximizing the likelihood function:
+
+$$ L(\beta) = \prod_{i=1}^{n} \left( \frac{1}{1 + e^{-x_i^T \beta}} \right)^{y_i} \left( \frac{e^{-x_i^T \beta}}{1 + e^{-x_i^T \beta}} \right)^{1-y_i} $$
+
+When there is perfect separation, the log-likelihood function becomes flat, leading to non-unique and infinite solutions for $\beta$. This can be addressed by using regularization techniques, such as L2 regularization (Ridge), which add a penalty term to the likelihood, or by using Bayesian approaches with informative priors to stabilize the estimates.
+
+---
+
+**Question:** How does the choice of regularization technique affect the parameter estimates in logistic regression?
+
+**Answer:**
+In logistic regression, regularization techniques like L1 (Lasso) and L2 (Ridge) affect parameter estimates by adding penalty terms to the loss function, which is typically the negative log-likelihood. 
+
+L1 regularization adds a penalty proportional to the absolute value of the coefficients, $\lambda \sum_{j=1}^p |\beta_j|$, which encourages sparsity, potentially setting some coefficients to zero. This can lead to simpler models by performing feature selection.
+
+L2 regularization adds a penalty proportional to the square of the coefficients, $\lambda \sum_{j=1}^p \beta_j^2$, which discourages large coefficients and helps in reducing model variance, leading to more stable estimates.
+
+The choice between L1 and L2 affects the bias-variance tradeoff: L1 can increase bias but reduce variance through feature selection, while L2 generally reduces variance without necessarily increasing bias as much. The strength of regularization is controlled by the hyperparameter $\lambda$, which must be tuned for optimal performance.
+
+---
+
+**Question:** Explain the impact of class imbalance on the decision boundary and performance of logistic regression models.
+
+**Answer:**
+Class imbalance in logistic regression can significantly skew the decision boundary and degrade model performance. Logistic regression models aim to find a decision boundary that best separates the classes by maximizing the likelihood of the data. In the presence of class imbalance, the model tends to favor the majority class, as it minimizes the overall error by predicting the majority class more often.
+
+Mathematically, logistic regression estimates the probability $P(y=1|x) = \frac{1}{1 + e^{-z}}$, where $z = \beta_0 + \beta_1 x_1 + \ldots + \beta_n x_n$. The decision boundary is where $P(y=1|x) = 0.5$. With imbalance, the boundary shifts towards the minority class, leading to higher false negatives.
+
+For example, in a dataset with 90% of class 0 and 10% of class 1, the model might predict class 0 for most inputs, achieving high accuracy but poor recall for class 1. Techniques like resampling, weighting, or using different evaluation metrics can mitigate these effects.
+
+---
+

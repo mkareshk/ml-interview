@@ -1,0 +1,35 @@
+# Self-Supervised Learning
+---
+**Question:** What are the key differences between self-supervised learning and traditional supervised learning in representation learning?
+
+**Answer:**
+Self-supervised learning (SSL) and traditional supervised learning differ primarily in the use of labeled data. In supervised learning, models learn representations using labeled datasets, where each input has an associated target output. This requires significant human effort to label data, which can be costly and time-consuming.
+
+In contrast, SSL leverages the structure of the data itself to generate labels, allowing models to learn from unlabeled data. This is often achieved through pretext tasks, such as predicting missing parts of the input or contrasting different views of the same data. For example, in computer vision, a common SSL task is to rotate an image and predict the rotation angle.
+
+Mathematically, supervised learning optimizes a loss function $L(y, \hat{y})$, where $y$ is the true label and $\hat{y}$ is the predicted label. SSL optimizes a loss $L_{SSL}(x)$, where $x$ is the input, without requiring explicit labels. This enables learning robust representations from vast amounts of unlabeled data.
+
+---
+
+**Question:** How does self-supervised learning leverage data augmentations to improve model generalization in visual tasks?
+
+**Answer:**
+Self-supervised learning (SSL) leverages data augmentations to improve model generalization by creating surrogate tasks that encourage the model to learn robust and invariant features. In visual tasks, data augmentations such as rotations, flips, color jittering, and cropping are applied to images to generate different views of the same input. The model is trained to produce similar representations for these augmented views, often using contrastive loss functions like InfoNCE. 
+
+Mathematically, given two augmented views $x_i$ and $x_j$ of the same image, the model aims to minimize the distance between their embeddings $z_i$ and $z_j$ while maximizing the distance from embeddings of other images. This is often expressed as:
+
+$$ \mathcal{L}_{i,j} = -\log \frac{\exp(\text{sim}(z_i, z_j) / \tau)}{\sum_{k=1}^{2N} \mathbb{1}_{[k \neq i]} \exp(\text{sim}(z_i, z_k) / \tau)} $$
+
+where $\text{sim}(\cdot, \cdot)$ is a similarity function and $\tau$ is a temperature parameter. This process encourages the model to learn features that generalize well across variations, improving its performance on downstream tasks.
+
+---
+
+**Question:** How can self-supervised learning improve the transferability of learned representations to downstream tasks?
+
+**Answer:**
+Self-supervised learning (SSL) enhances the transferability of learned representations by leveraging unlabeled data to create pretext tasks that capture intrinsic data structures. Unlike supervised learning, which relies on labeled data, SSL formulates tasks where the labels are derived from the data itself, such as predicting missing parts of an image or the next word in a sentence. This process encourages the model to learn general features that are useful across various tasks.
+
+Mathematically, given a dataset $X$, SSL aims to learn a representation $f(X)$ that minimizes a pretext loss $L_{pretext}(f(X))$. The learned representation $f(X)$ is then fine-tuned on a downstream task with a loss $L_{downstream}(f(X), Y)$, where $Y$ is the task-specific label. The pretext task encourages the model to capture features that are invariant and robust, improving performance on downstream tasks by providing a strong initialization point and reducing the need for large labeled datasets.
+
+---
+

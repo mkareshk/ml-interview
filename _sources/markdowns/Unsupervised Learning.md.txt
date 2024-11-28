@@ -1,0 +1,64 @@
+# Unsupervised Learning
+---
+**Question:** How does density-based clustering handle the identification of noise versus clusters in complex datasets?
+
+**Answer:**
+Density-based clustering, such as DBSCAN (Density-Based Spatial Clustering of Applications with Noise), identifies clusters by looking for regions of high point density and distinguishing them from regions of low density, which are considered noise. 
+
+In DBSCAN, two parameters are crucial: $\epsilon$ (epsilon) and $minPts$ (minimum number of points). A point is considered a core point if there are at least $minPts$ points within its $\epsilon$-neighborhood. Clusters are formed by connecting core points that are within $\epsilon$ distance of each other. Points that are not reachable from any core point are labeled as noise.
+
+This method effectively identifies clusters of arbitrary shape and handles noise by not assigning it to any cluster. For example, in a dataset with two dense regions separated by sparse noise, DBSCAN will identify the dense regions as clusters and the sparse region as noise.
+
+---
+
+**Question:** How does the choice of similarity measure affect the performance of spectral clustering algorithms?
+
+**Answer:**
+The choice of similarity measure in spectral clustering significantly impacts performance, as it defines the affinity matrix $A$ used to capture the relationships between data points. Common measures include Gaussian kernels and cosine similarity. The Gaussian kernel, defined as $A_{ij} = \exp\left(-\frac{\|x_i - x_j\|^2}{2\sigma^2}\right)$, emphasizes local neighborhood structures, with the bandwidth parameter $\sigma$ controlling sensitivity to distances. Cosine similarity, $A_{ij} = \frac{x_i \cdot x_j}{\|x_i\|\|x_j\|}$, is effective for high-dimensional data where only directional relationships matter. An inappropriate choice can lead to poor clustering, as it may not capture the intrinsic data structure, leading to an ill-formed Laplacian matrix $L = D - A$, where $D$ is the degree matrix. This affects the eigenvalues and eigenvectors used for clustering, potentially resulting in suboptimal partitions.
+
+---
+
+**Question:** Discuss the role of mutual information in measuring the effectiveness of representation learning in unsupervised settings.
+
+**Answer:**
+In unsupervised representation learning, mutual information (MI) quantifies the dependency between input data $X$ and its learned representation $Z$. MI measures how much information about $X$ is captured by $Z$, providing a metric for the effectiveness of the representation. High MI indicates that $Z$ retains significant information about $X$, which is desirable for tasks like clustering or anomaly detection.
+
+Mathematically, mutual information is defined as:
+
+$$ I(X; Z) = \int \int p(x, z) \log \frac{p(x, z)}{p(x)p(z)} \, dx \, dz $$
+
+where $p(x, z)$ is the joint probability distribution of $X$ and $Z$, and $p(x)$ and $p(z)$ are their marginal distributions. 
+
+In practice, maximizing MI encourages representations that preserve the underlying structure of data. However, estimating MI directly is challenging, leading to approximations like variational bounds. These approximations guide the learning process to enhance the quality of representations without explicit labels.
+
+---
+
+**Question:** Discuss the limitations of using K-means for clustering data with varying cluster sizes and densities.
+
+**Answer:**
+K-means clustering assumes that clusters are spherical and of similar size, which limits its effectiveness when dealing with clusters of varying sizes and densities. The algorithm minimizes the within-cluster variance, which can lead to poor performance if clusters vary significantly in size or density. For example, K-means uses the Euclidean distance to assign points to clusters, which can result in smaller, denser clusters being absorbed by larger, sparser ones. Additionally, K-means is sensitive to outliers, which can skew the mean and affect cluster assignments. Mathematically, K-means aims to minimize the objective function $J = \sum_{i=1}^{k} \sum_{x \in C_i} \| x - \mu_i \|^2$, where $C_i$ is the set of points in cluster $i$ and $\mu_i$ is the centroid. This approach does not account for varying cluster shapes or densities, making it unsuitable for data with such characteristics.
+
+---
+
+**Question:** How do generative models in unsupervised learning capture underlying data distributions without explicit labels?
+
+**Answer:**
+Generative models in unsupervised learning aim to capture the underlying data distribution $p(x)$ without relying on explicit labels. They do this by learning a model $p_\theta(x)$ parameterized by $\theta$ that approximates the true data distribution. Techniques such as Variational Autoencoders (VAEs) and Generative Adversarial Networks (GANs) are popular approaches.
+
+VAEs learn a latent variable model by maximizing the evidence lower bound (ELBO), which involves a trade-off between reconstruction accuracy and the complexity of the latent space. The objective is to maximize $\mathbb{E}_{q_\phi(z|x)}[\log p_\theta(x|z)] - D_{KL}(q_\phi(z|x) \| p(z))$, where $q_\phi(z|x)$ is the approximate posterior.
+
+GANs, on the other hand, use a min-max game between a generator $G$ and a discriminator $D$. The generator tries to produce data that the discriminator cannot distinguish from real data, optimizing $\min_G \max_D \mathbb{E}_{x \sim p_{data}}[\log D(x)] + \mathbb{E}_{z \sim p_z}[\log(1 - D(G(z)))]$. These models learn to generate data that resembles the training set, effectively capturing its distribution.
+
+---
+
+**Question:** How does spectral clustering utilize eigenvectors to identify non-convex clusters in data?
+
+**Answer:**
+Spectral clustering is a technique that leverages the eigenvectors of a data similarity matrix to identify clusters, particularly effective for non-convex shapes. The process starts by constructing a similarity graph from the data, where nodes represent data points and edges reflect similarities. The Laplacian matrix $L$ of this graph is computed, which encodes the structure of the data. 
+
+The key step is to compute the eigenvectors of $L$. The eigenvectors corresponding to the smallest eigenvalues capture the most significant structure of the data. By selecting the top $k$ eigenvectors, we embed the data into a lower-dimensional space where clusters are more distinct. 
+
+Finally, a standard clustering algorithm like k-means is applied in this new space. The spectral embedding effectively separates non-convex clusters by considering the global structure of the data, which is not possible with traditional distance-based methods.
+
+---
+

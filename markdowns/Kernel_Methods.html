@@ -1,0 +1,157 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kernel Methods &mdash; My Questions 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Generative Models" href="Generative_Models.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            My Questions
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Causal_Inference.html">Causal Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Generative_Models.html">Generative Models</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Kernel Methods</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#question-hard-kernel-methods-allow-for-non-linear-decision-boundaries-in-svms-how-do-you-determine-the-dimensions-of-the-feature-space-implicitly-defined-by-a-given-kernel-and-what-is-the-significance-of-the-kernel-s-reproducing-hilbert-space">Question (hard): Kernel methods allow for non-linear decision boundaries in SVMs. How do you determine the dimensions of the feature space implicitly defined by a given kernel, and what is the significance of the kernel’s reproducing Hilbert space?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#answer">Answer:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#in-contrast-the-gaussian-kernel-does-not-allow-for-such-an-explicit-feature-mapping-and-its-feature-space-is-considered-infinite-dimensional-however-the-rkhs-associated-with-the-gaussian-kernel-is-well-defined-and-machine-learning-algorithms-can-operate-within-this-space-without-explicitly-constructing-it">In contrast, the Gaussian kernel does not allow for such an explicit feature mapping, and its feature space is considered infinite-dimensional. However, the RKHS associated with the Gaussian kernel is well-defined, and machine learning algorithms can operate within this space without explicitly constructing it.</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">My Questions</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Kernel Methods</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/markdowns/Kernel_Methods.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="kernel-methods">
+<h1>Kernel Methods<a class="headerlink" href="#kernel-methods" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<section id="question-hard-kernel-methods-allow-for-non-linear-decision-boundaries-in-svms-how-do-you-determine-the-dimensions-of-the-feature-space-implicitly-defined-by-a-given-kernel-and-what-is-the-significance-of-the-kernel-s-reproducing-hilbert-space">
+<h2>Question (hard): Kernel methods allow for non-linear decision boundaries in SVMs. How do you determine the dimensions of the feature space implicitly defined by a given kernel, and what is the significance of the kernel’s reproducing Hilbert space?<a class="headerlink" href="#question-hard-kernel-methods-allow-for-non-linear-decision-boundaries-in-svms-how-do-you-determine-the-dimensions-of-the-feature-space-implicitly-defined-by-a-given-kernel-and-what-is-the-significance-of-the-kernel-s-reproducing-hilbert-space" title="Link to this heading"></a></h2>
+</section>
+<section id="answer">
+<h2>Answer:<a class="headerlink" href="#answer" title="Link to this heading"></a></h2>
+<p>Kernel methods are a fundamental component of Support Vector Machines (SVMs) that enable the creation of non-linear decision boundaries by implicitly mapping the input data into a high-dimensional feature space. This mapping is achieved through the use of a kernel function, which computes the inner product between data points in this high-dimensional space without explicitly performing the transformation.</p>
+<p><strong>Background and Intuition</strong></p>
+<p>A kernel function ( K(x, y) ) corresponds to an inner product in some feature space ( \mathcal{F} ), such that:</p>
+<p>[ K(x, y) = \langle \phi(x), \phi(y) \rangle_{\mathcal{F}} ]</p>
+<p>where ( \phi ) is the feature map from the input space to the feature space ( \mathcal{F} ). The power of kernel methods lies in their ability to operate in this feature space without needing to compute (\phi(x)) and (\phi(y)) explicitly, thus avoiding the computational cost associated with high-dimensional transformations.</p>
+<p><strong>Dimensions of the Feature Space</strong></p>
+<p>Determining the dimensions of the feature space defined by a kernel can be complex, as it depends on the type of kernel used:</p>
+<ol class="arabic">
+<li><p><strong>Finite-Dimensional Kernels</strong>: For some kernels, such as the linear kernel ( K(x, y) = x^T y ), the feature space is finite-dimensional and its dimension equals the dimensionality of the input space.</p></li>
+<li><p><strong>Infinite-Dimensional Kernels</strong>: Many popular kernels, such as the Gaussian (RBF) kernel, define an infinite-dimensional feature space. For the Gaussian kernel:</p>
+<p>[ K(x, y) = \exp\left(-\frac{|x - y|^2}{2\sigma^2}\right) ]</p>
+<p>the feature space is theoretically infinite-dimensional, but the kernel trick allows us to work with this space implicitly.</p>
+</li>
+<li><p><strong>Polynomial Kernels</strong>: For polynomial kernels of degree (d), the feature space is finite-dimensional with the dimension given by the number of monomials of degree up to (d).</p></li>
+</ol>
+<p><strong>Reproducing Kernel Hilbert Space (RKHS)</strong></p>
+<p>The concept of a Reproducing Kernel Hilbert Space (RKHS) is central to understanding the theoretical foundation of kernel methods:</p>
+<ul>
+<li><p><strong>Definition</strong>: An RKHS is a Hilbert space of functions in which evaluation at each point can be performed via an inner product with a kernel function. Specifically, a space ( \mathcal{H} ) is an RKHS with kernel ( K ) if for every ( x ), the function ( K(\cdot, x) ) is in ( \mathcal{H} ) and for all ( f \in \mathcal{H} ):</p>
+<p>[ f(x) = \langle f, K(\cdot, x) \rangle_{\mathcal{H}} ]</p>
+</li>
+<li><p><strong>Significance</strong>: The RKHS framework provides a rigorous way to analyze and understand the properties of functions that can be expressed in terms of a given kernel. It ensures that operations such as function evaluation and optimization (e.g., in SVM) are well-defined.</p></li>
+<li><p><strong>Regularization</strong>: The RKHS norm is often used as a regularizer in machine learning models, enforcing smoothness of the solution by penalizing high complexity in the function space.</p></li>
+</ul>
+<p><strong>Detailed Answer</strong></p>
+<p>The dimension of the feature space implicitly defined by a kernel is not always intuitive or straightforward to determine. For finite-dimensional feature spaces, such as those induced by linear or polynomial kernels, the dimension can be calculated based on the properties of the kernel. However, for many practical kernels like the RBF kernel, the feature space is infinite-dimensional.</p>
+<p>The RKHS associated with a kernel provides a powerful abstraction that allows us to work with these potentially infinite-dimensional spaces in a mathematically rigorous way. The RKHS framework ensures that the function space is complete and provides a reproducing property that simplifies analysis and computation in learning algorithms.</p>
+<p><strong>Example</strong></p>
+<p>Consider the polynomial kernel of degree 2, given by:</p>
+<p>[ K(x, y) = (x^T y + c)^2 ]</p>
+<p>Expanding this, we obtain:</p>
+<p>[ K(x, y) = x^T y \cdot x^T y + 2c \cdot x^T y + c^2 ]</p>
+<p>This corresponds to a feature map that includes all products of pairs of input features, along with linear terms and a constant offset. The dimension of the feature space is ( \binom{n+2}{2} ) for input space dimension ( n ).</p>
+</section>
+<section id="in-contrast-the-gaussian-kernel-does-not-allow-for-such-an-explicit-feature-mapping-and-its-feature-space-is-considered-infinite-dimensional-however-the-rkhs-associated-with-the-gaussian-kernel-is-well-defined-and-machine-learning-algorithms-can-operate-within-this-space-without-explicitly-constructing-it">
+<h2>In contrast, the Gaussian kernel does not allow for such an explicit feature mapping, and its feature space is considered infinite-dimensional. However, the RKHS associated with the Gaussian kernel is well-defined, and machine learning algorithms can operate within this space without explicitly constructing it.<a class="headerlink" href="#in-contrast-the-gaussian-kernel-does-not-allow-for-such-an-explicit-feature-mapping-and-its-feature-space-is-considered-infinite-dimensional-however-the-rkhs-associated-with-the-gaussian-kernel-is-well-defined-and-machine-learning-algorithms-can-operate-within-this-space-without-explicitly-constructing-it" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Generative_Models.html" class="btn btn-neutral float-left" title="Generative Models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Moein.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,178 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federated Learning &mdash; Machine Learning Interview Questions 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/theme_overrides.css" />
+
+  
+    <link rel="canonical" href="https://mkareshk.github.io/ml-interview/markdowns/Federated%20Learning.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Generative Adversarial Networks" href="Generative%20Adversarial%20Networks.html" />
+    <link rel="prev" title="Feature Engineering" href="Feature%20Engineering.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Machine Learning Interview Questions
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Active%20Learning.html">Active Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Anomaly%20Detection.html">Anomaly Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Attention%20Mechanisms.html">Attention Mechanisms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Bayesian%20Inference.html">Bayesian Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Bayesian%20Neural%20Networks.html">Bayesian Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Clustering%20Algorithms.html">Clustering Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Convolutional%20Neural%20Networks.html">Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cross-Validation%20Techniques.html">Cross-Validation Techniques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Decision%20Trees.html">Decision Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Dimensionality%20Reduction.html">Dimensionality Reduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Ensemble%20Methods.html">Ensemble Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Ethics%20in%20Machine%20Learning.html">Ethics in Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Feature%20Engineering.html">Feature Engineering</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Federated Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Generative%20Adversarial%20Networks.html">Generative Adversarial Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Gradient%20Descent%20Variants.html">Gradient Descent Variants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Graphical%20Models.html">Graphical Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hyperparameter%20Tuning.html">Hyperparameter Tuning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Interpretability%20and%20Explainability.html">Interpretability and Explainability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="K-Nearest%20Neighbors.html">K-Nearest Neighbors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Linear%20Regression.html">Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Logistic%20Regression.html">Logistic Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Markov%20Decision%20Processes.html">Markov Decision Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Meta-Learning.html">Meta-Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Model%20Evaluation%20Metrics.html">Model Evaluation Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Naive%20Bayes.html">Naive Bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Natural%20Language%20Processing.html">Natural Language Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Neural%20Networks.html">Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Optimization%20Algorithms.html">Optimization Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Quantum%20Machine%20Learning.html">Quantum Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Random%20Forests.html">Random Forests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Recurrent%20Neural%20Networks.html">Recurrent Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Reinforcement%20Learning.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Self-Supervised%20Learning.html">Self-Supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Semi-Supervised%20Learning.html">Semi-Supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Supervised%20Learning.html">Supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Support%20Vector%20Machines.html">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Time%20Series%20Analysis.html">Time Series Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Transfer%20Learning.html">Transfer Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unsupervised%20Learning.html">Unsupervised Learning</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Machine Learning Interview Questions</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Federated Learning</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/markdowns/Federated Learning.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="federated-learning">
+<h1>Federated Learning<a class="headerlink" href="#federated-learning" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<p><strong>Question:</strong> What role does secure aggregation play in ensuring privacy-preserving Federated Learning?</p>
+<p><strong>Answer:</strong>
+Secure aggregation is crucial in privacy-preserving Federated Learning (FL) as it ensures that individual client updates remain confidential. In FL, clients collaboratively train a global model by sending local updates to a central server. Secure aggregation allows the server to aggregate these updates without accessing individual data, thus preserving privacy.</p>
+<p>Mathematically, if <span class="math notranslate nohighlight">\(x_i\)</span> represents the update from client <span class="math notranslate nohighlight">\(i\)</span>, secure aggregation computes the sum <span class="math notranslate nohighlight">\(S = \sum_{i=1}^{N} x_i\)</span> without revealing any <span class="math notranslate nohighlight">\(x_i\)</span>. Techniques like homomorphic encryption or secret sharing enable this by allowing computations on encrypted data or distributed shares.</p>
+<p>For example, in a simple secret sharing scheme, each client splits their update into random shares distributed among other clients. The server only receives sums of shares, which collectively reconstruct the aggregate update. This ensures that any intercepted or compromised data does not reveal individual updates, maintaining data privacy and security.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> How does Federated Averaging differ from traditional gradient descent in distributed learning environments?</p>
+<p><strong>Answer:</strong>
+Federated Averaging (FedAvg) and traditional gradient descent both aim to optimize a model, but they differ in how they handle data distribution and aggregation. In traditional distributed gradient descent, each worker computes gradients on its local data, and these gradients are aggregated (e.g., averaged) at a central server to update the global model. This requires frequent communication of gradients between workers and the server.</p>
+<p>In contrast, FedAvg is designed for federated learning, where data remains decentralized on client devices. Each client computes model updates locally using its data and sends these updates to the server. The server then averages these updates to form a new global model. This process reduces communication frequency and data transfer, as clients only send model updates after several local training steps, rather than every gradient computation. Mathematically, if <span class="math notranslate nohighlight">\(w_k^t\)</span> is the model on client <span class="math notranslate nohighlight">\(k\)</span> at iteration <span class="math notranslate nohighlight">\(t\)</span>, FedAvg updates the global model <span class="math notranslate nohighlight">\(w\)</span> as <span class="math notranslate nohighlight">\(w^{t+1} = \frac{1}{K} \sum_{k=1}^{K} w_k^t\)</span>, where <span class="math notranslate nohighlight">\(K\)</span> is the number of clients.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> How does Federated Learning address the issue of model drift in non-i.i.d. data distributions across clients?</p>
+<p><strong>Answer:</strong>
+Federated Learning (FL) addresses model drift in non-i.i.d. data by employing techniques like personalized models and aggregation strategies. In FL, clients train local models on their data and send updates to a central server. Non-i.i.d. data can cause model drift due to varying data distributions across clients.</p>
+<p>To mitigate this, FL uses personalized models, where each client adapts a global model to their local data, reducing drift. Aggregation strategies like FedAvg combine local updates while considering data distribution, ensuring the global model remains robust.</p>
+<p>Mathematically, if <span class="math notranslate nohighlight">\(w_i\)</span> is the local model weight update from client <span class="math notranslate nohighlight">\(i\)</span>, and <span class="math notranslate nohighlight">\(n_i\)</span> is the number of samples at client <span class="math notranslate nohighlight">\(i\)</span>, the global model update <span class="math notranslate nohighlight">\(w\)</span> is computed as <span class="math notranslate nohighlight">\(w = \frac{1}{N} \sum_{i=1}^K n_i w_i\)</span>, where <span class="math notranslate nohighlight">\(N = \sum_{i=1}^K n_i\)</span>. This weighted averaging accounts for data heterogeneity, reducing model drift and improving generalization across diverse client data.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> How does Federated Learning handle model drift in non-i.i.d. data distributions across clients?</p>
+<p><strong>Answer:</strong>
+Federated Learning (FL) addresses model drift in non-i.i.d. data distributions by using several techniques. Firstly, it employs a weighted aggregation method, such as Federated Averaging (FedAvg), which combines models from clients based on their data size, thus giving more influence to clients with more data. Mathematically, the global model update is given by <span class="math notranslate nohighlight">\(w_{t+1} = \sum_{k=1}^{K} \frac{n_k}{n} w_{t+1}^k\)</span>, where <span class="math notranslate nohighlight">\(w_{t+1}^k\)</span> is the model from client <span class="math notranslate nohighlight">\(k\)</span>, <span class="math notranslate nohighlight">\(n_k\)</span> is the number of samples on client <span class="math notranslate nohighlight">\(k\)</span>, and <span class="math notranslate nohighlight">\(n\)</span> is the total number of samples across all clients. Secondly, FL can incorporate personalization techniques, where each client maintains a personalized model to better fit their local data. Lastly, FL may use techniques like multi-task learning or meta-learning to adapt to diverse client distributions. These strategies help mitigate the effects of model drift and improve the robustness of the global model to non-i.i.d. data.</p>
+<hr class="docutils" />
+<p><strong>Question:</strong> How does differential privacy impact model performance in Federated Learning with non-i.i.d. client data?</p>
+<p><strong>Answer:</strong>
+In Federated Learning (FL) with non-i.i.d. client data, differential privacy (DP) introduces noise to ensure privacy, which can degrade model performance. Non-i.i.d. data implies heterogeneity across clients, leading to challenges in achieving a global model that generalizes well. DP typically adds Gaussian or Laplacian noise to gradients or model updates, controlled by a privacy budget <span class="math notranslate nohighlight">\(\epsilon\)</span>. This noise can exacerbate the variance introduced by non-i.i.d. data, potentially slowing convergence and reducing accuracy. For example, if client data distributions vary significantly, the noise may disproportionately affect clients with less data or unique distributions, leading to biased updates. Balancing privacy and utility is crucial, often requiring careful tuning of <span class="math notranslate nohighlight">\(\epsilon\)</span> and employing techniques like adaptive clipping or personalized models to mitigate performance loss while maintaining privacy guarantees.</p>
+<hr class="docutils" />
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Feature%20Engineering.html" class="btn btn-neutral float-left" title="Feature Engineering" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Generative%20Adversarial%20Networks.html" class="btn btn-neutral float-right" title="Generative Adversarial Networks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Moein Kareshk.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

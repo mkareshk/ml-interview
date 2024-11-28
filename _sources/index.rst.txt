@@ -1,0 +1,53 @@
+Machine Learning Interview Questions
+====================================
+This book is your guide to preparing for machine learning interviews. It includes a collection of questions grouped by topic, making it easy to focus on specific areas. 
+Created by an LLM-based multi-agent system, the book is designed to help you learn and practice efficiently. 
+Whether you're just starting or looking to improve, this resource will support you in getting ready for interviews and building your confidence.
+
+Start exploring and get closer to success in your machine learning career!
+
+
+.. toctree::
+   :maxdepth: 0
+   :caption: Contents
+
+   markdowns/Active Learning
+   markdowns/Anomaly Detection
+   markdowns/Attention Mechanisms
+   markdowns/Bayesian Inference
+   markdowns/Bayesian Neural Networks
+   markdowns/Clustering Algorithms
+   markdowns/Convolutional Neural Networks
+   markdowns/Cross-Validation Techniques
+   markdowns/Decision Trees
+   markdowns/Dimensionality Reduction
+   markdowns/Ensemble Methods
+   markdowns/Ethics in Machine Learning
+   markdowns/Feature Engineering
+   markdowns/Federated Learning
+   markdowns/Generative Adversarial Networks
+   markdowns/Gradient Descent Variants
+   markdowns/Graphical Models
+   markdowns/Hyperparameter Tuning
+   markdowns/Interpretability and Explainability
+   markdowns/K-Nearest Neighbors
+   markdowns/Linear Regression
+   markdowns/Logistic Regression
+   markdowns/Markov Decision Processes
+   markdowns/Meta-Learning
+   markdowns/Model Evaluation Metrics
+   markdowns/Naive Bayes
+   markdowns/Natural Language Processing
+   markdowns/Neural Networks
+   markdowns/Optimization Algorithms
+   markdowns/Quantum Machine Learning
+   markdowns/Random Forests
+   markdowns/Recurrent Neural Networks
+   markdowns/Reinforcement Learning
+   markdowns/Self-Supervised Learning
+   markdowns/Semi-Supervised Learning
+   markdowns/Supervised Learning
+   markdowns/Support Vector Machines
+   markdowns/Time Series Analysis
+   markdowns/Transfer Learning
+   markdowns/Unsupervised Learning

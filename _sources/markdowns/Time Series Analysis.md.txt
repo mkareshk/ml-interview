@@ -1,0 +1,62 @@
+# Time Series Analysis
+---
+**Question:** How do state-space models capture latent structures in multivariate time series data?
+
+**Answer:**
+State-space models capture latent structures in multivariate time series data by representing the system using two equations: the state equation and the observation equation. The state equation models the evolution of hidden states over time, while the observation equation relates these hidden states to the observed data. 
+
+Mathematically, the state-space model is defined as:
+
+1. **State Equation:** $\mathbf{x}_t = \mathbf{A} \mathbf{x}_{t-1} + \mathbf{w}_t$, where $\mathbf{x}_t$ is the latent state vector, $\mathbf{A}$ is the state transition matrix, and $\mathbf{w}_t$ is the process noise.
+
+2. **Observation Equation:** $\mathbf{y}_t = \mathbf{C} \mathbf{x}_t + \mathbf{v}_t$, where $\mathbf{y}_t$ is the observation vector, $\mathbf{C}$ is the observation matrix, and $\mathbf{v}_t$ is the observation noise.
+
+These models are flexible and can capture complex dependencies and dynamics in multivariate data by estimating the latent states that drive the observed time series.
+
+---
+
+**Question:** How does the choice of seasonality model impact forecasting accuracy in complex time series data?
+
+**Answer:**
+The choice of seasonality model in forecasting complex time series data significantly impacts accuracy. Seasonality captures periodic fluctuations, and an inappropriate model can lead to biased predictions. For instance, additive models assume constant seasonal patterns, while multiplicative models consider seasonality proportional to the level of the series. The choice depends on the data characteristics: 
+
+- **Additive Model**: $Y_t = T_t + S_t + E_t$, suitable for constant seasonal variations.
+- **Multiplicative Model**: $Y_t = T_t \times S_t \times E_t$, ideal for proportional seasonal variations.
+
+Complex time series might require advanced models like SARIMA or Fourier terms for non-linear seasonality. Incorrect model selection can lead to underfitting or overfitting, affecting forecast accuracy. For example, using an additive model on multiplicative data can underestimate peaks and troughs. Thus, understanding the underlying seasonal pattern is crucial for selecting an appropriate model and achieving accurate forecasts.
+
+---
+
+**Question:** How does the choice of window size impact the results of time series cross-validation in non-stationary contexts?
+
+**Answer:**
+In time series cross-validation, especially in non-stationary contexts, the choice of window size is crucial. A smaller window size captures short-term patterns but may miss longer-term trends, leading to high variance in model performance. Conversely, a larger window size can smooth out short-term fluctuations, capturing broader trends but potentially introducing bias by including outdated information.
+
+Mathematically, let $W$ denote the window size. The variance of parameter estimates can be influenced by $W$, as shorter windows may lead to higher variability in estimates due to less data, while longer windows may stabilize estimates but at the cost of responsiveness to change.
+
+In non-stationary contexts, where the underlying data distribution changes over time, a dynamic window size that adapts to changes may be beneficial. For example, using a rolling window approach with a size that adjusts based on detected changes in the data can help balance bias and variance effectively.
+
+---
+
+**Question:** What are the computational complexities associated with using Gaussian Processes for high-frequency time series forecasting?
+
+**Answer:**
+Gaussian Processes (GPs) are non-parametric models used for time series forecasting, offering flexibility and uncertainty quantification. However, they face computational challenges, especially with high-frequency data. The primary computational complexity arises from inverting the covariance matrix, which is $O(n^3)$, where $n$ is the number of data points. This is due to the need to compute the inverse of the $n \times n$ covariance matrix, which becomes prohibitive as $n$ grows. Additionally, storing the covariance matrix requires $O(n^2)$ memory. For high-frequency time series, where $n$ can be very large, these complexities make standard GPs impractical. Sparse approximations, such as inducing points methods (e.g., FITC, VFE), reduce complexity to $O(m^2n)$ for $m$ inducing points, where $m \ll n$. These methods balance computational efficiency with predictive accuracy, making GPs more feasible for large-scale time series data.
+
+---
+
+**Question:** How does the presence of structural breaks affect the estimation and inference in ARIMA models?
+
+**Answer:**
+Structural breaks, which are abrupt changes in the underlying data-generating process, can significantly impact the estimation and inference in ARIMA models. ARIMA models assume stationarity, meaning the statistical properties of the series do not change over time. A structural break violates this assumption, leading to biased parameter estimates and unreliable forecasts.
+
+Mathematically, consider an ARIMA$(p, d, q)$ model:
+
+$$\phi(B)(1-B)^d y_t = \theta(B)\varepsilon_t,$$
+
+where $\phi(B)$ and $\theta(B)$ are polynomials of orders $p$ and $q$, respectively, $B$ is the backshift operator, and $\varepsilon_t$ is white noise. A structural break introduces a change in the mean or variance, affecting $\phi(B)$ or $\theta(B)$, rendering them non-stationary.
+
+For example, a change in economic policy can alter the mean level of a time series, causing persistent forecast errors. Detecting and modeling these breaks, possibly with intervention analysis or regime-switching models, is crucial for accurate estimation and inference.
+
+---
+

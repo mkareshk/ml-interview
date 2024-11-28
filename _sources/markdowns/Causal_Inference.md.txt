@@ -1,0 +1,38 @@
+# Causal Inference
+---
+## Question (hard): Describe the concept of confounding in causal inference. How do techniques like stratification or regression adjustment help in addressing confounding, and what are the limitations of these approaches?
+## Answer:
+Confounding is a critical concept in causal inference, referring to a situation where the observed relationship between a treatment or exposure and an outcome is distorted by the presence of another variable, known as a confounder. Confounders are variables that are associated with both the treatment and the outcome, potentially leading to a spurious association that does not reflect a true causal relationship. 
+
+### Background and Intuition
+
+To understand confounding, consider a scenario where a researcher is interested in estimating the causal effect of a new drug on disease recovery. Suppose that age is a confounder: older individuals are both more likely to take the drug and have a different recovery rate from the disease. If age is not accounted for, the estimated effect of the drug on recovery may be biased.
+
+Mathematically, let $T$ be the treatment variable (e.g., drug usage), $Y$ the outcome variable (e.g., recovery), and $C$ the confounder (e.g., age). The goal is to estimate the causal effect of $T$ on $Y$, often denoted as $E[Y \mid \text{do}(T=t)]$ using Pearl's do-calculus. However, if $C$ influences both $T$ and $Y$, the observed association $E[Y \mid T=t]$ could be confounded.
+
+### Detailed Answer
+
+**Stratification**: Stratification involves dividing the data into subgroups (or strata) based on the levels of the confounder and then estimating the treatment effect within each stratum. By conditioning on the confounder, we effectively block the confounding path, aiming to isolate the causal pathway from treatment to outcome.
+
+For example, if age is a confounder, we can stratify the data by age groups and estimate the causal effect of the drug within each age group. The overall effect can then be assessed by averaging these stratified estimates, weighted by the size of each stratum.
+
+**Regression Adjustment**: Regression adjustment involves including the confounder as a covariate in a regression model. This approach attempts to statistically control for the confounder by adjusting the estimated effect of the treatment. In a linear regression context, we estimate a model such as:
+
+$$ Y = \beta_0 + \beta_1 T + \beta_2 C + \epsilon $$
+
+Here, $\beta_1$ represents the adjusted effect of $T$ on $Y$, accounting for the confounder $C$.
+
+### Limitations
+
+1. **Residual Confounding**: Both stratification and regression adjustment assume that the confounder has been measured accurately and completely. If there are unmeasured or poorly measured confounders, these techniques will not fully account for confounding.
+
+2. **Model Specification**: Regression adjustment relies on the correct specification of the model. Misspecification can lead to biased estimates. For example, if the relationship between the confounder and the outcome is nonlinear and a linear model is used, the adjustment may be inadequate.
+
+3. **High Dimensionality**: Stratification becomes impractical with high-dimensional confounders, as the number of strata grows exponentially with the number of confounders, leading to sparse data in each stratum.
+
+4. **Interaction Effects**: If there are interactions between the treatment and the confounder, simple stratification or regression adjustment without interaction terms may not capture the true effect heterogeneity.
+
+5. **Causal Interpretation**: Both methods provide estimates under the assumption of no unmeasured confounding, which is a strong assumption. In practice, it's often hard to verify.
+
+In summary, while stratification and regression adjustment are useful tools for addressing confounding, they have limitations that must be considered. Advanced methods such as matching, instrumental variables, or causal inference frameworks like propensity score matching or Bayesian networks might be necessary when these assumptions are violated or when the complexity of confounding requires more sophisticated handling.
+---
